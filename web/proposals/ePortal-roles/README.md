@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+
 # 🧠 Roles & Permissions Documentation
 
 This project defines a scalable Role-Based Access Control (RBAC) structure that replaces complex legacy groupings with clean, maintainable roles and privileges. It supports edge cases, pricing restrictions, and direct overrides while preserving equivalent access levels from the legacy system.

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+
 # 🧠 RBAC Structure Overview
 
 ## Overview of the object structure
