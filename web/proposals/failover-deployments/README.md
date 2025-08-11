@@ -5,23 +5,24 @@ Weighted ALB target group routing to enable zero‑downtime prod1↔prod2 cutove
 
 ---
 
-🎯 Goal
+## 🎯 Goal
 
-- Send 100% traffic to <strong>prod1</strong> while deploying to <strong>prod2</strong>.
-- Gradually shift traffic back to <strong>prod2</strong> (e.g., 10% → 25% → 50% → 100%).
+- Send 100% traffic to **prod1** while deploying to **prod2**.
+- Gradually shift traffic back to **prod2** (e.g., 10% → 25% → 50% → 100%).
 - Flip roles on the next deployment cycle (prod2 live, deploy to prod1).
 - Return to even split after validation.
-- Done by converting Listener forwarding actions to <strong>Weighted Target Groups</strong>.
-
+- Done by converting Listener forwarding actions to **Weighted Target Groups** in the ALB.
 
 ---
 
 <details>
 <summary><strong>🛠 STEP-BY-STEP PLAN (AWS Console)</strong></summary>
 
+<div markdown="1">
+
 ### 1) Inspect Current Listener Rules
-- AWS Console → **EC2 → Load Balancers**  
-- Select the **ALB** → **Listeners** tab → click **:443**  
+- AWS Console → **EC2 → Load Balancers**
+- Select the **ALB** → **Listeners** tab → click **:443**
 - Review rules that match host/path → forward to `-web-tg` or `-portal-tg`.
 
 ---
@@ -44,14 +45,14 @@ Weighted ALB target group routing to enable zero‑downtime prod1↔prod2 cutove
 ---
 
 ### 3) Validate 100% on prod1
-- All HTTPS traffic should hit **prod1**.  
-- **prod2** is idle and safe to deploy.  
+- All HTTPS traffic should hit **prod1**.
+- **prod2** is idle and safe to deploy.
 - Deploy to prod2 (`...-02-tg` instances).
 
 ---
 
 ### 4) Gradual Traffic Shift to prod2
-1. Return to Listener rule.  
+1. Return to the Listener rule.
 2. Adjust weights through stages, testing at each step:
    - 90/10 → 75/25 → 50/50 → 25/75 → 0/100 (or your chosen cadence).
 3. Validate app behavior each step.
@@ -60,12 +61,12 @@ Weighted ALB target group routing to enable zero‑downtime prod1↔prod2 cutove
 ---
 
 ### 5) Flip for Next Deployment
-- Next cycle, deploy to **prod1**:
-  1. Set **prod1 TG** weight to **0**.
-  2. Deploy.
-  3. Ramp back to **100**.
-  4. Monitor, test, and finalize.
+1. Set **prod1 TG** weight to **0**.
+2. Deploy.
+3. Ramp back to **100**.
+4. Monitor, test, and finalize.
 
+</div>
 </details>
 
 ---
@@ -73,12 +74,15 @@ Weighted ALB target group routing to enable zero‑downtime prod1↔prod2 cutove
 <details>
 <summary><strong>📌 Things to Note</strong></summary>
 
+<div markdown="1">
+
 - No additional AWS services or cost changes.
-- Zero‑downtime approach: weight `0` stops <em>new</em> connections but lets existing ones complete.
+- Zero‑downtime approach: weight `0` stops **new** connections but lets existing ones complete.
 - TG stickiness is **off**, so sessions won’t cling to the old TG during ramp.
 - Our broader deployment process remains unchanged.
 - Coordinate with the team when performing a failover deployment.
 - **Dev ALB** currently doesn’t mirror this setup:
   - Best practice: replicate weighted rules in **dev** and trial there first.
 
+</div>
 </details>
