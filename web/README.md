@@ -10,4 +10,5 @@ Start here for Web Team architecture, deployments, and workflows.
 ## 📦 Featured Proposals
 
 - [ePortal Roles & Permissions](./proposals/ePortal-roles/)
+- [Failover Deployments](./web/proposals/failover-deployments/)
 

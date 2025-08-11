@@ -10,4 +10,5 @@ Welcome to the central documentation hub for the IT department.
   - [Deployment Automation](./web/deployment-automation/)
   - [Proposals](./web/proposals/)
     - [ePortal Roles](./web/proposals/ePortal-roles/)
+    - [Failover Deployments](./web/proposals/failover-deployments/)
 
