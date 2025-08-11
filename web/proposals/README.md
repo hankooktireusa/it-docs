@@ -11,6 +11,6 @@ This section contains active and draft proposals related to the Web Team’s ini
 ## 📂 Current Proposals
 
 - [ePortal Roles & Permissions](./ePortal-roles/) — Role-based access control structure, privilege definitions, and migration plan for the ePortal system.
-- [📑 Fail Over Deployments](./failover-deployments.md) — Weighted ALB routing for zero-downtime prod cutovers.
+- [Fail Over Deployments](./failover-deployments.md) — Weighted ALB routing for zero-downtime prod cutovers.
 
 ---
