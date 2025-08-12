@@ -13,13 +13,19 @@ Welcome to the central documentation hub for the IT department.
 
 ## Quick Access
 
-- [Web Team](./web/)
-  - [Deployment Automation](./web/deployment-automation/)
-  - [Proposals](./web/proposals/)
-    - [ePortal Roles](./web/proposals/ePortal-roles/)
-    - [Failover Deployments](./web/proposals/failover-deployments/)
-
-<!-- end list -->
+<ul>
+  <li><a href="./web/">Web Team</a>
+    <ul>
+      <li><a href="./web/deployment-automation/">Deployment Automation</a></li>
+      <li><a href="./web/proposals/">Proposals</a>
+        <ul>
+          <li><a href="./web/proposals/ePortal-roles/">ePortal Roles</a></li>
+          <li><a href="./web/proposals/failover-deployments/">Failover Deployments</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 <details>
 <summary>Click to expand</summary>
