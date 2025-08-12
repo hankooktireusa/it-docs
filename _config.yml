@@ -5,6 +5,10 @@ plugins:
 # Theme (restores dark styling)
 theme: jekyll-theme-midnight
 
+url: "https://hankooktireusa.github.io"
+baseurl: "/it-docs"
+permalink: pretty
+
 # Markdown engine settings
 markdown: kramdown
 kramdown:
