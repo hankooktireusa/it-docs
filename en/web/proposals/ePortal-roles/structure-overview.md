@@ -25,7 +25,7 @@ Corporation: [COUNTRY]
 ## Categories
 
 <details>
-<summary><strong>🏢 Corporations</strong></summary>
+  <summary>🏢 Corporations</summary>
 
 - US
 - CA
@@ -37,91 +37,101 @@ Corporation: [COUNTRY]
 </details>
 
 <details>
-<summary><strong>🏭 Industry Segments</strong></summary>
+  <summary>🏭 Industry Segments</summary>
 
 <details>
-<summary>Wholesale</summary>
+  <summary>Wholesale</summary>
 
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-<details>
-<summary>Retail</summary>
-
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-<details>
-<summary>Fleet</summary>
-
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-<details>
-<summary>Insurance</summary>
-
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-<details>
-<summary>Commercial</summary>
-
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-<details>
-<summary>Wholesale + Retail</summary>
-
-- Features: Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
 <details>
-<summary><strong>📁 Features</strong></summary>
+  <summary>Retail</summary>
 
-<details>
-<summary>Order</summary>
-
-- Action: Create, Status
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
-<details>
-<summary>Claims</summary>
 
-- Action: Create, Status
+<details>
+  <summary>Fleet</summary>
+
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
-<details>
-<summary>Returns</summary>
 
-- Action: Create, Status
+<details>
+  <summary>Insurance</summary>
+
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
-<details>
-<summary>Warranty Return</summary>
 
-- Action: Create, Status
+<details>
+  <summary>Commercial</summary>
+
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
+
 <details>
-<summary>Finance</summary>
+  <summary>Wholesale + Retail</summary>
 
-- Action: Create, Status
-
-</details>
-<details>
-<summary>Report</summary>
-
-- Action: Create, Status
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
 </details>
 
 <details>
-<summary><strong>🎯 Actions</strong></summary>
+  <summary>📁 Features</summary>
+
+<details>
+  <summary>Order</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details>
+  <summary>Claims</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details>
+  <summary>Returns</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details>
+  <summary>Warranty Return</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details>
+  <summary>Finance</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details>
+  <summary>Report</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+</details>
+
+<details>
+  <summary>🎯 Actions</summary>
 
 - Create
 - Status
@@ -129,7 +139,7 @@ Corporation: [COUNTRY]
 </details>
 
 <details>
-<summary><strong>🧭 Business Channels</strong></summary>
+  <summary>🧭 Business Channels</summary>
 
 - WH (Warehouse)
 - SSP (Secondary Supply)
@@ -141,7 +151,7 @@ Corporation: [COUNTRY]
 </details>
 
 <details>
-<summary><strong>🔐 Access Levels</strong></summary>
+  <summary>🔐 Access Levels</summary>
 
 - Access (A)
 - Stock (S)
@@ -153,13 +163,13 @@ Corporation: [COUNTRY]
 ## 🧪 Examples
 
 ```yaml
-Corporation: US  
-└── Industry Segment: Fleet  
-    └── Feature: Order  
-        └── Action Type: Create  
-            ├── Business Channel: WH  
-            │   └── Access Level: A, S, U  
-            └── Business Channel: DFC  
+Corporation: US
+└── Industry Segment: Fleet
+    └── Feature: Order
+        └── Action Type: Create
+            ├── Business Channel: WH
+            │   └── Access Level: A, S, U
+            └── Business Channel: DFC
                 └── Access Level: A
 ```
 
