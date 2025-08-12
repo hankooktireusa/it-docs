@@ -1,7 +1,12 @@
 ---
 layout: default
 title: Home
-redirect_to: "{{ site.baseurl }}/en/"
+permalink: /
 ---
 
-If you are not redirected, click <a href="{{ site.baseurl }}/en/">here</a>.
+<!-- Instant redirect (works with baseurl) -->
+<script>
+  window.location.replace('{{ "/en/" | relative_url }}');
+</script>
+<meta http-equiv="refresh" content="0; url={{ "/en/" | relative_url }}">
+<p>If you are not redirected, <a href="{{ "/en/" | relative_url }}">click here</a>.</p>

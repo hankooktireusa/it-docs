@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🌐 Web Team Documentation
+permalink: /en/web/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🌐 Web Team Documentation

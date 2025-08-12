@@ -1,8 +1,13 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 📑 Failover Deployments
+permalink: /en/web/proposals/failover-deployments/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
-# 📑 Fail Over Deployments
+# 📑 Failover Deployments
 Weighted ALB target group routing to enable zero-downtime prod1↔prod2 cutovers.
 
 ---

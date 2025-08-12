@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: ⚙️ Deployment Automation for CustomerPortal (CP) and WebOrder (WO)
+permalink: /en/web/deployment-automation/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # ⚙️ Deployment Automation for CustomerPortal (CP) and WebOrder (WO)
@@ -12,7 +17,7 @@ This project automates the deployment of **CustomerPortal (CP)** and **WebOrder 
 
 To run this deployment automation locally:
 
-1. [⬇️ Download deployment-automation-scripts.zip](./deployment-automation-scripts.zip)  
+1. [⬇️ Download deployment-automation-scripts.zip]({{ '/en/web/deployment-automation/deployment-automation-scripts.zip' | relative_url }})  
 2. Extract it to:
    ```
    C:\scripts\deployment-automation
@@ -22,7 +27,7 @@ To run this deployment automation locally:
    .\main.ps1
    ```
 
-For full setup and configuration instructions, refer to the [`README.md`](/it-docs/en/web/deployment-automation/README.md) file inside the ZIP bundle.
+For full setup and configuration instructions, refer to the **README.md inside the ZIP bundle**.
 
 ---
 
@@ -133,5 +138,3 @@ deployment-automation/
 This tool walks you through the full deployment flow for both CP and WO projects. It includes prompts, verifications, and safe rollback support. You’ll be guided step-by-step — just follow the on-screen instructions.
 
 Ask a teammate to shadow you on your first run!
-
----

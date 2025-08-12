@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧠 Roles & Permissions Documentation
+permalink: /en/web/proposals/ePortal-roles/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧠 Roles & Permissions Documentation

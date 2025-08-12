@@ -1,50 +1,55 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: ⚙️ CustomerPortal (CP) / WebOrder (WO) 배포 자동화
+permalink: /ko/web/deployment-automation/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
-# ⚙️ 고객 포털(CP) 및 웹 오더(WO) 배포 자동화
+# ⚙️ CustomerPortal (CP) / WebOrder (WO) 배포 자동화
 
-이 프로젝트는 PowerShell, WinSCP, PuTTY를 사용하여 **CustomerPortal (CP)** 및 **WebOrder (WO)** 애플리케이션을 DEV 및 PROD 환경에 배포하는 작업을 자동화합니다.
+이 프로젝트는 PowerShell, WinSCP, PuTTY를 사용하여 **CustomerPortal (CP)** 과 **WebOrder (WO)** 애플리케이션을 DEV/PROD 환경에 배포하는 작업을 자동화합니다.
 
 ---
 
 ## 📥 스크립트 다운로드
 
-이 배포 자동화를 로컬에서 실행하려면:
+로컬에서 배포 자동화를 실행하려면:
 
-1. [⬇️ deployment-automation-scripts.zip 다운로드](./deployment-automation-scripts.zip)  
-2. 다음 경로에 압축 해제:
+1. [⬇️ deployment-automation-scripts.zip 다운로드]({{ '/ko/web/deployment-automation/deployment-automation-scripts.zip' | relative_url }})  
+2. 아래 경로에 압축을 해제합니다:
    ```
    C:\scripts\deployment-automation
    ```
-3. PowerShell 열고 실행:
+3. PowerShell에서 실행:
    ```powershell
    .\main.ps1
    ```
 
-전체 설치 및 구성 지침은 ZIP 번들 안의 [`README.md`](/it-docs/ko/web/deployment-automation/README.md) 파일을 참고하세요.
+자세한 설정/구성 방법은 **ZIP 번들 내부의 README.md** 를 참고하세요.
 
 ---
 
-## ✨ 기능
+## ✨ 주요 기능
 
-- 🔄 환경별 설정 전환(datsource, SAP, WSDL)
+- 🔄 환경 인지형 설정 전환(데이터소스, SAP, WSDL)
 - ⚙️ 선택적 Maven 빌드 단계
 - 📦 WinSCP를 통한 안전한 WAR/ROOT 백업 및 전송
-- 🔐 PuTTY 및 WinSCP를 위한 동적 SSH 호스트 키 신뢰 처리
-- 🖥️ PuTTY 자동화를 통한 Tomcat 재시작 및 로그 모니터링
-- 🔁 동일한 WAR 파일을 사용한 PROD1 → PROD2 무중단 연속 배포
-- ⏪ 배포 후 프롬프트, 롤백 및 정리 지원
+- 🔐 PuTTY/WinSCP용 SSH 호스트 키 신뢰 자동 설정
+- 🖥️ PuTTY 자동화로 Tomcat 재시작 및 실시간 로그 모니터링
+- 🔁 동일 WAR로 PROD1 → PROD2 연속 배포
+- ⏪ 배포 후 점검, 롤백 및 정리 지원
 
 ---
 
-## 📁 스크립트 구조 (ZIP 포함)
+## 📁 스크립트 구성(ZIP 포함)
 
 ```yaml
 deployment-automation/
-├── config.ps1                           # 공유 경로, 세션 이름, SSH 호스트 키
-├── main.ps1                             # 전체 배포 자동화 메인 스크립트
-├── README.md                            # 전체 사용 가이드 및 설정 안내
+├── config.ps1
+├── main.ps1
+├── README.md
 │
 ├── lib/
 │   ├── git.ps1
@@ -78,7 +83,7 @@ deployment-automation/
            └──────┬──────┘
                   ▼
       ┌───────────▼────────────┐
-      │      Git Pull          │  ← PROD2 연속 시 건너뜀
+      │      Git Pull          │  ← PROD2 연속 배포 시 생략
       └───────────┬────────────┘
                   ▼
          ┌────────▼────────┐
@@ -86,15 +91,15 @@ deployment-automation/
          └────────┬────────┘
                   ▼
         ┌─────────▼─────────┐
-        │ Maven 빌드 실행   │
+        │ Maven 빌드        │
         └─────────┬─────────┘
                   ▼
         ┌─────────▼──────────┐
-        │ WAR 파일 검증      │
+        │ WAR 검증           │
         └─────────┬──────────┘
                   ▼
      ┌────────────▼─────────────┐
-     │  PuTTY 세션 시작         │
+     │ PuTTY 세션 시작          │
      └────────────┬─────────────┘
                   ▼
    ┌──────────────▼──────────────┐
@@ -102,36 +107,34 @@ deployment-automation/
    └──────────────┬──────────────┘
                   ▼
   ┌───────────────▼────────────────┐
-  │ 기존 WAR 백업 후 새 WAR 배포   │
+  │ 기존 WAR 백업으로 이동        │
+  │ 새 WAR를 ROOT.war로 배포      │
   └───────────────┬────────────────┘
                   ▼
      ┌────────────▼─────────────┐
-     │ PuTTY로 Tomcat 재시작    │
+     │ PuTTY로 Tomcat 재시작     │
      └────────────┬─────────────┘
                   ▼
      ┌────────────▼────────────┐
-     │ 로그 확인 및 롤백 여부  │
+     │ 로그 확인 + 롤백 여부   │
      └────────────┬────────────┘
                   ▼
          ┌────────▼────────┐
-         │ PROD2 배포 여부 │
+         │ PROD2에도 배포? │
          └────────┬────────┘
                   ▼ 예
-      (PuTTY 세션 → WAR 업로드 → 재시작 재개)
+      (PuTTY 세션 → WAR 업로드 → 재시작)
                   ▼
      ┌────────────▼──────────────┐
-     │ 설정 LOCAL로 복원         │
-     │ PuTTY 세션 닫기           │
+     │ LOCAL 설정으로 복원       │
+     │ 열린 PuTTY 세션 종료      │
      └───────────────────────────┘
 ```
 
 ---
 
-## 👥 신규 개발자 안내
+## 👥 새 참여자 안내
 
-이 도구는 CP와 WO 프로젝트의 전체 배포 흐름을 안내합니다.  
-프롬프트, 검증, 안전한 롤백 지원이 포함되어 있으며 단계별 지침에 따라 진행하면 됩니다.
+이 도구는 CP/WO 배포 전 과정을 단계별로 안내합니다. 각 단계에서 확인 프롬프트와 안전한 롤백 기능을 제공합니다. 화면의 지시에 따라 진행하세요.
 
-첫 실행 시 팀원과 함께 진행하는 것을 권장합니다.
-
----
+첫 실행 시 팀 동료와 함께 검증하는 것을 권장합니다.

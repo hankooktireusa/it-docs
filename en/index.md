@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧠 IT Department Knowledge Base
+permalink: /en/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧠 IT Department Knowledge Base
