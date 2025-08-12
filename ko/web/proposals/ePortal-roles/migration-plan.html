@@ -1,0 +1,94 @@
+---
+layout: default
+title: 🔄 역할 온보딩 계획: 신규 RBAC 구현
+permalink: /ko/web/proposals/ePortal-roles/migration-plan/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🔄 역할 온보딩 계획: 신규 RBAC 구현</h1>
+
+<p>이 계획은 신규 플랫폼에서 RBAC(역할 기반 접근 제어) 시스템을 도입하는 절차를 설명합니다. 새로운 구조는 레거시 시스템에서 사용자가 가졌던 접근 패턴을 유지하면서, 더 깔끔하고 표준화되며 유지 관리가 쉬운 모델을 제공합니다.</p>
+
+<details>
+  <summary><strong>📑 목차</strong></summary>
+  <ul>
+    <li><a href="#phase-1">📌 1단계: 접근 패턴 분석</a></li>
+    <li><a href="#phase-2">📌 2단계: 역할 설계 확정</a></li>
+    <li><a href="#phase-3">📌 3단계: 초기 사용자 역할 할당</a></li>
+    <li><a href="#phase-4">📌 4단계: 테스트 및 검증</a></li>
+    <li><a href="#phase-5">📌 5단계: 프로덕션 배포</a></li>
+    <li><a href="#notes">🧩 참고 사항</a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="phase-1">📌 1단계: 접근 패턴 분석</h2>
+<p><em>목표:</em> 신규 사이트의 모든 사용자 유형에 필요한 접근 패턴과 권한 세트를 파악합니다.</p>
+<h3>✅ 단계:</h3>
+<ol>
+  <li><strong>사용자 페르소나와 비즈니스 기능 정의</strong></li>
+  <li><strong>필요한 모든 권한과 관련 권한 수준 목록화</strong></li>
+  <li><strong>공통 조합을 잠재적 역할에 매핑</strong></li>
+  <li><strong>특수/제한 시나리오 문서화</strong> (예: 가격 없음)</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-2">📌 2단계: 역할 설계 확정</h2>
+<p><em>목표:</em> 모든 표준 접근 요구를 반영하는 역할 세트를 <a href="./role-definitions.html">role-definitions</a>에 구축합니다.</p>
+<h3>✅ 단계:</h3>
+<ol>
+  <li><strong>기능별 기본 역할 정의</strong> (예: 주문 제출자, 플릿 뷰어)</li>
+  <li><strong>범위 지정 로직 반영</strong> (예: 지역, 세그먼트)</li>
+  <li><code>No Pricing</code>, <code>Report Only</code> 같은 수정자 역할 추가</li>
+  <li>모든 문서화된 접근 요구 충족 여부 확인</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-3">📌 3단계: 초기 사용자 역할 할당</h2>
+<p><em>목표:</em> 신규 플랫폼의 예상 사용 사례에 따라 사용자에게 역할을 할당합니다.</p>
+<h3>✅ 단계:</h3>
+<ol>
+  <li>페르소나에 따라 사용자당 하나 이상의 역할 할당</li>
+  <li>적용 가능한 경우 범위 지정 역할 사용 (예: 캐나다 플릿 전용)</li>
+  <li>필요 시 제한 역할 적용 (예: <code>No Pricing</code>)</li>
+  <li>예외 케이스의 직접 권한 재정의는 반드시 기록</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-4">📌 4단계: 테스트 및 검증</h2>
+<p><em>목표:</em> 모든 역할이 의도한 접근 권한을 제공하고 제한이 정상적으로 작동하는지 확인합니다.</p>
+<h3>✅ 단계:</h3>
+<ol>
+  <li>샘플 사용자로 모든 기본 역할 테스트</li>
+  <li>다양한 컨텍스트에서 범위 지정 동작 검증</li>
+  <li>제한 역할(<code>No Pricing</code> 등)의 동작 확인</li>
+  <li>예상치 못한 접근 누락/과도 부여를 기록하고 해결</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-5">📌 5단계: 프로덕션 배포</h2>
+<p><em>목표:</em> 추적과 가시성이 확보된 상태에서 신규 플랫폼에 RBAC를 런칭합니다.</p>
+<h3>✅ 단계:</h3>
+<ol>
+  <li>신규 사이트에 역할 기반 접근 통제 활성화</li>
+  <li>사용자 유형별 활동과 동작 모니터링</li>
+  <li>피드백/예외 접근 이슈 추적 및 해결</li>
+  <li>정기적인 접근 검토 계획 수립</li>
+</ol>
+
+<hr />
+
+<h2 id="notes">🧩 참고 사항</h2>
+<ul>
+  <li>이 RBAC 모델은 레거시 시스템과 동일한 수준의 접근을 <strong>더 구조적이고 유지 관리가 쉬우며 투명한 방식</strong>으로 제공합니다.</li>
+  <li><code>All Permissions</code> 역할은 관리자/전체 접근 용도로 사용할 수 있습니다.</li>
+  <li><code>No Pricing</code>과 같은 제한 역할은 전역적인 접근 제어를 제공합니다.</li>
+  <li>직접 권한 재정의는 지원되지만, 드물게 사용하고 반드시 기록하세요.</li>
+</ul>

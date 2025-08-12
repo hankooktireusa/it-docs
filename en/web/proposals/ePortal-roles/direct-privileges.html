@@ -1,0 +1,97 @@
+---
+layout: default
+title: 🧩 Direct Privilege Grants
+permalink: /en/web/proposals/ePortal-roles/direct-privileges/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🧩 Direct Privilege Grants</h1>
+
+<p>This document explains how to apply individual permission and privilege overrides directly to a user, outside of their assigned roles.</p>
+<p>Direct grants should be used sparingly — only when roles and filters (like <code>No Pricing</code>) are insufficient.</p>
+
+<hr />
+
+<details>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <ul>
+    <li><a href="#when-to-use-direct-grants">When to Use Direct Grants</a></li>
+    <li><a href="#how-direct-grants-work">How Direct Grants Work</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="when-to-use-direct-grants">When to Use Direct Grants</h2>
+<p>Use a direct grant when:</p>
+<ul>
+  <li>A user needs <strong>just one extra permission or privilege</strong></li>
+  <li>You need to <strong>override a <code>No Pricing</code> role</strong> for a specific case</li>
+  <li>A legacy group had an uncommon combination not worth turning into a reusable role</li>
+</ul>
+
+<hr />
+
+<h2 id="how-direct-grants-work">How Direct Grants Work</h2>
+<p>Direct grants are stored per user, alongside (but separate from) their roles. They allow you to:</p>
+<ul>
+  <li>Add or override specific privileges (<code>A</code>, <code>S</code>, <code>U</code>, <code>L</code>) for a given permission</li>
+  <li>Either supplement or override inherited role-based permissions</li>
+</ul>
+<p>They are evaluated <strong>after roles and filters</strong> like <code>No Pricing</code>.</p>
+
+<hr />
+
+<h2 id="examples">Examples</h2>
+
+<h3>✅ Example 1: Add Unit Price for Sales Report only</h3>
+<p>User roles:</p>
+<ul>
+  <li><code>Report – Sales Report</code> (grants <code>A</code>, <code>S</code>)</li>
+  <li><code>No Pricing</code> (removes <code>U</code>, <code>L</code>)</li>
+</ul>
+<p>→ Add direct grant:</p>
+<pre>
+User: jdoe
+Permission: Report → Sales Report
+Privileges: U
+</pre>
+<p>Now the user has:</p>
+<ul>
+  <li><code>A</code>, <code>S</code> from role</li>
+  <li><code>U</code> from direct grant</li>
+  <li><code>L</code> still removed via <code>No Pricing</code></li>
+</ul>
+
+<hr />
+
+<h3>✅ Example 2: Custom invoice access</h3>
+<p>User doesn't need <code>Invoice</code> role, just wants to view stock-level invoice data.</p>
+<p>→ Add direct grant:</p>
+<pre>
+User: jsmith
+Permission: Status → Invoice
+Privileges: A, S
+</pre>
+
+<hr />
+
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+  <li>✅ Use direct grants only for <strong>rare exceptions</strong></li>
+  <li>❌ Do not replace roles with direct grants</li>
+  <li>🔐 Always log and review direct grants regularly</li>
+  <li>🔄 Prefer to update roles or create small custom roles if multiple users need the same override</li>
+</ul>
+
+<hr />
+
+<p>For standard permissions and privilege exposure, see:</p>
+<ul>
+  <li><a href="./role-definitions.html">role-definitions</a></li>
+  <li><a href="./privilege-matrix.html">privilege-matrix</a></li>
+</ul>

@@ -1,0 +1,263 @@
+---
+layout: default
+title: 📘 Table Definitions
+permalink: /en/web/proposals/ePortal-roles/table-definitions/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>📘 Table Definitions</h1>
+
+<details>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <ul>
+    <li><a href="#users"><code>users</code></a></li>
+    <li><a href="#roles"><code>roles</code></a></li>
+    <li><a href="#user_roles"><code>user_roles</code></a></li>
+    <li><a href="#role_corporation"><code>role_corporation</code></a></li>
+    <li><a href="#role_industry_segment"><code>role_industry_segment</code></a></li>
+    <li><a href="#permissions"><code>permissions</code></a></li>
+    <li><a href="#privileges"><code>privileges</code></a></li>
+    <li><a href="#role_permissions"><code>role_permissions</code></a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="users"><code>users</code></h2>
+<p>Stores individual user accounts that can be assigned one or more roles. Users do not directly receive permissions or privileges — everything is inherited through assigned roles.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>INT</td><td>Primary key</td></tr>
+    <tr><td><code>email</code></td><td>VARCHAR</td><td>User’s email address (unique)</td></tr>
+    <tr><td><code>name</code></td><td>VARCHAR</td><td>Full name (optional)</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>user_roles</code> → assigns roles to this user</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Users can be assigned multiple roles at once</li>
+  <li>Permissions and access levels are resolved entirely through role inheritance</li>
+  <li>Optional metadata like <code>name</code>, <code>department</code>, or <code>employee_id</code> can be added</li>
+</ul>
+
+<hr />
+
+<h2 id="roles"><code>roles</code></h2>
+<p>Stores reusable role templates that define a set of permission/privilege pairs. Roles are not tied to a specific user, corporation, or segment by default — they gain context through the <code>user_roles</code>, <code>role_corporation</code>, and <code>role_industry_segment</code> tables.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>INT</td><td>Unique identifier for the role</td></tr>
+    <tr><td><code>name</code></td><td>VARCHAR</td><td>Display name (e.g., “Order – WH Order Submission”)</td></tr>
+    <tr><td><code>description</code></td><td>TEXT</td><td>Optional explanation of the role’s purpose</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>user_roles</code> → assigns this role to users</li>
+  <li>🔗 <code>role_permissions</code> → defines the permissions and privileges this role grants</li>
+  <li>🔗 <code>role_corporation</code> → scopes this role to one or more corporations</li>
+  <li>🔗 <code>role_industry_segment</code> → scopes this role to one or more industry segments</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Role names are descriptive and user-readable</li>
+  <li>Roles can be reused across corporations and segments unless restricted by scoping</li>
+</ul>
+
+<hr />
+
+<h2 id="user_roles"><code>user_roles</code></h2>
+<p>Links users to their assigned roles.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>user_id</code></td><td>INT</td><td>FK to <code>users.id</code></td></tr>
+    <tr><td><code>role_id</code></td><td>INT</td><td>FK to <code>roles.id</code></td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>users</code> → defines who the role is assigned to</li>
+  <li>🔗 <code>roles</code> → defines what permissions the user receives</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>A user may have multiple roles (e.g., “Order Submitter” and “Report Viewer”)</li>
+  <li>Roles are always assigned through this table</li>
+  <li>Corporation/segment scoping is determined at the role level — not per user</li>
+</ul>
+
+<hr />
+
+<h2 id="role_corporation"><code>role_corporation</code></h2>
+<p>Scopes a role to one or more corporations (e.g., US, CA, MX).</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>role_id</code></td><td>INT</td><td>FK to <code>roles.id</code></td></tr>
+    <tr><td><code>corporation</code></td><td>VARCHAR</td><td>Country code or business unit</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>roles</code> → defines which role is scoped</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>No entry means global access (no corp restriction)</li>
+  <li>Used to enforce corporation-specific policies</li>
+  <li>Codes should align with your canonical corp definitions</li>
+</ul>
+
+<hr />
+
+<h2 id="role_industry_segment"><code>role_industry_segment</code></h2>
+<p>Scopes a role to one or more industry segments.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>role_id</code></td><td>INT</td><td>FK to <code>roles.id</code></td></tr>
+    <tr><td><code>industry_segment</code></td><td>VARCHAR</td><td>Segment label (e.g., “Fleet”, “Retail”)</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>roles</code> → defines which role is scoped</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>No segment means available to all</li>
+  <li>Can assign to multiple segments with multiple rows</li>
+  <li>Names should be standardized across the platform</li>
+</ul>
+
+<hr />
+
+<h2 id="permissions"><code>permissions</code></h2>
+<p>Represents a unique system action grouped by feature and action type.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>INT</td><td>Unique identifier for the permission</td></tr>
+    <tr><td><code>name</code></td><td>VARCHAR</td><td>Canonical label</td></tr>
+    <tr><td><code>feature</code></td><td>VARCHAR</td><td>Top-level category</td></tr>
+    <tr><td><code>action</code></td><td>VARCHAR</td><td>Action type</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>role_permissions</code> → assigns this permission to specific roles</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Grouped and filterable in UI</li>
+  <li>Name should remain stable across systems</li>
+  <li>Reused across roles and corporations</li>
+</ul>
+
+<hr />
+
+<h2 id="privileges"><code>privileges</code></h2>
+<p>Defines the level of access a user has for a given permission.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>code</code></td><td>CHAR(1)</td><td>Unique code: A, S, U, or L</td></tr>
+    <tr><td><code>label</code></td><td>VARCHAR</td><td>Full name: Access, Stock, etc.</td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>role_permissions</code> → privileges linked to roles via permissions</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Current values:
+    <ul>
+      <li><code>A</code>: Access</li>
+      <li><code>S</code>: Stock</li>
+      <li><code>U</code>: Unit Price</li>
+      <li><code>L</code>: List Price</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="role_permissions"><code>role_permissions</code></h2>
+<p>Joins roles to permissions and defines which specific privileges apply.</p>
+
+<h3>Columns</h3>
+<table>
+  <thead>
+    <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>role_id</code></td><td>INT</td><td>FK to <code>roles.id</code></td></tr>
+    <tr><td><code>permission_id</code></td><td>INT</td><td>FK to <code>permissions.id</code></td></tr>
+    <tr><td><code>privilege_code</code></td><td>CHAR(1)</td><td>FK to <code>privileges.code</code></td></tr>
+  </tbody>
+</table>
+
+<h3>Relationships</h3>
+<ul>
+  <li>🔗 <code>roles</code> → defines who the permission applies to</li>
+  <li>🔗 <code>permissions</code> → defines what action is allowed</li>
+  <li>🔗 <code>privileges</code> → defines the access level</li>
+</ul>
+
+<h3>Notes</h3>
+<ul>
+  <li>Roles can map to the same permission multiple times with different privileges</li>
+  <li>Enforces least privilege at the role level</li>
+  <li>No corporate or segment scoping exists here — that comes from <code>role_corporation</code> and <code>role_industry_segment</code></li>
+</ul>

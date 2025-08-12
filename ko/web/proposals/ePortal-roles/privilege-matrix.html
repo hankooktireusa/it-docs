@@ -1,0 +1,124 @@
+---
+layout: default
+title: 📊 권한 매트릭스
+permalink: /ko/web/proposals/ePortal-roles/privilege-matrix/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>📊 권한 매트릭스</h1>
+
+<p>역할 전반에 걸쳐 사용되는 모든 권한과, 각 권한이 노출하는 권한 수준을 보여주는 전체 매트릭스입니다.</p>
+
+<p><strong>ℹ️ 참고:</strong> 이 매트릭스는 새로운 RBAC 역할 모델에서 정의된 권한 수준을 반영합니다.<br>
+아래 나열된 각 권한은 
+<a href="/it-docs/en/web/proposals/ePortal-roles/role-definitions.html">role-definitions</a> 에 설명된 역할에서 사용되는 방식에 따라 
+<code>A</code>, <code>S</code>, <code>U</code>, <code>L</code> 권한과 매핑됩니다.<br>
+이 문서는 향후 감사를 지원하고, 재정의 로직과 역할 설계 결정을 지원하기 위한 것이며, 과거 그룹 사용 이력을 반영하지 않습니다.</p>
+
+<details>
+  <summary><strong>📑 목차 (클릭하여 펼치기)</strong></summary>
+  <ul>
+    <li><a href="#order-ko">Order</a></li>
+    <li><a href="#national-account-ko">National Account</a></li>
+    <li><a href="#status-ko">Status</a></li>
+    <li><a href="#report-ko">Report</a></li>
+    <li><a href="#warranty-ko">Warranty</a></li>
+    <li><a href="#all-permissions-ko">All Permissions</a></li>
+  </ul>
+</details>
+
+<hr>
+
+<p><strong>A</strong> = 접근(Access)<br>
+<strong>S</strong> = 재고(Stock)<br>
+<strong>U</strong> = 단가(Unit Price)<br>
+<strong>L</strong> = 정가(List Price)</p>
+
+<hr>
+
+<h2 id="order-ko"><code>Order</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>WH Order → Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>WH Order → Quick Order</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Secondary Supply → Delivery Check</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Secondary Supply → Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Car Dealer → Order</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>DFC Order</td><td>✅</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="national-account-ko"><code>National Account</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Hankook National Fleets → Create A New Delivery Receipt</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Gov't &amp; Bus</td><td>✅</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="status-ko"><code>Status</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Secondary Supply</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Gov't &amp; Bus</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Car Dealer</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>DFC</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Open Items</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Invoice</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="report-ko"><code>Report</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Statement</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Sales Report</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+<tr><td>Stock Report</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="warranty-ko"><code>Warranty</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Create Warranty</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+<tr><td>Warranty Status</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="all-permissions-ko"><code>All Permissions</code></h2>
+<table>
+<thead>
+<tr><th>권한</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>All of the above</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+</tbody>
+</table>

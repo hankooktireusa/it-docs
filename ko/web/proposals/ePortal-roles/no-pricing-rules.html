@@ -1,0 +1,93 @@
+---
+layout: default
+title: 🚫 가격 표시 금지 규칙
+permalink: /ko/web/proposals/ePortal-roles/no-pricing-rules/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🚫 가격 표시 금지 규칙</h1>
+
+<p>이 페이지는 새로운 RBAC 모델에서 사용자에게 <code>No Pricing</code> 역할을 언제/어떻게 적용하는지 문서화합니다. <code>No Pricing</code> 역할은 가격 표시와 관련된 모든 권한 수준을 제거합니다:</p>
+<ul>
+  <li><code>U</code> = 단가(Unit Price)</li>
+  <li><code>L</code> = 정가(List Price)</li>
+</ul>
+
+<details>
+  <summary><strong>📑 목차 (클릭하여 펼치기)</strong></summary>
+  <ul>
+    <li><a href="#when-to-apply-no-pricing-ko"><code>No Pricing</code> 적용 시점</a></li>
+    <li><a href="#how-it-works-ko">작동 방식</a></li>
+    <li><a href="#when-not-to-apply-no-pricing-ko"><code>No Pricing</code> 미적용 시점</a></li>
+    <li><a href="#edge-cases-and-overrides-ko">예외 &amp; 재정의</a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="when-to-apply-no-pricing-ko"><code>No Pricing</code> 적용 시점</h2>
+<p><code>No Pricing</code> 역할은 레거시 그룹에 <code>[SH-N]</code> 태그가 <strong>포함된 경우에만</strong> 부여합니다.</p>
+<p><code>No Pricing</code>을 적용해야 하는 레거시 그룹 예시:</p>
+<ul>
+  <li><code>[SH-N] Order + SSP</code></li>
+  <li><code>[SH-N] Gov + Warranty</code></li>
+  <li><code>[SH-N] Order All + NA All + Warranty</code></li>
+</ul>
+<p>이러한 그룹은 레거시 시스템에서 가격 데이터를 볼 수 없도록 명시적으로 제한되었습니다.</p>
+
+<hr />
+
+<h2 id="how-it-works-ko">작동 방식</h2>
+<p><code>No Pricing</code> 역할은:</p>
+<ul>
+  <li>자체적으로 새로운 권한을 <strong>부여하지 않으며</strong></li>
+  <li>다른 역할이 부여한 <code>U</code> 또는 <code>L</code> 권한 수준을 <strong>제거하는 필터</strong>로 동작합니다.</li>
+</ul>
+<p>이는 명시적으로 허용되지 않는 한 가격 데이터에 접근할 수 없도록 하여 <strong>최소 권한 원칙</strong>을 보장합니다.</p>
+
+<h3>예시:</h3>
+<p>사용자가 다음 역할을 가진 경우:</p>
+<ul>
+  <li><code>Order – WH Order Submission</code> (<code>U</code> 포함)</li>
+  <li><code>Report – Sales Report</code> (<code>S</code> 포함)</li>
+  <li><code>No Pricing</code></li>
+</ul>
+<p>→ 결과:</p>
+<ul>
+  <li><code>A</code>, <code>S</code>는 유지</li>
+  <li>주문 역할의 <code>U</code>(단가)는 제거</li>
+</ul>
+
+<hr />
+
+<h2 id="when-not-to-apply-no-pricing-ko"><code>No Pricing</code> 미적용 시점</h2>
+<p>다음과 같은 레거시 그룹에는 <code>No Pricing</code> 역할을 <strong>적용하지 않습니다</strong>:</p>
+<ul>
+  <li><code>[P]</code> → 일반적인 가격 접근 허용</li>
+  <li><code>[P-U]</code> → 단가 접근</li>
+  <li><code>[P-L]</code> → 정가 접근</li>
+</ul>
+<p><code>[SH-N]</code>이나 <code>[P-*]</code>가 없으면, 할당된 역할이 부여하는 기본 권한을 따릅니다.</p>
+
+<hr />
+
+<h2 id="edge-cases-and-overrides-ko">예외 &amp; 재정의</h2>
+<p>사용자가:</p>
+<ul>
+  <li><code>No Pricing</code>이 부여되어 있지만,</li>
+  <li>특정 권한에 대해서만 가격 접근이 필요한 경우 (예: <code>Sales Report</code>에 <code>Unit Price</code>)</li>
+</ul>
+<p>다음 중 하나를 선택할 수 있습니다:</p>
+<ol>
+  <li><strong>특정 오버라이드 역할 추가</strong> (예: <em>Sales Report – Unit Price Only</em>)</li>
+  <li>시스템이 지원한다면 <strong>사용자 단위 직접 재정의</strong> 사용 (예: <code>user_permissions</code> 경로)</li>
+</ol>
+
+<hr />
+
+<p>시각적 예시나 권한 매핑은
+  <a href="/it-docs/en/web/proposals/ePortal-roles/privilege-matrix.html">privilege-matrix</a>
+  를 참고하세요.
+</p>

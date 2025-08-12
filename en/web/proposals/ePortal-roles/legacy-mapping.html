@@ -1,0 +1,146 @@
+---
+layout: default
+title: 🗺️ Legacy Group Mapping
+permalink: /en/web/proposals/ePortal-roles/legacy-mapping/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🗺️ Legacy Group Mapping</h1>
+
+<p>Mappings from legacy user group names to the new RBAC roles and privilege model. Each section lists:</p>
+<ul>
+  <li>The original legacy group name and codes</li>
+  <li>The new role(s) required to replicate access</li>
+  <li>Any applied restrictions (like <code>No Pricing</code>)</li>
+  <li>Notes about special handling or overrides</li>
+</ul>
+
+<details>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <ul>
+    <li><a href="#us-tci"><code>(US) TCI</code></a></li>
+    <li><a href="#all-permissions-no-price"><code>All Permissions &amp; No Price</code></a></li>
+    <li><a href="#car-dealer-secondary-supply-national-account-warranty"><code>Car Dealer &amp; Secondary Supply &amp; National Account &amp; Warranty</code></a></li>
+    <li><a href="#order-submission-national-account-sales-report"><code>Order Submission &amp; National Account &amp; Sales Report</code></a></li>
+    <li><a href="#us-carroll-tire"><code>(US) Carroll Tire</code></a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="us-tci">(US) TCI - [O-WNG] [S-NG] [A] [W]</h2>
+
+<strong>Mapped Roles:</strong>
+<ul>
+  <li>Order – WH Order Submission</li>
+  <li>Status – Gov't &amp; Bus</li>
+  <li>Status – National Account</li>
+  <li>Status – Invoice</li>
+  <li>Warranty – Create Warranty</li>
+</ul>
+
+<strong>Pricing Restrictions:</strong>
+<ul>
+  <li>❌ None explicitly marked; pricing assumed available where roles grant it</li>
+</ul>
+
+<strong>Notes:</strong>
+<ul>
+  <li>Pricing privileges like <code>U</code> come from specific roles (e.g., WH Order Submission)</li>
+  <li>No <code>[SH-N]</code> or <code>[P]</code> codes present, so default behavior applies</li>
+</ul>
+
+<hr />
+
+<h2 id="all-permissions-no-price">All Permissions &amp; No Price - [O] [S] [A] [R] [W]</h2>
+
+<strong>Mapped Roles:</strong>
+<ul>
+  <li>All Permissions</li>
+  <li>No Pricing</li>
+</ul>
+
+<strong>Pricing Restrictions:</strong>
+<ul>
+  <li>✅ Fully removed via <code>No Pricing</code> role</li>
+</ul>
+
+<strong>Notes:</strong>
+<ul>
+  <li>Full access without pricing — designed for view-only or non-commercial users</li>
+  <li><code>No Pricing</code> removes all <code>U</code> and <code>L</code> privileges granted by All Permissions</li>
+</ul>
+
+<hr />
+
+<h2 id="car-dealer-secondary-supply-national-account-warranty">Car Dealer &amp; Secondary Supply &amp; National Account &amp; Warranty</h2>
+
+<strong>Mapped Roles:</strong>
+<ul>
+  <li>Order – Car Dealer Order</li>
+  <li>Order – Secondary Supply Submission</li>
+  <li>National Account – Fleet Create a New Delivery Receipt</li>
+  <li>Warranty – Create Warranty</li>
+</ul>
+
+<strong>Pricing Restrictions:</strong>
+<ul>
+  <li>❌ None; pricing retained where roles include it</li>
+</ul>
+
+<strong>Notes:</strong>
+<ul>
+  <li>Covers broad dealer functionality with full privilege set</li>
+  <li>No indicators suggest pricing needs to be restricted</li>
+</ul>
+
+<hr />
+
+<h2 id="order-submission-national-account-sales-report">Order Submission &amp; National Account &amp; Sales Report</h2>
+
+<strong>Mapped Roles:</strong>
+<ul>
+  <li>Order – WH Order Submission</li>
+  <li>National Account – Fleet Create a New Delivery Receipt</li>
+  <li>Report – Sales Report</li>
+</ul>
+
+<strong>Pricing Restrictions:</strong>
+<ul>
+  <li>❌ None; pricing retained where roles include it</li>
+</ul>
+
+<strong>Notes:</strong>
+<ul>
+  <li>Sales Report includes <code>A</code> and <code>S</code> only — does not grant <code>U</code> or <code>L</code></li>
+  <li>Order – WH Order Submission includes <code>U</code>, so pricing is available unless restricted</li>
+</ul>
+
+<hr />
+
+<h2 id="us-carroll-tire">(US) Carroll Tire - [P-U] [O-SCDNG] [S-SCDNG] [W]</h2>
+
+<strong>Mapped Roles:</strong>
+<ul>
+  <li>Order – Secondary Supply Submission</li>
+  <li>Order – Car Dealer Order</li>
+  <li>Order – DFC Order</li>
+  <li>Status – Secondary Supply</li>
+  <li>Status – Car Dealer</li>
+  <li>Status – DFC</li>
+  <li>Warranty – Create Warranty</li>
+</ul>
+
+<strong>Pricing Restrictions:</strong>
+<ul>
+  <li>✅ Unit Price only (<code>[P-U]</code>)</li>
+  <li>❌ List Price is not granted</li>
+</ul>
+
+<strong>Notes:</strong>
+<ul>
+  <li>Legacy group was designed to give partial pricing access (unit only)</li>
+  <li>If reuse is frequent, consider making a custom role like <code>Order – WH + Unit Price Only</code></li>
+</ul>

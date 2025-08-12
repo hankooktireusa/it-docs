@@ -1,0 +1,123 @@
+---
+layout: default
+title: 📊 Privilege Matrix
+permalink: /en/web/proposals/ePortal-roles/privilege-matrix/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>📊 Privilege Matrix</h1>
+
+<p>A full matrix of all permissions used across roles, showing which privilege levels each permission exposes.</p>
+
+<p><strong>ℹ️ Note:</strong> This matrix reflects the privilege levels defined by the new RBAC role model.<br>
+Each permission listed below maps to the <code>A</code>, <code>S</code>, <code>U</code>, and <code>L</code> privileges based on how it is used in the roles described in 
+<a href="/it-docs/en/web/proposals/ePortal-roles/role-definitions.html">role-definitions</a>.<br>
+This document is forward-looking and intended to support auditing, override logic, and role design decisions. It does not reflect historical group usage.</p>
+
+<details>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <ul>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#national-account">National Account</a></li>
+    <li><a href="#status">Status</a></li>
+    <li><a href="#report">Report</a></li>
+    <li><a href="#warranty">Warranty</a></li>
+    <li><a href="#all-permissions">All Permissions</a></li>
+  </ul>
+</details>
+
+<hr>
+
+<p><strong>A</strong> = Access<br>
+<strong>S</strong> = Stock<br>
+<strong>U</strong> = Unit Price<br>
+<strong>L</strong> = List Price</p>
+
+<hr>
+
+<h2 id="order"><code>Order</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>WH Order → Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>WH Order → Quick Order</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Secondary Supply → Delivery Check</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Secondary Supply → Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Car Dealer → Order</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>DFC Order</td><td>✅</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="national-account"><code>National Account</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Hankook National Fleets → Create A New Delivery Receipt</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Gov't &amp; Bus</td><td>✅</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="status"><code>Status</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Order Submission</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Secondary Supply</td><td>✅</td><td>✅</td><td>✅</td><td></td></tr>
+<tr><td>Gov't &amp; Bus</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Car Dealer</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>DFC</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Open Items</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Invoice</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="report"><code>Report</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Statement</td><td>✅</td><td></td><td></td><td></td></tr>
+<tr><td>Sales Report</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+<tr><td>Stock Report</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="warranty"><code>Warranty</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>Create Warranty</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+<tr><td>Warranty Status</td><td>✅</td><td>✅</td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="all-permissions"><code>All Permissions</code></h2>
+<table>
+<thead>
+<tr><th>Permission</th><th>A</th><th>S</th><th>U</th><th>L</th></tr>
+</thead>
+<tbody>
+<tr><td>All of the above</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+</tbody>
+</table>

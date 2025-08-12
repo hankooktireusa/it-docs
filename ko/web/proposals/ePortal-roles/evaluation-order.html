@@ -1,0 +1,123 @@
+---
+layout: default
+title: 🧮 RBAC 시스템의 평가 순서
+permalink: /ko/web/proposals/ePortal-roles/evaluation-order/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🧮 RBAC 시스템의 평가 순서</h1>
+
+<p>이 문서는 새로운 역할 기반 접근 제어(RBAC) 모델에서 사용자 권한이 어떻게 결정되는지를 설명합니다. 이 시스템은 광범위한 역할 부여에서 시작하여 세부적인 재정의까지 진행하며, 유연성과 최소 권한 원칙을 모두 준수합니다.</p>
+
+<details>
+  <summary><strong>📑 목차</strong></summary>
+  <ul>
+    <li><a href="#role-assignment">1. 🧱 역할 부여</a></li>
+    <li><a href="#role-scoping">2. 🧭 역할 범위 지정 (선택)</a></li>
+    <li><a href="#role-combination">3. ➕ 역할 결합 및 병합</a></li>
+    <li><a href="#restrictive-roles">4. 🚫 제한 역할 (수정자)</a></li>
+    <li><a href="#direct-overrides">5. 🛠️ 직접 권한 재정의 (예외)</a></li>
+    <li><a href="#summary-table">🔁 요약 표</a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="role-assignment">1. 🧱 역할 부여</h2>
+<p>각 사용자는 하나 이상의 역할이 부여되며, 이는 다음을 정의합니다:</p>
+<ul>
+  <li><strong>권한(Permission)</strong> 집합 (예: <em>주문 제출</em>, <em>보증 상태</em>)</li>
+  <li>각 권한에 대한 <strong>권한 수준(Privilege)</strong>:
+    <ul>
+      <li><code>A</code> – 접근</li>
+      <li><code>S</code> – 재고</li>
+      <li><code>U</code> – 단가</li>
+      <li><code>L</code> – 정가</li>
+    </ul>
+  </li>
+</ul>
+<p>📚 이러한 역할은 <a href="./role-definitions.html">role-definitions</a>에 정의되어 있으며, 기본 접근 모델로 사용됩니다.</p>
+
+<hr />
+
+<h2 id="role-scoping">2. 🧭 역할 범위 지정 (선택)</h2>
+<p>역할은 다음과 같이 범위를 좁힐 수 있습니다:</p>
+<ul>
+  <li><strong>법인</strong> (예: US, CA, MX)</li>
+  <li><strong>산업 세그먼트</strong> (예: 소매, 플릿, 보험)</li>
+  <li><strong>기능 → 작업 → 채널</strong> 조합</li>
+</ul>
+<p>▶ 범위가 지정된 경우 해당 역할은 <strong>그 맥락 내에서만</strong> 적용됩니다.</p>
+
+<hr />
+
+<h2 id="role-combination">3. ➕ 역할 결합 및 병합</h2>
+<p>사용자가 여러 역할을 가진 경우:</p>
+<ul>
+  <li>모든 역할의 권한이 <strong>병합</strong>됩니다.</li>
+  <li>동일한 권한에 대한 권한 수준은 <strong>합집합</strong>(논리적 OR)으로 통합됩니다.</li>
+</ul>
+<p>📝 예:<br>
+한 역할이 <em>주문 제출</em>에 <code>A, S</code>를 부여하고, 다른 역할이 <code>U</code>를 부여하면 결과는 <code>A, S, U</code>가 됩니다.</p>
+
+<hr />
+
+<h2 id="restrictive-roles">4. 🚫 제한 역할 (수정자)</h2>
+<p>일부 역할은 권한 수준을 <strong>추가하는 대신 제거</strong>합니다.</p>
+<ul>
+  <li>예: <code>No Pricing</code> 역할은 모든 관련 권한에서 <code>U</code>와 <code>L</code>을 제거합니다.</li>
+  <li>이는 역할 병합 <strong>후</strong>에 적용됩니다.</li>
+</ul>
+<p>🔒 <code>[SH-N]</code> 레거시 그룹 로직과 같은 제한을 적용하는 데 사용됩니다.</p>
+
+<hr />
+
+<h2 id="direct-overrides">5. 🛠️ 직접 권한 재정의 (예외)</h2>
+<p>드물게 다음과 같은 경우가 있습니다:</p>
+<ul>
+  <li>권한 수준이 <strong>사용자 단위</strong>에서 직접 추가 또는 제거됩니다.</li>
+  <li>이 재정의는 모든 역할과 제한이 평가된 <strong>이후</strong>에 적용됩니다.</li>
+</ul>
+<p>⚠️ 역할로 필요한 접근 패턴을 완전히 표현할 수 없는 경우에만 <strong>드물게</strong> 사용해야 합니다.</p>
+
+<hr />
+
+<h2 id="summary-table">🔁 요약 표</h2>
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>설명</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>기본 역할</strong></td>
+      <td>권한/권한 수준의 주요 출처</td>
+      <td><code>Order – WH Order Submission (A, S, U)</code></td>
+    </tr>
+    <tr>
+      <td><strong>범위 지정 역할</strong></td>
+      <td>법인/세그먼트/채널로 제한된 역할</td>
+      <td><code>Warranty – Create Warranty (CA only)</code></td>
+    </tr>
+    <tr>
+      <td><strong>역할 병합</strong></td>
+      <td>모든 역할을 결합하여 누적 접근 생성</td>
+      <td><code>Order + Status + Warranty</code></td>
+    </tr>
+    <tr>
+      <td><strong>제한 역할</strong></td>
+      <td>기본 역할에서 부여한 권한 수준 축소</td>
+      <td><code>No Pricing</code>이 <code>U</code>, <code>L</code> 제거</td>
+    </tr>
+    <tr>
+      <td><strong>직접 재정의</strong></td>
+      <td>사용자 단위 최종 예외 조정</td>
+      <td>특정 사용자에만 <em>재고 보고서</em>에 <code>U</code> 추가</td>
+    </tr>
+  </tbody>
+</table>

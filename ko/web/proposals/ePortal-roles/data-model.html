@@ -1,0 +1,229 @@
+---
+layout: default
+title: 📊 RBAC 데이터 모델
+permalink: /ko/web/proposals/ePortal-roles/data-model/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>📊 RBAC 데이터 모델</h1>
+
+<p>이 문서는 새로운 역할 기반 접근 제어(RBAC, Role-Based Access Control) 시스템의 관계형 구조를 설명하며, 법인, 산업 세그먼트, 권한, 그리고 권한 수준(Privilege-Based Access Levels) 지원을 포함합니다.</p>
+
+<details>
+  <summary><strong>📑 목차 (클릭하여 펼치기)</strong></summary>
+  <ul>
+    <li><a href="#users"><code>users</code></a></li>
+    <li><a href="#roles"><code>roles</code></a></li>
+    <li><a href="#user_roles"><code>user_roles</code></a></li>
+    <li><a href="#role_corporation"><code>role_corporation</code></a></li>
+    <li><a href="#role_industry_segment"><code>role_industry_segment</code></a></li>
+    <li><a href="#permissions"><code>permissions</code></a></li>
+    <li><a href="#privileges"><code>privileges</code></a></li>
+    <li><a href="#role_permissions"><code>role_permissions</code></a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2>핵심 테이블</h2>
+
+<hr />
+
+<h3 id="users"><code>users</code></h3>
+<p>역할이 할당된 시스템 사용자를 나타냅니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>id</code></td><td>INT</td><td>기본 키</td></tr>
+  <tr><td><code>email</code></td><td>VARCHAR</td><td>사용자 이메일 주소</td></tr>
+</table>
+
+<hr />
+
+<h3 id="roles"><code>roles</code></h3>
+<p>법인과 세그먼트에 따라 범위가 지정되는 재사용 가능한 역할 템플릿입니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>id</code></td><td>INT</td><td>기본 키</td></tr>
+  <tr><td><code>name</code></td><td>VARCHAR</td><td>역할 표시 이름</td></tr>
+  <tr><td><code>description</code></td><td>TEXT</td><td>선택적 설명</td></tr>
+</table>
+
+<hr />
+
+<h3 id="user_roles"><code>user_roles</code></h3>
+<p>사용자와 그들에게 할당된 역할을 연결합니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>user_id</code></td><td>INT</td><td><code>users.id</code>에 대한 FK</td></tr>
+  <tr><td><code>role_id</code></td><td>INT</td><td><code>roles.id</code>에 대한 FK</td></tr>
+</table>
+
+<hr />
+
+<h3 id="role_corporation"><code>role_corporation</code></h3>
+<p>역할을 하나 이상의 법인(예: US, CA, MX)에 한정합니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>role_id</code></td><td>INT</td><td><code>roles.id</code>에 대한 FK</td></tr>
+  <tr><td><code>corporation</code></td><td>VARCHAR</td><td>국가 코드(예: <code>US</code>)</td></tr>
+</table>
+
+<hr />
+
+<h3 id="role_industry_segment"><code>role_industry_segment</code></h3>
+<p>역할을 하나 이상의 산업 세그먼트(예: Fleet, Retail)에 한정합니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>role_id</code></td><td>INT</td><td><code>roles.id</code>에 대한 FK</td></tr>
+  <tr><td><code>industry_segment</code></td><td>VARCHAR</td><td>세그먼트 코드 또는 라벨</td></tr>
+</table>
+
+<hr />
+
+<h3 id="permissions"><code>permissions</code></h3>
+<p>기능(Feature) 내의 고유 작업을 나타냅니다. (예: “주문 제출”)</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>id</code></td><td>INT</td><td>기본 키</td></tr>
+  <tr><td><code>name</code></td><td>VARCHAR</td><td>권한 이름</td></tr>
+  <tr><td><code>feature</code></td><td>VARCHAR</td><td>예: Order, Warranty, Report</td></tr>
+  <tr><td><code>action</code></td><td>VARCHAR</td><td>예: Create, Status</td></tr>
+</table>
+
+<hr />
+
+<h3 id="privileges"><code>privileges</code></h3>
+<p>권한에 부여되는 접근 수준을 정의합니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>code</code></td><td>CHAR(1)</td><td><code>A</code>, <code>S</code>, <code>U</code>, <code>L</code> 중 하나</td></tr>
+  <tr><td><code>label</code></td><td>VARCHAR</td><td>Access, Stock, Unit Price, List Price</td></tr>
+</table>
+
+<hr />
+
+<h3 id="role_permissions"><code>role_permissions</code></h3>
+<p>특정 권한과 함께 역할을 권한(permission)에 연결합니다.</p>
+<table>
+  <tr><th>컬럼</th><th>유형</th><th>설명</th></tr>
+  <tr><td><code>role_id</code></td><td>INT</td><td><code>roles.id</code>에 대한 FK</td></tr>
+  <tr><td><code>permission_id</code></td><td>INT</td><td><code>permissions.id</code>에 대한 FK</td></tr>
+  <tr><td><code>privilege_code</code></td><td>CHAR(1)</td><td><code>privileges.code</code>에 대한 FK</td></tr>
+</table>
+
+<h2>🧭 엔터티 관계 다이어그램</h2>
+
+<h3>텍스트 버전</h3>
+<pre>
+           ┌───────────┐
+           │   users   │
+           └─────┬─────┘
+                 │
+                 ▼
+          ┌──────────────┐
+          │  user_roles  │
+          └────┬────┬────┘
+               │    │
+               ▼    ▼
+           ┌───────────┐
+           │   roles   │
+           └───┬──┬──┬─┘
+               │  │  └───────────────────────────────────────────┐
+               │  └─────────────────────┐                        │
+               ▼                        ▼                        ▼
+     ┌──────────────────┐ ┌──────────────────────────────┐ ┌────────────────────┐
+     │ role_corporation │ │ role_industry_segment        │ │  role_permissions  │
+     └──────────────────┘ └──────────────────────────────┘ └──────────┬─────────┘
+                                                                     │
+                                                                     ▼
+                                                              ┌─────────────┐
+                                                              │ permissions │
+                                                              └──────┬──────┘
+                                                                     │
+                                                                     ▼
+                                                               ┌────────────┐
+                                                               │ privileges │
+                                                               └────────────┘
+</pre>
+
+<h3>🔧 예시: 실제 적용 모습</h3>
+<p>사용자가 <strong>“Order – WH Order Submission”</strong> 역할을 부여받았고, <strong>미국 법인</strong>과 <strong>Fleet 세그먼트</strong>에 한정되며, 다음과 같은 권한을 가집니다:</p>
+<ul>
+  <li><strong>권한(Permission):</strong> 주문 제출(Order Submission)</li>
+  <li><strong>기능(Feature):</strong> Order</li>
+  <li><strong>작업(Action):</strong> Create</li>
+  <li><strong>권한 수준(Privileges):</strong> A, S, U</li>
+</ul>
+
+<hr />
+
+<h3>🗂️ 관련 데이터 행</h3>
+
+<h4><code>users</code></h4>
+<table>
+<tr><th>id</th><th>email</th></tr>
+<tr><td>2001</td><td>johndoe@example.com</td></tr>
+</table>
+
+<hr />
+
+<h4><code>roles</code></h4>
+<table>
+<tr><th>id</th><th>name</th></tr>
+<tr><td>1</td><td>Order – WH Order Submission</td></tr>
+</table>
+
+<hr />
+
+<h4><code>user_roles</code></h4>
+<table>
+<tr><th>user_id</th><th>role_id</th></tr>
+<tr><td>2001</td><td>1</td></tr>
+</table>
+
+<hr />
+
+<h4><code>role_corporation</code></h4>
+<table>
+<tr><th>role_id</th><th>corporation</th></tr>
+<tr><td>1</td><td>US</td></tr>
+</table>
+
+<hr />
+
+<h4><code>role_industry_segment</code></h4>
+<table>
+<tr><th>role_id</th><th>industry_segment</th></tr>
+<tr><td>1</td><td>Fleet</td></tr>
+</table>
+
+<hr />
+
+<h4><code>permissions</code></h4>
+<table>
+<tr><th>id</th><th>name</th><th>feature</th><th>action</th></tr>
+<tr><td>101</td><td>Order Submission</td><td>Order</td><td>Create</td></tr>
+</table>
+
+<hr />
+
+<h4><code>privileges</code></h4>
+<table>
+<tr><th>code</th><th>label</th></tr>
+<tr><td>A</td><td>Access</td></tr>
+<tr><td>S</td><td>Stock</td></tr>
+<tr><td>U</td><td>Unit Price</td></tr>
+<tr><td>L</td><td>List Price</td></tr>
+</table>
+
+<hr />
+
+<h4><code>role_permissions</code></h4>
+<table>
+<tr><th>role_id</th><th>permission_id</th><th>privilege_code</th></tr>
+<tr><td>1</td><td>101</td><td>A</td></tr>
+<tr><td>1</td><td>101</td><td>S</td></tr>
+<tr><td>1</td><td>101</td><td>U</td></tr>
+</table>

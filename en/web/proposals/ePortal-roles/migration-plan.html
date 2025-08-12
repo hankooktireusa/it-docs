@@ -1,0 +1,94 @@
+---
+layout: default
+title: 🔄 Role Onboarding Plan: New RBAC Implementation
+permalink: /en/web/proposals/ePortal-roles/migration-plan/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🔄 Role Onboarding Plan: New RBAC Implementation</h1>
+
+<p>This plan outlines how to roll out the new Role-Based Access Control (RBAC) system for a new platform. The new structure preserves the same access patterns users had in legacy systems, but delivers them through a cleaner, more standardized, and more maintainable model.</p>
+
+<details>
+  <summary><strong>📑 Table of Contents</strong></summary>
+  <ul>
+    <li><a href="#phase-1-access-pattern-analysis">📌 Phase 1: Access Pattern Analysis</a></li>
+    <li><a href="#phase-2-role-design-finalization">📌 Phase 2: Role Design Finalization</a></li>
+    <li><a href="#phase-3-initial-user-role-assignment">📌 Phase 3: Initial User Role Assignment</a></li>
+    <li><a href="#phase-4-testing-and-verification">📌 Phase 4: Testing &amp; Verification</a></li>
+    <li><a href="#phase-5-production-deployment">📌 Phase 5: Production Deployment</a></li>
+    <li><a href="#notes">🧩 Notes</a></li>
+  </ul>
+</details>
+
+<hr />
+
+<h2 id="phase-1-access-pattern-analysis">📌 Phase 1: Access Pattern Analysis</h2>
+<p><em>Goal:</em> Identify required access patterns and permission sets for all user types on the new site.</p>
+<h3>✅ Steps:</h3>
+<ol>
+  <li><strong>Define user personas and business functions</strong></li>
+  <li><strong>List all required permissions and associated privilege levels</strong></li>
+  <li><strong>Map common combinations to potential roles</strong></li>
+  <li><strong>Document special or restricted scenarios</strong> (e.g., no pricing)</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-2-role-design-finalization">📌 Phase 2: Role Design Finalization</h2>
+<p><em>Goal:</em> Build a clean set of roles in <a href="./role-definitions.html">role-definitions</a> that reflect all standard access needs.</p>
+<h3>✅ Steps:</h3>
+<ol>
+  <li><strong>Define base roles</strong> for each key function (e.g., Order Submitter, Fleet Viewer)</li>
+  <li><strong>Incorporate scoping logic</strong> (e.g., region, segment) where needed</li>
+  <li>Add modifier roles like <code>No Pricing</code> or <code>Report Only</code></li>
+  <li>Ensure role coverage meets all documented access needs</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-3-initial-user-role-assignment">📌 Phase 3: Initial User Role Assignment</h2>
+<p><em>Goal:</em> Assign users to roles based on their expected use cases for the new platform.</p>
+<h3>✅ Steps:</h3>
+<ol>
+  <li>Assign one or more roles per user based on persona</li>
+  <li>Use scoped roles where applicable (e.g., Fleet CA only)</li>
+  <li>Apply restrictive roles as needed (e.g., <code>No Pricing</code>)</li>
+  <li>Document any direct overrides used for edge cases</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-4-testing-and-verification">📌 Phase 4: Testing &amp; Verification</h2>
+<p><em>Goal:</em> Ensure all roles provide intended access and restrictions work correctly.</p>
+<h3>✅ Steps:</h3>
+<ol>
+  <li>Test all base roles against sample users</li>
+  <li>Verify scoping behavior in different contexts</li>
+  <li>Check behavior of restrictive roles (<code>No Pricing</code>, etc.)</li>
+  <li>Log and address any unexpected access gaps or overreach</li>
+</ol>
+
+<hr />
+
+<h2 id="phase-5-production-deployment">📌 Phase 5: Production Deployment</h2>
+<p><em>Goal:</em> Launch the RBAC system on the new platform with clean tracking and observability.</p>
+<h3>✅ Steps:</h3>
+<ol>
+  <li>Enable role-based access enforcement in the new site</li>
+  <li>Monitor activity and behavior across user types</li>
+  <li>Track and resolve feedback or edge case access issues</li>
+  <li>Plan periodic access reviews to validate assignments</li>
+</ol>
+
+<hr />
+
+<h2 id="notes">🧩 Notes</h2>
+<ul>
+  <li>This RBAC model supports the same level of access users had in legacy systems, but with a <strong>more structured, maintainable, and transparent approach</strong>.</li>
+  <li>The <code>All Permissions</code> role can be used for administrative or all-access needs.</li>
+  <li>Restrictive roles (e.g., <code>No Pricing</code>) provide global access controls.</li>
+  <li>Direct privilege overrides are supported but should be used sparingly and logged.</li>
+</ul>
