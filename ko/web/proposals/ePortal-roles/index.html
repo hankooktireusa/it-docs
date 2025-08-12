@@ -9,51 +9,50 @@ permalink: /ko/web/proposals/ePortal-roles/
 
 <h1>🧠 역할 및 권한 문서</h1>
 
-<p>이 프로젝트는 복잡한 레거시 그룹을 깔끔하고 유지 관리 가능한 역할/권한 모델로 대체하는 확장 가능한 RBAC 구조를 정의합니다. 레거시 시스템의 접근 수준을 유지하면서, 예외 처리·가격 제한·직접 재정의도 지원합니다.</p>
+<p>이 프로젝트는 복잡한 기존 그룹 구성을 깨끗하고 유지 관리 가능한 역할과 권한 구조로 대체하는 확장 가능한 RBAC(역할 기반 액세스 제어) 구조를 정의합니다. 가격 제한, 직접 재정의, 예외 상황을 지원하며, 기존 시스템에서 제공하던 동일한 수준의 액세스를 보장합니다.</p>
 
 <hr />
 
 <h2>📑 목차</h2>
 
 <ul>
-  <li>🧠 <a href="{% link ko/web/proposals/ePortal-roles/structure-overview.html %}">역할/권한 개요</a><br>
-    <em>역할 카테고리, 기능, 작업, 비즈니스 채널, 접근 수준의 시각적 분해.</em>
+  <li>🧠 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/structure-overview.html %}">역할 및 권한 개요</a><br>
+    <em>역할 범주, 기능, 작업, 비즈니스 채널, 접근 수준의 시각적 구조도.</em>
   </li>
 
-  <li>📊 <a href="{% link ko/web/proposals/ePortal-roles/data-model.html %}">RBAC 데이터 모델</a><br>
-    <em>새 역할/권한 구조의 핵심 테이블과 관계 설명.</em>
+  <li>📊 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/data-model.html %}">RBAC 데이터 모델</a><br>
+    <em>새로운 역할 및 권한 구조의 핵심 테이블과 관계를 설명합니다.</em>
   </li>
 
-  <li>🧱 <a href="{% link ko/web/proposals/ePortal-roles/table-definitions.html %}">테이블 정의</a><br>
-    <em>각 테이블의 컬럼, 관계, 비고를 상세 기술.</em>
+  <li>🧱 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/table-definitions.html %}">테이블 정의</a><br>
+    <em>각 테이블의 컬럼, 관계, 참고 사항에 대한 상세 스키마.</em>
   </li>
 
-  <li>🧩 <a href="{% link ko/web/proposals/ePortal-roles/role-definitions.html %}">역할 정의</a><br>
-    <em>모든 기본 역할과 해당 권한 수준의 분해.</em>
+  <li>🧩 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/role-definitions.html %}">역할 정의</a><br>
+    <em>모든 기본 역할과 해당 역할에 할당된 권한의 세부 목록.</em>
   </li>
 
-  <li>🔄 <a href="{% link ko/web/proposals/ePortal-roles/migration-plan.html %}">마이그레이션 계획</a><br>
-    <em>레거시 그룹을 RBAC 역할로 전환하고 배포하는 단계별 절차.</em>
+  <li>🔄 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/migration-plan.html %}">마이그레이션 계획</a><br>
+    <em>기존 그룹을 RBAC 역할로 변환하고 새 시스템에 배포하는 단계별 절차.</em>
   </li>
 
-  <li>🧮 <a href="{% link ko/web/proposals/ePortal-roles/privilege-matrix.html %}">권한 매트릭스</a><br>
-    <em>레거시 권한을 새로운 권한 수준으로 매핑.</em>
+  <li>🧮 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/privilege-matrix.html %}">권한 매트릭스</a><br>
+    <em>모든 정의된 역할에 대해 기존 권한을 새로운 권한 수준으로 매핑합니다.</em>
   </li>
 
-  <li>🧭 <a href="{% link ko/web/proposals/ePortal-roles/evaluation-order.html %}">평가 순서</a><br>
-    <em>중첩되는 권한을 우선순위로 어떻게 해소하는지 설명.</em>
+  <li>🧭 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/evaluation-order.html %}">평가 순서</a><br>
+    <em>중복된 권한이 우선순위에 따라 어떻게 처리되는지 설명합니다.</em>
   </li>
 
-  <li>🚫 <a href="{% link ko/web/proposals/ePortal-roles/no-pricing-rules.html %}">가격 표시 금지 규칙</a><br>
-    <em>특정 예외에서 가격 권한을 제거하는 제한 규칙 정의.</em>
+  <li>🚫 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/no-pricing-rules.html %}">가격 표시 제한 규칙</a><br>
+    <em>특정 예외 상황에서 가격 관련 권한을 제거하는 제한 규칙 정의.</em>
   </li>
 
-  <li>🧾 <a href="{% link ko/web/proposals/ePortal-roles/legacy-mapping.html %}">레거시 매핑</a><br>
-    <em>레거시 그룹을 현대적 역할로 해석하는 방법 문서화.</em>
+  <li>🧾 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/legacy-mapping.html %}">레거시 매핑</a><br>
+    <em>기존 그룹이 현대적인 역할로 해석되는 방법을 문서화.</em>
   </li>
 
-  <li>🧷 <a href="{% link ko/web/proposals/ePortal-roles/direct-privileges.html %}">직접 권한 부여</a><br>
-    <em>역할 기반 상속 외 사용자별 재정의 가이드.</em>
+  <li>🧷 <a href="{{ site.baseurl }}{% link ko/web/proposals/ePortal-roles/direct-privileges.html %}">직접 권한 부여</a><br>
+    <em>역할 기반 상속 외에 사용자별 재정의를 부여하는 가이드.</em>
   </li>
 </ul>
-
