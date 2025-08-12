@@ -6,7 +6,8 @@ layout: plain
 # Test Page
 
 <details>
-  <summary><strong>Click to expand</strong></summary>
+  <summary><strong>Click to expand</strong></summary><br>
+
 This text is inside the collapsible.
 
 - List item 1
