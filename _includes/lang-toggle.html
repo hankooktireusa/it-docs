@@ -44,7 +44,7 @@ Examples:
 
 <div class="lang-toggle" style="margin: .5rem 0 1rem;">
   <a href="{{ me_url }}"
-     class="{% if page.lang == 'en' or is_en or (not is_ko and page.lang != 'ko') %}active{% endif %}">English</a>
+     class="{% if page.lang == 'en' or is_en or (is_ko != true and page.lang != 'ko') %}active{% endif %}">English</a>
   <span> | </span>
   <a href="{{ peer_url }}"
      class="{% if page.lang == 'ko' or is_ko %}active{% endif %}">한국어</a>
