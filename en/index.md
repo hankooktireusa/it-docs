@@ -27,8 +27,10 @@ Welcome to the central documentation hub for the IT department.
   </li>
 </ul>
 
+<hr />
+
 <details>
-<summary>Click to expand (TEST123)</summary>
+<summary>Click to expand</summary>
 <div markdown="1">
 
 - One
