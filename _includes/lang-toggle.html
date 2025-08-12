@@ -1,35 +1,25 @@
 <!-- _includes/lang-toggle.html -->
 {%- comment -%}
 Compatible with GitHub Pages (Liquid on Jekyll 3.x).
-Avoids unsupported operators like "startswith" by using split/replace filters.
+Avoids unsupported operators by using split/replace filters.
 {%- endcomment -%}
 
 {%- assign base = site.baseurl | default: "" -%}
 {%- assign path = page.path | default: page.url | default: "/" -%}
 
-{%- comment -%} Normalize: strip baseurl from the beginning of path if present {%- endcomment -%}
 {%- if base != "" and path contains base -%}
   {%- assign path = path | remove_first: base -%}
 {%- endif -%}
 
-{%- comment -%} Ensure path starts with a single leading slash {%- endcomment -%}
 {%- if path == "" -%}{%- assign path = "/" -%}{%- endif -%}
 {%- if path[0] != "/" -%}{%- assign path = "/" | append: path -%}{%- endif -%}
 
-{%- comment -%}
-Determine language by first segment of the path.
-Examples:
-  /en/web/... => lang = en
-  /ko/web/... => lang = ko
-  /whatever   => no lang prefix (treated as neutral; English active by default)
-{%- endcomment -%}
 {%- assign trimmed = path | replace_first: "/", "" -%}
 {%- assign parts = trimmed | split:"/" -%}
 {%- assign first_segment = parts[0] | downcase -%}
 {%- assign is_en = first_segment == "en" -%}
 {%- assign is_ko = first_segment == "ko" -%}
 
-{%- comment -%} Build peer path by swapping the first segment {%- endcomment -%}
 {%- if is_en -%}
   {%- assign peer = path | replace_first: "/en/", "/ko/" -%}
 {%- elsif is_ko -%}
@@ -38,7 +28,6 @@ Examples:
   {%- assign peer = "/ko" | append: path -%}
 {%- endif -%}
 
-{%- comment -%} Re-apply baseurl and collapse any accidental double slashes (not touching protocols) {%- endcomment -%}
 {%- assign me_url = base | append: path | replace: "//", "/" -%}
 {%- assign peer_url = base | append: peer | replace: "//", "/" -%}
 
