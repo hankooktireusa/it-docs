@@ -2,9 +2,27 @@ theme: jekyll-theme-midnight
 
 # Add custom stylesheet
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  parse_block_html: true   # Allows Markdown inside <details> + <div markdown="1">
+
 defaults:
+  # Global defaults
   - scope:
       path: ""
     values:
       layout: default
       stylesheet: /assets/css/custom.css
+
+  # English pages
+  - scope:
+      path: "en"
+    values:
+      lang: en
+
+  # Korean pages
+  - scope:
+      path: "ko"
+    values:
+      lang: ko

@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+
+{% include lang-toggle.html %}
+
+# 🧠 IT Department Knowledge Base
+
+Welcome to the central documentation hub for the IT department.
+
+## Quick Access
+
+- [Web Team](./web/)
+  - [Deployment Automation](./web/deployment-automation/)
+  - [Proposals](./web/proposals/)
+    - [ePortal Roles](./web/proposals/ePortal-roles/)
+    - [Failover Deployments](./web/proposals/failover-deployments/)

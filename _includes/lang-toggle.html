@@ -1,0 +1,49 @@
+<!-- _includes/lang-toggle.html -->
+{% assign path = page.url %}
+{% comment %}
+  Normalize: ensure path starts with baseurl (GitHub Pages) removed,
+  and then swap the first segment between 'en' and 'ko'.
+{% endcomment %}
+
+{% assign base = site.baseurl | default: "" %}
+{% if base != "" and path contains base %}
+  {% assign path = path | remove_first: base %}
+{% endif %}
+
+{% comment %}
+  Derive the peer path:
+  - If current page is /en/... → peer is /ko/...
+  - If current page is /ko/... → peer is /en/...
+  - If neither, default English peer prepends /en
+{% endcomment %}
+{% if path startswith "/en/" %}
+  {% assign peer = path | replace_first: "/en/", "/ko/" %}
+  {% assign me_label = "English" %}
+  {% assign peer_label = "한국어" %}
+{% elsif path startswith "/ko/" %}
+  {% assign peer = path | replace_first: "/ko/", "/en/" %}
+  {% assign me_label = "한국어" %}
+  {% assign peer_label = "English" %}
+{% else %}
+  {% comment %} Root (no lang prefix) → treat as English; peer is /ko/ + path {% endcomment %}
+  {% assign peer = "/ko" | append: path %}
+  {% assign me_label = "English" %}
+  {% assign peer_label = "한국어" %}
+{% endif %}
+
+{% comment %}
+  Re-apply baseurl, ensure trailing slash behavior is preserved.
+{% endcomment %}
+{% assign me_url = base | append: path %}
+{% assign peer_url = base | append: peer %}
+
+<div class="lang-toggle" style="margin: .5rem 0 1rem;">
+  <a href="{{ me_url }}" {% if page.lang == "en" or path startswith "/en/" %}class="active"{% endif %}>English</a>
+  <span> | </span>
+  <a href="{{ peer_url }}" {% if page.lang == "ko" or path startswith "/ko/" %}class="active"{% endif %}>한국어</a>
+</div>
+
+<style>
+  .lang-toggle a { text-decoration: none; }
+  .lang-toggle a.active { font-weight: 700; text-decoration: underline; }
+</style>
