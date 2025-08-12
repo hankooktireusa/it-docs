@@ -1,39 +1,26 @@
-theme: jekyll-theme-midnight
-
-# Required for GitHub Pages project sites (like hankooktireusa/it-docs)
-url: https://hankooktireusa.github.io
-baseurl: /it-docs
-
-# Markdown settings
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
-  parse_block_html: true   # Allows Markdown inside <details> + <div markdown="1">
-
-# Pretty URLs (/path/ instead of /path.html)
-permalink: pretty
-
 # Plugins (GitHub Pages supports these)
 plugins:
   - jekyll-redirect-from
 
+# Use Kramdown (with GitHub Flavored Markdown parser)
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: true    # <-- allows Markdown inside <details>…</details>
+  hard_wrap: false
+  syntax_highlighter: rouge
+
 # Defaults
 defaults:
-  # Global defaults
   - scope:
       path: ""
     values:
       layout: default
       stylesheet: /assets/css/custom.css
-
-  # English pages
   - scope:
       path: "en"
     values:
       lang: en
-
-  # Korean pages
   - scope:
       path: "ko"
     values:
