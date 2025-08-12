@@ -25,103 +25,129 @@ Corporation: [COUNTRY]
 ## Categories
 
 <details>
-  <summary><strong>🏢 Corporations</strong></summary>
+<summary><strong>🏢 Corporations</strong></summary>
 
-  - US
-  - CA
-  - MX
-  - PA
-  - CO
-  - CL
+- US
+- CA
+- MX
+- PA
+- CO
+- CL
+
 </details>
 
 <details>
-  <summary><strong>🏭 Industry Segments</strong></summary>
-  <div style="margin-left: 1.5em;">
+<summary><strong>🏭 Industry Segments</strong></summary>
 
-  <details>
-    <summary>Wholesale</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  <details>
-    <summary>Retail</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  <details>
-    <summary>Fleet</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  <details>
-    <summary>Insurance</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  <details>
-    <summary>Commercial</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  <details>
-    <summary>Wholesale + Retail</summary>
-    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
-  </details>
-  </div>
+<details>
+<summary>Wholesale</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+<details>
+<summary>Retail</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+<details>
+<summary>Fleet</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+<details>
+<summary>Insurance</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+<details>
+<summary>Commercial</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+<details>
+<summary>Wholesale + Retail</summary>
+
+- Features: Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+
 </details>
 
 <details>
-  <summary><strong>📁 Features</strong></summary>
-  <div style="margin-left: 1.5em;">
+<summary><strong>📁 Features</strong></summary>
 
-  <details>
-    <summary>Order</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  <details>
-    <summary>Claims</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  <details>
-    <summary>Returns</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  <details>
-    <summary>Warranty Return</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  <details>
-    <summary>Finance</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  <details>
-    <summary>Report</summary>
-    <ul><li>Action: Create, Status</li></ul>
-  </details>
-  </div>
+<details>
+<summary>Order</summary>
+
+- Action: Create, Status
+
+</details>
+<details>
+<summary>Claims</summary>
+
+- Action: Create, Status
+
+</details>
+<details>
+<summary>Returns</summary>
+
+- Action: Create, Status
+
+</details>
+<details>
+<summary>Warranty Return</summary>
+
+- Action: Create, Status
+
+</details>
+<details>
+<summary>Finance</summary>
+
+- Action: Create, Status
+
+</details>
+<details>
+<summary>Report</summary>
+
+- Action: Create, Status
+
+</details>
+
 </details>
 
 <details>
-  <summary><strong>🎯 Actions</strong></summary>
+<summary><strong>🎯 Actions</strong></summary>
 
-  - Create
-  - Status
+- Create
+- Status
+
 </details>
 
 <details>
-  <summary><strong>🧭 Business Channels</strong></summary>
+<summary><strong>🧭 Business Channels</strong></summary>
 
-  - WH (Warehouse)
-  - SSP (Secondary Supply)
-  - CDTP (Car Dealer)
-  - DFC
-  - NAP (National Account Program)
-  - Gov't & Bus
+- WH (Warehouse)
+- SSP (Secondary Supply)
+- CDTP (Car Dealer)
+- DFC
+- NAP (National Account Program)
+- Gov't & Bus
+
 </details>
 
 <details>
-  <summary><strong>🔐 Access Levels</strong></summary>
+<summary><strong>🔐 Access Levels</strong></summary>
 
-  - Access (A)
-  - Stock (S)
-  - Unit Price (U)
-  - List Price (L)
+- Access (A)
+- Stock (S)
+- Unit Price (U)
+- List Price (L)
+
 </details>
 
 ## 🧪 Examples
