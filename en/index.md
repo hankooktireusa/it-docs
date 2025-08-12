@@ -13,6 +13,7 @@ Welcome to the central documentation hub for the IT department.
 
 ## Quick Access
 
+<div id="quick-access">
 <ul>
   <li><a href="./web/">Web Team</a>
     <ul>
@@ -26,8 +27,7 @@ Welcome to the central documentation hub for the IT department.
     </ul>
   </li>
 </ul>
-
-<hr />
+</div>
 
 <details>
 <summary>Click to expand</summary>
