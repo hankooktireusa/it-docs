@@ -24,8 +24,8 @@ Corporation: [COUNTRY]
 
 ## Categories
 
-<details>
-  <summary>🏢 Corporations</summary>
+<details markdown="1">
+<summary>🏢 Corporations</summary>
 
 - US
 - CA
@@ -36,46 +36,46 @@ Corporation: [COUNTRY]
 
 </details>
 
-<details>
-  <summary>🏭 Industry Segments</summary>
+<details markdown="1">
+<summary>🏭 Industry Segments</summary>
 
-<details>
-  <summary>Wholesale</summary>
-
-- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
-
-</details>
-
-<details>
-  <summary>Retail</summary>
+<details markdown="1">
+<summary>Wholesale</summary>
 
 - **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
-<details>
-  <summary>Fleet</summary>
+<details markdown="1">
+<summary>Retail</summary>
 
 - **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
-<details>
-  <summary>Insurance</summary>
+<details markdown="1">
+<summary>Fleet</summary>
 
 - **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
-<details>
-  <summary>Commercial</summary>
+<details markdown="1">
+<summary>Insurance</summary>
 
 - **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
 </details>
 
-<details>
-  <summary>Wholesale + Retail</summary>
+<details markdown="1">
+<summary>Commercial</summary>
+
+- **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
+
+</details>
+
+<details markdown="1">
+<summary>Wholesale + Retail</summary>
 
 - **Features:** Order, Claims, Returns, Warranty Return, Finance, Report
 
@@ -83,46 +83,46 @@ Corporation: [COUNTRY]
 
 </details>
 
-<details>
-  <summary>📁 Features</summary>
+<details markdown="1">
+<summary>📁 Features</summary>
 
-<details>
-  <summary>Order</summary>
-
-- **Action:** Create, Status
-
-</details>
-
-<details>
-  <summary>Claims</summary>
+<details markdown="1">
+<summary>Order</summary>
 
 - **Action:** Create, Status
 
 </details>
 
-<details>
-  <summary>Returns</summary>
+<details markdown="1">
+<summary>Claims</summary>
 
 - **Action:** Create, Status
 
 </details>
 
-<details>
-  <summary>Warranty Return</summary>
+<details markdown="1">
+<summary>Returns</summary>
 
 - **Action:** Create, Status
 
 </details>
 
-<details>
-  <summary>Finance</summary>
+<details markdown="1">
+<summary>Warranty Return</summary>
 
 - **Action:** Create, Status
 
 </details>
 
-<details>
-  <summary>Report</summary>
+<details markdown="1">
+<summary>Finance</summary>
+
+- **Action:** Create, Status
+
+</details>
+
+<details markdown="1">
+<summary>Report</summary>
 
 - **Action:** Create, Status
 
@@ -130,16 +130,16 @@ Corporation: [COUNTRY]
 
 </details>
 
-<details>
-  <summary>🎯 Actions</summary>
+<details markdown="1">
+<summary>🎯 Actions</summary>
 
 - Create
 - Status
 
 </details>
 
-<details>
-  <summary>🧭 Business Channels</summary>
+<details markdown="1">
+<summary>🧭 Business Channels</summary>
 
 - WH (Warehouse)
 - SSP (Secondary Supply)
@@ -150,8 +150,8 @@ Corporation: [COUNTRY]
 
 </details>
 
-<details>
-  <summary>🔐 Access Levels</summary>
+<details markdown="1">
+<summary>🔐 Access Levels</summary>
 
 - Access (A)
 - Stock (S)
