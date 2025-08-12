@@ -7,7 +7,6 @@ layout: plain
 
 <details>
   <summary><strong>Click to expand</strong></summary>
-
 This text is inside the collapsible.
 
 - List item 1
