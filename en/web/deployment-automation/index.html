@@ -7,46 +7,44 @@ permalink: /en/web/deployment-automation/
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
-# ⚙️ Deployment Automation for CustomerPortal (CP) and WebOrder (WO)
+<h1>⚙️ Deployment Automation for CustomerPortal (CP) and WebOrder (WO)</h1>
 
-This project automates the deployment of **CustomerPortal (CP)** and **WebOrder (WO)** applications to DEV and PROD environments using PowerShell, WinSCP, and PuTTY.
+<p>This project automates the deployment of <strong>CustomerPortal (CP)</strong> and <strong>WebOrder (WO)</strong> applications to DEV and PROD environments using PowerShell, WinSCP, and PuTTY.</p>
 
----
+<hr />
 
-## 📥 Download Scripts
+<h2>📥 Download Scripts</h2>
 
-To run this deployment automation locally:
+<p>To run this deployment automation locally:</p>
+<ol>
+  <li><a href="{{ '/en/web/deployment-automation/deployment-automation-scripts.zip' | relative_url }}">⬇️ Download deployment-automation-scripts.zip</a></li>
+  <li>Extract it to:
+    <pre><code>C:\scripts\deployment-automation</code></pre>
+  </li>
+  <li>Open PowerShell and run:
+    <pre><code class="language-powershell">.\main.ps1</code></pre>
+  </li>
+</ol>
 
-1. [⬇️ Download deployment-automation-scripts.zip]({{ '/en/web/deployment-automation/deployment-automation-scripts.zip' | relative_url }})  
-2. Extract it to:
-   ```
-   C:\scripts\deployment-automation
-   ```
-3. Open PowerShell and run:
-   ```powershell
-   .\main.ps1
-   ```
+<p>For full setup and configuration instructions, refer to the <strong>README.md inside the ZIP bundle</strong>.</p>
 
-For full setup and configuration instructions, refer to the **README.md inside the ZIP bundle**.
+<hr />
 
----
+<h2>✨ Features</h2>
+<ul>
+  <li>🔄 Environment-aware config switching (datasource, SAP, WSDL)</li>
+  <li>⚙️ Optional Maven build step</li>
+  <li>📦 Safe WAR/ROOT backup and transfer via WinSCP</li>
+  <li>🔐 Dynamic SSH host key trust for PuTTY and WinSCP</li>
+  <li>🖥️ PuTTY automation for Tomcat restart and live log monitoring</li>
+  <li>🔁 Seamless PROD1 → PROD2 continuation using the same WAR file</li>
+  <li>⏪ Post-deployment prompts, rollback, and cleanup support</li>
+</ul>
 
-## ✨ Features
+<hr />
 
-- 🔄 Environment-aware config switching (datasource, SAP, WSDL)
-- ⚙️ Optional Maven build step
-- 📦 Safe WAR/ROOT backup and transfer via WinSCP
-- 🔐 Dynamic SSH host key trust for PuTTY and WinSCP
-- 🖥️ PuTTY automation for Tomcat restart and live log monitoring
-- 🔁 Seamless PROD1 → PROD2 continuation using the same WAR file
-- ⏪ Post-deployment prompts, rollback, and cleanup support
-
----
-
-## 📁 Script Structure (Included in ZIP)
-
-```yaml
-deployment-automation/
+<h2>📁 Script Structure (Included in ZIP)</h2>
+<pre><code class="language-yaml">deployment-automation/
 ├── config.ps1                           # Shared paths, session names, and SSH host keys
 ├── main.ps1                             # Main entry point to automate full deployment
 ├── README.md                            # Full usage guide and setup instructions
@@ -67,14 +65,12 @@ deployment-automation/
     ├── switch-datasource-server.ps1
     ├── switch-sap-properties.ps1
     └── switch-wsdl-info.ps1
-```
+</code></pre>
 
----
+<hr />
 
-## 🧭 Deployment Flow Overview
-
-```text
-          ┌───────────────┐
+<h2>🧭 Deployment Flow Overview</h2>
+<pre><code>          ┌───────────────┐
           │  Select App   │
           └───────┬───────┘
                   ▼
@@ -129,12 +125,10 @@ deployment-automation/
      │ Revert Configs to LOCAL   │
      │ Close open PuTTY sessions │
      └───────────────────────────┘
-```
+</code></pre>
 
----
+<hr />
 
-## 👥 For New Developers
-
-This tool walks you through the full deployment flow for both CP and WO projects. It includes prompts, verifications, and safe rollback support. You’ll be guided step-by-step — just follow the on-screen instructions.
-
-Ask a teammate to shadow you on your first run!
+<h2>👥 For New Developers</h2>
+<p>This tool walks you through the full deployment flow for both CP and WO projects. It includes prompts, verifications, and safe rollback support. You’ll be guided step-by-step — just follow the on-screen instructions.</p>
+<p>Ask a teammate to shadow you on your first run!</p>

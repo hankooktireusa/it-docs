@@ -1,0 +1,58 @@
+---
+layout: default
+title: 🧠 Roles & Permissions Documentation
+permalink: /en/web/proposals/ePortal-roles/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🧠 Roles &amp; Permissions Documentation</h1>
+
+<p>This project defines a scalable Role-Based Access Control (RBAC) structure that replaces complex legacy groupings with clean, maintainable roles and privileges. It supports edge cases, pricing restrictions, and direct overrides while preserving equivalent access levels from the legacy system.</p>
+
+<hr />
+
+<h2>📑 Table of Contents</h2>
+
+<ul>
+  <li>🧠 <a href="./structure-overview.md">Overview of Roles &amp; Permissions</a><br>
+    <em>Visual breakdown of role categories, features, actions, business channels, and access levels.</em>
+  </li>
+
+  <li>📊 <a href="./data-model.md">RBAC Data Model</a><br>
+    <em>Describes the core tables and relationships in the new roles and permissions structure.</em>
+  </li>
+
+  <li>🧱 <a href="./table-definitions.md">Table Definitions</a><br>
+    <em>Detailed schema for each table including columns, relationships, and notes.</em>
+  </li>
+
+  <li>🧩 <a href="./role-definitions.md">Role Definitions</a><br>
+    <em>Breakdown of all base roles and their assigned privileges.</em>
+  </li>
+
+  <li>🔄 <a href="./migration-plan.md">Migration Plan</a><br>
+    <em>Step-by-step process for converting legacy groups into RBAC roles and deploying the new system.</em>
+  </li>
+
+  <li>🧮 <a href="./privilege-matrix.md">Privilege Matrix</a><br>
+    <em>Maps legacy permissions to new privileges across all defined roles.</em>
+  </li>
+
+  <li>🧭 <a href="./evaluation-order.md">Evaluation Order</a><br>
+    <em>Clarifies how overlapping permissions are resolved in priority order.</em>
+  </li>
+
+  <li>🚫 <a href="./no-pricing-rules.md">No Pricing Rules</a><br>
+    <em>Defines restrictive rules that strip pricing privileges in specific edge cases.</em>
+  </li>
+
+  <li>🧾 <a href="./legacy-mapping.md">Legacy Mapping</a><br>
+    <em>Documentation of how legacy groups are interpreted into modern roles.</em>
+  </li>
+
+  <li>🧷 <a href="./direct-privileges.md">Direct Privileges</a><br>
+    <em>Guidance on granting user-specific overrides outside of role-based inheritance.</em>
+  </li>
+</ul>

@@ -1,0 +1,49 @@
+---
+layout: default
+title: 🧠 역할 & 권한 문서
+permalink: /ko/web/proposals/ePortal-roles/
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{% include lang-toggle.html %}
+
+<h1>🧠 역할 &amp; 권한 문서</h1>
+
+<p>이 프로젝트는 복잡한 레거시 그룹을 정리된 역할과 권한 체계로 대체하는 확장 가능한 RBAC(Role-Based Access Control) 구조를 정의합니다. 가격 제한과 같은 예외 상황 및 사용자별 오버라이드를 지원하면서도 레거시 시스템과 동등한 접근 수준을 보장합니다.</p>
+
+<hr />
+
+<h2>📑 목차</h2>
+
+<ul>
+  <li>🧠 <a href="./structure-overview.md">역할 &amp; 권한 개요</a><br>
+    <em>역할 범주, 기능, 액션, 비즈니스 채널, 접근 레벨을 시각적으로 설명합니다.</em>
+  </li>
+  <li>📊 <a href="./data-model.md">RBAC 데이터 모델</a><br>
+    <em>새로운 역할/권한 구조의 핵심 테이블과 관계를 설명합니다.</em>
+  </li>
+  <li>🧱 <a href="./table-definitions.md">테이블 정의</a><br>
+    <em>각 테이블의 컬럼, 관계, 비고를 상세히 기술합니다.</em>
+  </li>
+  <li>🧩 <a href="./role-definitions.md">역할 정의</a><br>
+    <em>모든 기본 역할과 부여된 권한을 요약합니다.</em>
+  </li>
+  <li>🔄 <a href="./migration-plan.md">마이그레이션 계획</a><br>
+    <em>레거시 그룹을 RBAC 역할로 전환하고 배포하는 단계별 절차입니다.</em>
+  </li>
+  <li>🧮 <a href="./privilege-matrix.md">권한 매트릭스</a><br>
+    <em>레거시 권한을 신규 권한으로 매핑한 표입니다.</em>
+  </li>
+  <li>🧭 <a href="./evaluation-order.md">평가 순서</a><br>
+    <em>권한이 겹치는 경우 우선순위 해석 방식을 명확히 합니다.</em>
+  </li>
+  <li>🚫 <a href="./no-pricing-rules.md">가격 표시 금지 규칙</a><br>
+    <em>특정 예외 상황에서 가격 관련 권한을 제거하는 제한 규칙을 정의합니다.</em>
+  </li>
+  <li>🧾 <a href="./legacy-mapping.md">레거시 매핑</a><br>
+    <em>레거시 그룹을 현대적 역할로 해석하는 방법을 문서화합니다.</em>
+  </li>
+  <li>🧷 <a href="./direct-privileges.md">직접 권한</a><br>
+    <em>역할 상속 외에 사용자별로 권한을 부여하는 방법을 안내합니다.</em>
+  </li>
+</ul>
