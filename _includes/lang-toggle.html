@@ -1,7 +1,7 @@
 <!-- _includes/lang-toggle.html -->
 {% comment %}
-Works on GitHub Pages. Uses page.url and relative_url so baseurl is always respected.
-If the current page isn't under /en/ or /ko/, links go to the language roots.
+Mirrors the path after the language segment so /ko/... <-> /en/... always round-trips.
+Uses page.url + relative_url to respect baseurl on GitHub Pages.
 {% endcomment %}
 
 {% assign url = page.url | default: "/" %}
@@ -10,22 +10,23 @@ If the current page isn't under /en/ or /ko/, links go to the language roots.
 {% assign is_en = first == "en" %}
 {% assign is_ko = first == "ko" %}
 
-{% if is_en %}
-  {% assign en_path = url %}
-  {% assign ko_path = url | replace_first: "/en/", "/ko/" %}
-{% elsif is_ko %}
-  {% assign en_path = url | replace_first: "/ko/", "/en/" %}
-  {% assign ko_path = url %}
-{% else %}
-  {% assign en_path = "/en/" %}
-  {% assign ko_path = "/ko/" %}
-{% endif %}
+{%- if is_en or is_ko -%}
+  {%- assign tail = segs | slice: 2, segs.size | join: "/" -%}
+  {%- if tail != "" -%}
+    {%- assign tail = "/" | append: tail -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign tail = "" -%}
+{%- endif -%}
+
+{% assign en_path = "/en" | append: tail %}
+{% assign ko_path = "/ko" | append: tail %}
 
 <nav class="lang-toggle" style="margin: .5rem 0 1rem;">
-  <a href="{{ en_path | relative_url }}"
+  <a href="{{ en_path | append: '/' | replace: '//', '/' | relative_url }}"
      class="{% if is_en or (is_en != true and is_ko != true) %}active{% endif %}">English</a>
   <span> | </span>
-  <a href="{{ ko_path | relative_url }}"
+  <a href="{{ ko_path | append: '/' | replace: '//', '/' | relative_url }}"
      class="{% if is_ko %}active{% endif %}">한국어</a>
 </nav>
 
