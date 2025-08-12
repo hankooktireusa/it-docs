@@ -1,43 +1,33 @@
 <!-- _includes/lang-toggle.html -->
-{%- comment -%}
-Compatible with GitHub Pages (Liquid on Jekyll 3.x).
-Avoids unsupported operators by using split/replace filters.
-{%- endcomment -%}
+{% comment %}
+Works on GitHub Pages. Uses page.url and relative_url so baseurl is always respected.
+If the current page isn't under /en/ or /ko/, links go to the language roots.
+{% endcomment %}
 
-{%- assign base = site.baseurl | default: "" -%}
-{%- assign path = page.path | default: page.url | default: "/" -%}
+{% assign url = page.url | default: "/" %}
+{% assign segs = url | split: "/" %}
+{% assign first = segs[1] | downcase %}
+{% assign is_en = first == "en" %}
+{% assign is_ko = first == "ko" %}
 
-{%- if base != "" and path contains base -%}
-  {%- assign path = path | remove_first: base -%}
-{%- endif -%}
+{% if is_en %}
+  {% assign en_path = url %}
+  {% assign ko_path = url | replace_first: "/en/", "/ko/" %}
+{% elsif is_ko %}
+  {% assign en_path = url | replace_first: "/ko/", "/en/" %}
+  {% assign ko_path = url %}
+{% else %}
+  {% assign en_path = "/en/" %}
+  {% assign ko_path = "/ko/" %}
+{% endif %}
 
-{%- if path == "" -%}{%- assign path = "/" -%}{%- endif -%}
-{%- if path[0] != "/" -%}{%- assign path = "/" | append: path -%}{%- endif -%}
-
-{%- assign trimmed = path | replace_first: "/", "" -%}
-{%- assign parts = trimmed | split:"/" -%}
-{%- assign first_segment = parts[0] | downcase -%}
-{%- assign is_en = first_segment == "en" -%}
-{%- assign is_ko = first_segment == "ko" -%}
-
-{%- if is_en -%}
-  {%- assign peer = path | replace_first: "/en/", "/ko/" -%}
-{%- elsif is_ko -%}
-  {%- assign peer = path | replace_first: "/ko/", "/en/" -%}
-{%- else -%}
-  {%- assign peer = "/ko" | append: path -%}
-{%- endif -%}
-
-{%- assign me_url = base | append: path | replace: "//", "/" -%}
-{%- assign peer_url = base | append: peer | replace: "//", "/" -%}
-
-<div class="lang-toggle" style="margin: .5rem 0 1rem;">
-  <a href="{{ me_url }}"
-     class="{% if page.lang == 'en' or is_en or (is_ko != true and page.lang != 'ko') %}active{% endif %}">English</a>
+<nav class="lang-toggle" style="margin: .5rem 0 1rem;">
+  <a href="{{ en_path | relative_url }}"
+     class="{% if is_en or (is_en != true and is_ko != true) %}active{% endif %}">English</a>
   <span> | </span>
-  <a href="{{ peer_url }}"
-     class="{% if page.lang == 'ko' or is_ko %}active{% endif %}">한국어</a>
-</div>
+  <a href="{{ ko_path | relative_url }}"
+     class="{% if is_ko %}active{% endif %}">한국어</a>
+</nav>
 
 <style>
   .lang-toggle a { text-decoration: none; }
