@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧠 RBAC 구조 개요
+permalink: /ko/web/proposals/ePortal-roles/structure-overview/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧠 RBAC 구조 개요
@@ -7,14 +12,14 @@
 ## 객체 구조 개요
 
 ```yaml
-Corporation: [국가]
-└── Industry Segment: [세그먼트]
-    └── Feature: [기능]
-        └── Action Type: [Create | Status]
-            ├── Business Channel: [채널 1]
-            │   └── Access Level: [A/S/U/L]
-            └── Business Channel: [채널 2]
-                └── Access Level: [A/S/U/L]
+법인: [국가코드]
+└── 산업 세그먼트: [세그먼트]
+    └── 기능: [기능]
+        └── 작업 유형: [Create | Status]
+            ├── 비즈니스 채널: [채널 1]
+            │   └── 접근 수준: [A/S/U/L]
+            └── 비즈니스 채널: [채널 2]
+                └── 접근 수준: [A/S/U/L]
 ```
 
 ## 카테고리
@@ -28,7 +33,6 @@ Corporation: [국가]
   - PA
   - CO
   - CL
-
 </details>
 
 <details>
@@ -36,57 +40,28 @@ Corporation: [국가]
   <div style="margin-left: 1.5em;">
 
   <details>
-    <summary>Wholesale</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>도매</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
-
   <details>
-    <summary>Retail</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>소매</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
-
   <details>
-    <summary>Fleet</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>플릿</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
-
   <details>
-    <summary>Insurance</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>보험</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
-
   <details>
-    <summary>Commercial</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>상업</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
-
   <details>
-    <summary>Wholesale + Retail</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>기능: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <summary>도매 + 소매</summary>
+    <ul><li>기능: 주문, 클레임, 반품, 보증 반품, 재무, 보고서</li></ul>
   </details>
   </div>
 </details>
@@ -96,128 +71,109 @@ Corporation: [국가]
   <div style="margin-left: 1.5em;">
 
   <details>
-    <summary>Order</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>주문</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-
   <details>
-    <summary>Claims</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>클레임</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-
   <details>
-    <summary>Returns</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>반품</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-
   <details>
-    <summary>Warranty Return</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>보증 반품</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-
   <details>
-    <summary>Finance</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>재무</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-
   <details>
-    <summary>Report</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <summary>보고서</summary>
+    <ul><li>작업: Create, Status</li></ul>
   </details>
-</div>
+  </div>
 </details>
 
 <details>
-  <summary><strong>🎯 동작</strong></summary>
+  <summary><strong>🎯 작업 유형</strong></summary>
 
   - Create
   - Status
-
 </details>
 
 <details>
   <summary><strong>🧭 비즈니스 채널</strong></summary>
 
-  - WH (Warehouse)
-  - SSP (Secondary Supply)
-  - CDTP (Car Dealer)
+  - WH (창고)
+  - SSP (2차 공급)
+  - CDTP (카딜러)
   - DFC
-  - NAP (National Account Program)
-  - Gov't & Bus
-
+  - NAP (내셔널 어카운트 프로그램)
+  - 정부 & 버스
 </details>
 
 <details>
   <summary><strong>🔐 접근 수준</strong></summary>
 
-  - Access (A)
-  - Stock (S)
-  - Unit Price (U)
-  - List Price (L)
-
+  - 접근 (A)
+  - 재고 (S)
+  - 단가 (U)
+  - 목록가 (L)
 </details>
 
 ## 🧪 예시
 
 ```yaml
-Corporation: US  
-└── Industry Segment: Fleet  
-    └── Feature: Order  
-        └── Action Type: Create  
-            ├── Business Channel: WH  
-            │   └── Access Level: A, S, U  
-            └── Business Channel: DFC  
-                └── Access Level: A
+법인: US  
+└── 산업 세그먼트: 플릿  
+    └── 기능: 주문  
+        └── 작업 유형: Create  
+            ├── 비즈니스 채널: WH  
+            │   └── 접근 수준: A, S, U  
+            └── 비즈니스 채널: DFC  
+                └── 접근 수준: A
 ```
+
 ```yaml
-Corporation: US
-    ├── Industry Segment: Fleet
-    │   ├── Feature: Order
-    │   │   ├── Action Type: Create
-    │   │   │   ├── Business Channel: WH
-    │   │   │   │   └── Access Level: A, S, U
-    │   │   │   └── Business Channel: DFC
-    │   │   │       └── Access Level: A
-    │   │   └── Action Type: Status
-    │   │       └── Business Channel: WH
-    │   │           └── Access Level: A, S
-    │   ├── Feature: Warranty Return
-    │   │   ├── Action Type: Create
-    │   │   │   └── Business Channel: WH
-    │   │   │       └── Access Level: A, S
-    │   │   └── Action Type: Status
-    │   │       └── Business Channel: WH
-    │   │           └── Access Level: A, S
-    │   └── Feature: Report
-    │       └── Action Type: Status
-    │           ├── Business Channel: Sales Report
-    │           │   └── Access Level: A, S
-    │           └── Business Channel: Stock Report
-    │               └── Access Level: A, S
-    └── Industry Segment: Retail
-        ├── Feature: Order
-        │   ├── Action Type: Create
-        │   │   ├── Business Channel: SSP
-        │   │   │   └── Access Level: A
-        │   │   └── Business Channel: CDTP
-        │   │       └── Access Level: A, S, U
-        │   └── Action Type: Status
-        │       └── Business Channel: CDTP
-        │           └── Access Level: A
-        └── Feature: Report
-            └── Action Type: Status
-                └── Business Channel: Statement
-                    └── Access Level: A
+법인: US
+    ├── 산업 세그먼트: 플릿
+    │   ├── 기능: 주문
+    │   │   ├── 작업 유형: Create
+    │   │   │   ├── 비즈니스 채널: WH
+    │   │   │   │   └── 접근 수준: A, S, U
+    │   │   │   └── 비즈니스 채널: DFC
+    │   │   │       └── 접근 수준: A
+    │   │   └── 작업 유형: Status
+    │   │       └── 비즈니스 채널: WH
+    │   │           └── 접근 수준: A, S
+    │   ├── 기능: 보증 반품
+    │   │   ├── 작업 유형: Create
+    │   │   │   └── 비즈니스 채널: WH
+    │   │   │       └── 접근 수준: A, S
+    │   │   └── 작업 유형: Status
+    │   │       └── 비즈니스 채널: WH
+    │   │           └── 접근 수준: A, S
+    │   └── 기능: 보고서
+    │       └── 작업 유형: Status
+    │           ├── 비즈니스 채널: 판매 보고서
+    │           │   └── 접근 수준: A, S
+    │           └── 비즈니스 채널: 재고 보고서
+    │               └── 접근 수준: A, S
+    └── 산업 세그먼트: 소매
+        ├── 기능: 주문
+        │   ├── 작업 유형: Create
+        │   │   ├── 비즈니스 채널: SSP
+        │   │   │   └── 접근 수준: A
+        │   │   └── 비즈니스 채널: CDTP
+        │   │       └── 접근 수준: A, S, U
+        │   └── 작업 유형: Status
+        │       └── 비즈니스 채널: CDTP
+        │           └── 접근 수준: A
+        └── 기능: 보고서
+            └── 작업 유형: Status
+                └── 비즈니스 채널: 명세서
+                    └── 접근 수준: A
 ```

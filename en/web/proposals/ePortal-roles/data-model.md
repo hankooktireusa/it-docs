@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 📊 RBAC Data Model
+permalink: /en/web/proposals/ePortal-roles/data-model/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 📊 RBAC Data Model
@@ -7,7 +12,8 @@
 This document describes the relational structure of the new Role-Based Access Control (RBAC) system, including support for corporations, industry segments, permissions, and privilege-based access levels.
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
 - [`users`](#users)
 - [`roles`](#roles)
@@ -18,6 +24,7 @@ This document describes the relational structure of the new Role-Based Access Co
 - [`privileges`](#privileges)
 - [`role_permissions`](#role_permissions)
 
+  </div>
 </details>
 
 ---
@@ -26,95 +33,95 @@ This document describes the relational structure of the new Role-Based Access Co
 
 ---
 
-### `users`
+### `users` {: #users }
 
 Represents system users who are assigned roles.
 
-| Column     | Type     | Description           |
-|------------|----------|-----------------------|
-| `id`       | INT      | Primary key           |
-| `email`    | VARCHAR  | User email address    |
+| Column  | Type    | Description        |
+|---------|---------|--------------------|
+| `id`    | INT     | Primary key        |
+| `email` | VARCHAR | User email address |
 
 ---
 
-### `roles`
+### `roles` {: #roles }
 
 Reusable role templates assigned to users and scoped to corporations and segments.
 
-| Column        | Type      | Description                          |
-|---------------|-----------|--------------------------------------|
-| `id`          | INT       | Primary key                          |
-| `name`        | VARCHAR   | Role display name                    |
-| `description` | TEXT      | Optional description                 |
+| Column        | Type    | Description          |
+|---------------|---------|----------------------|
+| `id`          | INT     | Primary key          |
+| `name`        | VARCHAR | Role display name    |
+| `description` | TEXT    | Optional description |
 
 ---
 
-### `user_roles`
+### `user_roles` {: #user_roles }
 
 Links users to their assigned roles.
 
-| Column     | Type     | Description               |
-|------------|----------|---------------------------|
-| `user_id`  | INT      | FK to `users.id`          |
-| `role_id`  | INT      | FK to `roles.id`          |
+| Column    | Type | Description      |
+|-----------|------|------------------|
+| `user_id` | INT  | FK to `users.id` |
+| `role_id` | INT  | FK to `roles.id` |
 
 ---
 
-### `role_corporation`
+### `role_corporation` {: #role_corporation }
 
 Scopes roles to one or more corporations (e.g., US, CA, MX).
 
-| Column        | Type     | Description                  |
-|---------------|----------|------------------------------|
-| `role_id`     | INT      | FK to `roles.id`             |
-| `corporation` | VARCHAR  | Country code (e.g. 'US')     |
+| Column        | Type    | Description                  |
+|---------------|---------|------------------------------|
+| `role_id`     | INT     | FK to `roles.id`             |
+| `corporation` | VARCHAR | Country code (e.g., `US`)    |
 
 ---
 
-### `role_segment`
+### `role_industry_segment` {: #role_industry_segment }
 
 Scopes roles to one or more industry segments (e.g., Fleet, Retail).
 
-| Column            | Type     | Description                     |
-|-------------------|----------|---------------------------------|
-| `role_id`         | INT      | FK to `roles.id`                |
-| `industry_segment`| VARCHAR  | Segment code or label           |
+| Column             | Type    | Description               |
+|--------------------|---------|---------------------------|
+| `role_id`          | INT     | FK to `roles.id`          |
+| `industry_segment` | VARCHAR | Segment code or label     |
 
 ---
 
-### `permissions`
+### `permissions` {: #permissions }
 
-Represents a unique action under a feature (e.g., "Order Submission").
+Represents a unique action under a feature (e.g., “Order Submission”).
 
-| Column     | Type      | Description                           |
-|------------|-----------|---------------------------------------|
-| `id`       | INT       | Primary key                           |
-| `name`     | VARCHAR   | Permission name                       |
-| `feature`  | VARCHAR   | e.g., Order, Warranty, Report         |
-| `action`   | VARCHAR   | e.g., Create, Status                  |
+| Column    | Type    | Description                     |
+|-----------|---------|---------------------------------|
+| `id`      | INT     | Primary key                     |
+| `name`    | VARCHAR | Permission name                 |
+| `feature` | VARCHAR | e.g., Order, Warranty, Report   |
+| `action`  | VARCHAR | e.g., Create, Status            |
 
 ---
 
-### `privileges`
+### `privileges` {: #privileges }
 
 Defines the level of access granted to a permission.
 
-| Column     | Type      | Description             |
-|------------|-----------|-------------------------|
-| `code`     | CHAR(1)   | One of: A, S, U, L      |
-| `label`    | VARCHAR   | Access, Stock, etc.     |
+| Column  | Type   | Description                    |
+|---------|--------|--------------------------------|
+| `code`  | CHAR(1)| One of: `A`, `S`, `U`, `L`     |
+| `label` | VARCHAR| Access, Stock, Unit, List Price|
 
 ---
 
-### `role_permissions`
+### `role_permissions` {: #role_permissions }
 
 Joins roles to permissions with specific privileges.
 
-| Column           | Type     | Description                     |
-|------------------|----------|---------------------------------|
-| `role_id`        | INT      | FK to `roles.id`                |
-| `permission_id`  | INT      | FK to `permissions.id`          |
-| `privilege_code` | CHAR(1)  | FK to `privileges.code`         |
+| Column          | Type   | Description                  |
+|-----------------|--------|------------------------------|
+| `role_id`       | INT    | FK to `roles.id`             |
+| `permission_id` | INT    | FK to `permissions.id`       |
+| `privilege_code`| CHAR(1)| FK to `privileges.code`      |
 
 ## 🧭 Entity Relationship Diagram
 
@@ -136,24 +143,24 @@ Joins roles to permissions with specific privileges.
                │  │  └───────────────────────────────────────────┐
                │  └─────────────────────┐                        │
                ▼                        ▼                        ▼
-     ┌──────────────────┐ ┌─────────────────────────┐ ┌────────────────────┐
-     │ role_corporation │ │  role_industry_segment  │ │  role_permissions  │
-     └──────────────────┘ └─────────────────────────┘ └──────────┬─────────┘
-                                                                 │
-                                                                 ▼
-                                                          ┌─────────────┐
-                                                          │ permissions │
-                                                          └──────┬──────┘
-                                                                 │
-                                                                 ▼
-                                                           ┌────────────┐
-                                                           │ privileges │
-                                                           └────────────┘
+     ┌──────────────────┐ ┌──────────────────────────────┐ ┌────────────────────┐
+     │ role_corporation │ │ role_industry_segment        │ │  role_permissions  │
+     └──────────────────┘ └──────────────────────────────┘ └──────────┬─────────┘
+                                                                     │
+                                                                     ▼
+                                                              ┌─────────────┐
+                                                              │ permissions │
+                                                              └──────┬──────┘
+                                                                     │
+                                                                     ▼
+                                                               ┌────────────┐
+                                                               │ privileges │
+                                                               └────────────┘
 ```
 
 ### 🔧 Example: What This Looks Like in Practice
 
-A user is assigned the role **"Order – WH Order Submission"**, scoped to the **US Corporation** and **Fleet Segment**, and is granted:
+A user is assigned the role **“Order – WH Order Submission”**, scoped to the **US Corporation** and **Fleet Segment**, and is granted:
 
 - **Permission:** Order Submission  
 - **Feature:** Order  
@@ -166,17 +173,17 @@ A user is assigned the role **"Order – WH Order Submission"**, scoped to the *
 
 #### `users`
 
-| id   | email                 |
-|------|------------------------|
-| 2001 | johndoe@example.com    |
+| id   | email               |
+|------|---------------------|
+| 2001 | johndoe@example.com |
 
 ---
 
 #### `roles`
 
-| id | name                        |
-|----|-----------------------------|
-| 1  | Order – WH Order Submission |
+| id | name                         |
+|----|------------------------------|
+| 1  | Order – WH Order Submission  |
 
 ---
 
@@ -196,7 +203,7 @@ A user is assigned the role **"Order – WH Order Submission"**, scoped to the *
 
 ---
 
-#### `role_segment`
+#### `role_industry_segment`
 
 | role_id | industry_segment |
 |---------|------------------|
@@ -219,6 +226,7 @@ A user is assigned the role **"Order – WH Order Submission"**, scoped to the *
 | A    | Access      |
 | S    | Stock       |
 | U    | Unit Price  |
+| L    | List Price  |
 
 ---
 

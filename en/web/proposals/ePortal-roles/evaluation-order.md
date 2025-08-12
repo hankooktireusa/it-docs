@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧮 Evaluation Order in the RBAC System
+permalink: /en/web/proposals/ePortal-roles/evaluation-order/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧮 Evaluation Order in the RBAC System
@@ -7,20 +12,22 @@
 This document explains how user permissions are determined in the new Role-Based Access Control (RBAC) model. The system moves from broad role assignment down to precise overrides, ensuring both flexibility and adherence to the Principle of Least Privilege.
 
 <details>
-<summary>📑 Table of Contents</summary>
+  <summary><strong>📑 Table of Contents</strong></summary>
+  <div markdown="1">
 
-- [1. 🧱 Role Assignment](#1-🧱-role-assignment)
-- [2. 🧭 Role Scoping (Optional)](#2-🧭-role-scoping-optional)
-- [3. ➕ Role Combination and Merging](#3-➕-role-combination-and-merging)
-- [4. 🚫 Restrictive Roles (Modifiers)](#4-🚫-restrictive-roles-modifiers)
-- [5. 🛠️ Direct Privilege Overrides (Edge Cases)](#5-🛠️-direct-privilege-overrides-edge-cases)
-- [🔁 Summary Table](#️-summary-table)
+- [1. 🧱 Role Assignment](#role-assignment)
+- [2. 🧭 Role Scoping (Optional)](#role-scoping)
+- [3. ➕ Role Combination and Merging](#role-combination)
+- [4. 🚫 Restrictive Roles (Modifiers)](#restrictive-roles)
+- [5. 🛠️ Direct Privilege Overrides (Edge Cases)](#direct-overrides)
+- [🔁 Summary Table](#summary-table)
 
+  </div>
 </details>
 
 ---
 
-## 1. 🧱 Role Assignment
+## 1. 🧱 Role Assignment {: #role-assignment }
 
 Each user is assigned one or more roles, which define:
 
@@ -31,11 +38,11 @@ Each user is assigned one or more roles, which define:
   - `U` – Unit Price
   - `L` – List Price
 
-📚 These roles are defined in [`role-definitions.md`](/it-docs/en/web/proposals/ePortal-roles/role-definitions.md) and serve as the foundational access model.
+📚 These roles are defined in [role-definitions](./role-definitions.md) and serve as the foundational access model.
 
 ---
 
-## 2. 🧭 Role Scoping (Optional)
+## 2. 🧭 Role Scoping (Optional) {: #role-scoping }
 
 Roles may be scoped to narrow their effect:
 
@@ -47,7 +54,7 @@ Roles may be scoped to narrow their effect:
 
 ---
 
-## 3. ➕ Role Combination and Merging
+## 3. ➕ Role Combination and Merging {: #role-combination }
 
 When users have multiple roles:
 
@@ -59,7 +66,7 @@ If one role grants `A, S` on *Order Submission* and another grants `U`, the resu
 
 ---
 
-## 4. 🚫 Restrictive Roles (Modifiers)
+## 4. 🚫 Restrictive Roles (Modifiers) {: #restrictive-roles }
 
 Some roles act to **remove** privileges rather than add them.
 
@@ -70,7 +77,7 @@ Some roles act to **remove** privileges rather than add them.
 
 ---
 
-## 5. 🛠️ Direct Privilege Overrides (Edge Cases)
+## 5. 🛠️ Direct Privilege Overrides (Edge Cases) {: #direct-overrides }
 
 In rare exceptions:
 
@@ -81,12 +88,12 @@ In rare exceptions:
 
 ---
 
-## 🔁 Summary Table
+## 🔁 Summary Table {: #summary-table }
 
-| Level                    | Description                                           | Example                                     |
-|--------------------------|-------------------------------------------------------|---------------------------------------------|
-| **Base Role**            | Main source of permissions/privileges                | `Order – WH Order Submission (A, S, U)`     |
-| **Scoped Role**          | Role limited by corporation/segment/channel          | `Warranty – Create Warranty (CA only)`      |
-| **Role Merging**         | Combines all roles for cumulative access             | `Order + Status + Warranty`                 |
-| **Restrictive Role**     | Reduces privileges granted by base roles             | `No Pricing` removes `U`, `L`               |
-| **Direct Overrides**     | Final edge-case adjustment at user level             | Add `U` to *Stock Report* for one user only |
+| Level                | Description                                       | Example                                     |
+|----------------------|---------------------------------------------------|---------------------------------------------|
+| **Base Role**        | Main source of permissions/privileges            | `Order – WH Order Submission (A, S, U)`     |
+| **Scoped Role**      | Role limited by corporation/segment/channel      | `Warranty – Create Warranty (CA only)`      |
+| **Role Merging**     | Combines all roles for cumulative access         | `Order + Status + Warranty`                 |
+| **Restrictive Role** | Reduces privileges granted by base roles         | `No Pricing` removes `U`, `L`               |
+| **Direct Overrides** | Final edge-case adjustment at user level         | Add `U` to *Stock Report* for one user only |

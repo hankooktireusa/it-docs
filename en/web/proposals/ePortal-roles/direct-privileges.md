@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧩 Direct Privilege Grants
+permalink: /en/web/proposals/ePortal-roles/direct-privileges/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧩 Direct Privilege Grants
@@ -11,17 +16,20 @@ Direct grants should be used sparingly — only when roles and filters (like `No
 ---
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
 - [When to Use Direct Grants](#when-to-use-direct-grants)
 - [How Direct Grants Work](#how-direct-grants-work)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
+
+  </div>
 </details>
 
 ---
 
-## When to Use Direct Grants
+## When to Use Direct Grants {: #when-to-use-direct-grants }
 
 Use a direct grant when:
 
@@ -31,7 +39,7 @@ Use a direct grant when:
 
 ---
 
-## How Direct Grants Work
+## How Direct Grants Work {: #how-direct-grants-work }
 
 Direct grants are stored per user, alongside (but separate from) their roles. They allow you to:
 
@@ -42,7 +50,7 @@ They are evaluated **after roles and filters** like `No Pricing`.
 
 ---
 
-## Examples
+## Examples {: #examples }
 
 ### ✅ Example 1: Add Unit Price for Sales Report only
 
@@ -79,7 +87,7 @@ Privileges: A, S
 
 ---
 
-## Best Practices
+## Best Practices {: #best-practices }
 
 - ✅ Use direct grants only for **rare exceptions**
 - ❌ Do not replace roles with direct grants
@@ -89,5 +97,5 @@ Privileges: A, S
 ---
 
 For standard permissions and privilege exposure, see:
-- [`role-definitions.md`](/it-docs/en/web/proposals/ePortal-roles/role-definitions.md)
-- [`privilege-matrix.md`](/it-docs/en/web/proposals/ePortal-roles/privilege-matrix.md)
+- [role-definitions](./role-definitions.md)
+- [privilege-matrix](./privilege-matrix.md)

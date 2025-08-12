@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🚫 No Pricing Rules
+permalink: /en/web/proposals/ePortal-roles/no-pricing-rules/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🚫 No Pricing Rules
@@ -12,12 +17,15 @@ This page documents when and how to apply the `No Pricing` role to users in the 
 ---
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
 - [When to Apply `No Pricing`](#when-to-apply-no-pricing)
 - [How It Works](#how-it-works)
 - [When Not to Apply `No Pricing`](#when-not-to-apply-no-pricing)
 - [Edge Cases & Overrides](#edge-cases--overrides)
+
+  </div>
 </details>
 
 ---
@@ -78,4 +86,5 @@ You can either:
 
 ---
 
-Let me know if you'd like to add a visual example or tie this to a section in [`privilege-matrix.md`](/it-docs/en/web/proposals/ePortal-roles/privilege-matrix.md).
+For visual examples or privilege mapping, see:
+- [`privilege-matrix.md`](/it-docs/en/web/proposals/ePortal-roles/privilege-matrix.md)

@@ -1,19 +1,25 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 📊 Privilege Matrix
+permalink: /en/web/proposals/ePortal-roles/privilege-matrix/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 📊 Privilege Matrix
 
 A full matrix of all permissions used across roles, showing which privilege levels each permission exposes.
-> **ℹ️ This matrix reflects the privilege levels defined by the new RBAC role model.**  
+
+> **ℹ️ Note:** This matrix reflects the privilege levels defined by the new RBAC role model.  
 > Each permission listed below maps to the `A`, `S`, `U`, and `L` privileges based on how it is used in the roles described in [`role-definitions.md`](/it-docs/en/web/proposals/ePortal-roles/role-definitions.md).  
->
 > This document is forward-looking and intended to support auditing, override logic, and role design decisions. It does not reflect historical group usage.
 
 ---
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
 - [`Order`](#order)
 - [`National Account`](#national-account)
@@ -22,14 +28,15 @@ A full matrix of all permissions used across roles, showing which privilege leve
 - [`Warranty`](#warranty)
 - [`All Permissions`](#all-permissions)
 
+  </div>
 </details>
 
 ---
 
-- **A** = Access
-- **S** = Stock
-- **U** = Unit Price
-- **L** = List Price
+- **A** = Access  
+- **S** = Stock  
+- **U** = Unit Price  
+- **L** = List Price  
 
 ---
 

@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🔄 Role Onboarding Plan: New RBAC Implementation
+permalink: /en/web/proposals/ePortal-roles/migration-plan/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🔄 Role Onboarding Plan: New RBAC Implementation
@@ -7,16 +12,17 @@
 This plan outlines how to roll out the new Role-Based Access Control (RBAC) system for a new platform. The new structure preserves the same access patterns users had in legacy systems, but delivers them through a cleaner, more standardized, and more maintainable model.
 
 <details>
-<summary>📑 Table of Contents</summary>
+  <summary><strong>📑 Table of Contents</strong></summary>
+  <div markdown="1">
 
-- [🔄 Role Onboarding Plan: New RBAC Implementation](#-role-onboarding-plan-new-rbac-implementation)
-  - [📌 Phase 1: Access Pattern Analysis](#️-phase-1-access-pattern-analysis)
-  - [📌 Phase 2: Role Design Finalization](#️-phase-2-role-design-finalization)
-  - [📌 Phase 3: Initial User Role Assignment](#️-phase-3-initial-user-role-assignment)
-  - [📌 Phase 4: Testing & Verification](#️-phase-4-testing--verification)
-  - [📌 Phase 5: Production Deployment](#️-phase-5-production-deployment)
-  - [🧩 Notes](#-notes)
+- [📌 Phase 1: Access Pattern Analysis](#️-phase-1-access-pattern-analysis)
+- [📌 Phase 2: Role Design Finalization](#️-phase-2-role-design-finalization)
+- [📌 Phase 3: Initial User Role Assignment](#️-phase-3-initial-user-role-assignment)
+- [📌 Phase 4: Testing & Verification](#️-phase-4-testing--verification)
+- [📌 Phase 5: Production Deployment](#️-phase-5-production-deployment)
+- [🧩 Notes](#-notes)
 
+  </div>
 </details>
 
 ---

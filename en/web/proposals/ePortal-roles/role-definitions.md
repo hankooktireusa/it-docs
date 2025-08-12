@@ -1,16 +1,21 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 📘 Role Definitions
+permalink: /en/web/proposals/ePortal-roles/role-definitions/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 📘 Role Definitions
 
 > **ℹ️ This role catalog reflects the new RBAC model.**  
 > Each role in this document is informed by patterns in legacy group usage, but refactored to create clean, consistent, and reusable access bundles.  
->
-> The roles below are intended to support least-privilege access by default, with specialized overrides applied as needed.
+> Roles are designed for least-privilege access by default, with overrides applied only when necessary.
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
 - [`Order – WH Order Submission`](#order--wh-order-submission)
 - [`Order – WH Quick Order`](#order--wh-quick-order)
@@ -34,215 +39,158 @@
 - [`Warranty – Warranty Status`](#warranty--warranty-status)
 - [`All Permissions`](#all-permissions)
 
+  </div>
 </details>
 
 ---
 
 ## `Order – WH Order Submission`
+Grants ability to submit warehouse-based orders.  
 
-Grants users the ability to submit warehouse-based orders. Typically used by warehouse dealers and national partners.
+**Permissions:** Order → WH Order Submission: A, S, U  
 
-### Permissions
-- Order → WH Order Submission: A, S, U
+**Legacy Mapping:** `(US) TCI - [O-WNG] [S-NG] [A] [W]`, `Order Submission & National Account & Sales Report`  
 
-### Related Legacy Groups
-- `(US) TCI - [O-WNG] [S-NG] [A] [W]`
-- `Order Submission & National Account & Sales Report`
-
-### Notes
-- Often combined with Status or Report roles  
-- Consider pairing with `No Pricing` if price access should be restricted
+**Notes:** Often paired with Status/Report roles; add `No Pricing` if price restrictions apply.
 
 ---
 
 ## `Order – WH Quick Order`
+Quick-entry ordering in the warehouse system.  
 
-Enables quick-entry ordering through the warehouse system.
-
-### Permissions
-- Order → WH Quick Order: A, S, U
-
-### Notes
-- Designed for returning customers who place repeat orders
+**Permissions:** Order → WH Quick Order: A, S, U  
 
 ---
 
 ## `Order – Secondary Supply Delivery Check`
+Stock/delivery availability from secondary supply.  
 
-Grants access to stock and delivery availability from secondary supply.
-
-### Permissions
-- Order → Secondary Supply → Delivery Check: A
-
-### Notes
-- Read-only role — no ordering capability
+**Permissions:** Order → Secondary Supply → Delivery Check: A  
 
 ---
 
 ## `Order – Secondary Supply Submission`
+Place orders via secondary supply networks.  
 
-Allows users to place orders via secondary supply networks.
-
-### Permissions
-- Order → Secondary Supply → Order Submission: A, S, U
-
-### Notes
-- Often used alongside WH Order roles for hybrid supply access
+**Permissions:** Order → Secondary Supply → Order Submission: A, S, U  
 
 ---
 
 ## `Order – Car Dealer Order`
+Submit car dealer orders directly.  
 
-Enables car dealers to submit orders directly.
-
-### Permissions
-- Order → Car Dealer → Order: A, S, U
+**Permissions:** Order → Car Dealer → Order: A, S, U  
 
 ---
 
 ## `Order – DFC Order`
+Submit Direct Fulfillment Center orders.  
 
-Grants access to submit Direct Fulfillment Center orders.
-
-### Permissions
-- Order → DFC Order: A
+**Permissions:** Order → DFC Order: A  
 
 ---
 
 ## `National Account – Fleet Create a New Delivery Receipt`
+Initiate delivery receipts for fleet accounts.  
 
-For National Account fleet users who initiate delivery receipts.
-
-### Permissions
-- Hankook National Fleets → Create A New Delivery Receipt: A
+**Permissions:** Hankook National Fleets → Create A New Delivery Receipt: A  
 
 ---
 
 ## `National Account – Gov't & Bus`
+Government/business interaction via National Account channels.  
 
-Enables government and business partners to interact via National Account channels.
-
-### Permissions
-- Gov’t & Bus: A
+**Permissions:** Gov’t & Bus: A  
 
 ---
 
 ## `Status – Order Submission`
+View status of submitted orders.  
 
-Lets users view the status of submitted orders.
-
-### Permissions
-- Status → Order Submission: A, S, U
+**Permissions:** Status → Order Submission: A, S, U  
 
 ---
 
 ## `Status – Secondary Supply`
+Track secondary supply orders.  
 
-Track secondary supply orders and delivery status.
-
-### Permissions
-- Status → Secondary Supply: A, S, U
+**Permissions:** Status → Secondary Supply: A, S, U  
 
 ---
 
 ## `Status – Gov't & Bus`
+View government/business order status.  
 
-Provides status visibility for government and business orders.
-
-### Permissions
-- Status → Gov’t & Bus: A
+**Permissions:** Status → Gov’t & Bus: A  
 
 ---
 
 ## `Status – Car Dealer`
+Track car dealer orders.  
 
-Allows tracking of Car Dealer order fulfillment.
-
-### Permissions
-- Status → Car Dealer: A
+**Permissions:** Status → Car Dealer: A  
 
 ---
 
 ## `Status – DFC`
+Track Direct Fulfillment Center orders.  
 
-Lets users track Direct Fulfillment Center orders.
-
-### Permissions
-- Status → DFC: A
+**Permissions:** Status → DFC: A  
 
 ---
 
 ## `Status – Open Items`
+View unpaid/unprocessed billing items.  
 
-Access to unpaid or unprocessed items in billing.
-
-### Permissions
-- Status → Open Items: A
+**Permissions:** Status → Open Items: A  
 
 ---
 
 ## `Status – Invoice`
+View invoices and stock details.  
 
-Grants invoice visibility and optionally stock/quantity tracking.
-
-### Permissions
-- Status → Invoice: A, S
+**Permissions:** Status → Invoice: A, S  
 
 ---
 
 ## `Report – Statement`
+Access account financial statements.  
 
-Provides access to account financial statements.
-
-### Permissions
-- Report → Statement: A
+**Permissions:** Report → Statement: A  
 
 ---
 
 ## `Report – Sales Report`
+View sales metrics.  
 
-Enables viewing of sales performance metrics.
-
-### Permissions
-- Report → Sales Report: A, S
+**Permissions:** Report → Sales Report: A, S  
 
 ---
 
 ## `Report – Stock Report`
+View current inventory.  
 
-View current inventory levels and stock health.
-
-### Permissions
-- Report → Stock Report: A, S
+**Permissions:** Report → Stock Report: A, S  
 
 ---
 
 ## `Warranty – Create Warranty`
+Submit new warranty claims.  
 
-Allows users to create and submit new warranty claims.
-
-### Permissions
-- Warranty Return → Create: A, S
+**Permissions:** Warranty Return → Create: A, S  
 
 ---
 
 ## `Warranty – Warranty Status`
+View warranty claim status.  
 
-Provides insight into the processing status of warranty claims.
-
-### Permissions
-- Warranty Return → Status: A, S
+**Permissions:** Warranty Return → Status: A, S  
 
 ---
 
 ## `All Permissions`
+Full system access including pricing, reporting, ordering, and warranty.  
 
-Grants access to all system functionality, including pricing, reporting, ordering, and warranty. Use with caution.
+**Permissions:** All defined permissions: A, S, U, L  
 
-### Permissions
-- Full access to all defined permissions: A, S, U, L
-
-### Notes
-- Reserved for system administrators or high-trust user profiles  
-- Supersedes the need for any other role  
-- Do not assign by default
+**Notes:** Reserved for admins; do not assign by default.

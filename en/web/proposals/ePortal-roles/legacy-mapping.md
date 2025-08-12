@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🗺️ Legacy Group Mapping
+permalink: /en/web/proposals/ePortal-roles/legacy-mapping/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🗺️ Legacy Group Mapping
@@ -12,19 +17,21 @@ Mappings from legacy user group names to the new RBAC roles and privilege model.
 - Notes about special handling or overrides
 
 <details>
-<summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
+  <div markdown="1">
 
-- [`(US) TCI`](#us-tci---o-wng-s-ng-a-w)
-- [`All Permissions & No Price`](#all-permissions--no-price---o-s-a-r-w)
-- [`Car Dealer & Secondary Supply & National Account & Warranty`](#car-dealer--secondary-supply--national-account--warranty)
-- [`Order Submission & National Account & Sales Report`](#order-submission--national-account--sales-report)
-- [`(US) Carroll Tire`](#us-carroll-tire---p-u-o-scdng-s-scdng-w)
+- [`(US) TCI`](#us-tci)
+- [`All Permissions & No Price`](#all-permissions-no-price)
+- [`Car Dealer & Secondary Supply & National Account & Warranty`](#car-dealer-secondary-supply-national-account-warranty)
+- [`Order Submission & National Account & Sales Report`](#order-submission-national-account-sales-report)
+- [`(US) Carroll Tire`](#us-carroll-tire)
 
+  </div>
 </details>
 
 ---
 
-## `(US) TCI - [O-WNG] [S-NG] [A] [W]`
+## `(US) TCI - [O-WNG] [S-NG] [A] [W]` {: #us-tci }
 
 **Mapped Roles:**
 - `Order – WH Order Submission`
@@ -42,7 +49,7 @@ Mappings from legacy user group names to the new RBAC roles and privilege model.
 
 ---
 
-## `All Permissions & No Price - [O] [S] [A] [R] [W]`
+## `All Permissions & No Price - [O] [S] [A] [R] [W]` {: #all-permissions-no-price }
 
 **Mapped Roles:**
 - `All Permissions`  
@@ -57,7 +64,7 @@ Mappings from legacy user group names to the new RBAC roles and privilege model.
 
 ---
 
-## `Car Dealer & Secondary Supply & National Account & Warranty`
+## `Car Dealer & Secondary Supply & National Account & Warranty` {: #car-dealer-secondary-supply-national-account-warranty }
 
 **Mapped Roles:**
 - `Order – Car Dealer Order`
@@ -74,7 +81,7 @@ Mappings from legacy user group names to the new RBAC roles and privilege model.
 
 ---
 
-## `Order Submission & National Account & Sales Report`
+## `Order Submission & National Account & Sales Report` {: #order-submission-national-account-sales-report }
 
 **Mapped Roles:**
 - `Order – WH Order Submission`
@@ -90,7 +97,7 @@ Mappings from legacy user group names to the new RBAC roles and privilege model.
 
 ---
 
-## `(US) Carroll Tire - [P-U] [O-SCDNG] [S-SCDNG] [W]`
+## `(US) Carroll Tire - [P-U] [O-SCDNG] [S-SCDNG] [W]` {: #us-carroll-tire }
 
 **Mapped Roles:**
 - `Order – Secondary Supply Submission`

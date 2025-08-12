@@ -1,10 +1,15 @@
-<link rel="stylesheet" href="/it-docs/assets/css/custom.css">
+---
+layout: default
+title: 🧠 RBAC Structure Overview
+permalink: /en/web/proposals/ePortal-roles/structure-overview/
+---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
 # 🧠 RBAC Structure Overview
 
-## Overview of the object structure
+## Overview of the Object Structure
 
 ```yaml
 Corporation: [COUNTRY]
@@ -28,7 +33,6 @@ Corporation: [COUNTRY]
   - PA
   - CO
   - CL
-
 </details>
 
 <details>
@@ -37,56 +41,27 @@ Corporation: [COUNTRY]
 
   <details>
     <summary>Wholesale</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
-
   <details>
     <summary>Retail</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
-
   <details>
     <summary>Fleet</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
-
   <details>
     <summary>Insurance</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
-
   <details>
     <summary>Commercial</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
-
   <details>
     <summary>Wholesale + Retail</summary>
-    <div style="margin-left: 1.5em;">
-      <ul>
-        <li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li>
-      </ul>
-    </div>
+    <ul><li>Features: Order, Claims, Returns, Warranty Return, Finance, Report</li></ul>
   </details>
   </div>
 </details>
@@ -97,46 +72,29 @@ Corporation: [COUNTRY]
 
   <details>
     <summary>Order</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-
   <details>
     <summary>Claims</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-
   <details>
     <summary>Returns</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-
   <details>
     <summary>Warranty Return</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-
   <details>
     <summary>Finance</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-
   <details>
     <summary>Report</summary>
-    <ul>
-      <li>Action: Create, Status</li>
-    </ul>
+    <ul><li>Action: Create, Status</li></ul>
   </details>
-</div>
+  </div>
 </details>
 
 <details>
@@ -144,7 +102,6 @@ Corporation: [COUNTRY]
 
   - Create
   - Status
-
 </details>
 
 <details>
@@ -156,7 +113,6 @@ Corporation: [COUNTRY]
   - DFC
   - NAP (National Account Program)
   - Gov't & Bus
-
 </details>
 
 <details>
@@ -166,7 +122,6 @@ Corporation: [COUNTRY]
   - Stock (S)
   - Unit Price (U)
   - List Price (L)
-
 </details>
 
 ## 🧪 Examples
@@ -181,6 +136,7 @@ Corporation: US
             └── Business Channel: DFC  
                 └── Access Level: A
 ```
+
 ```yaml
 Corporation: US
     ├── Industry Segment: Fleet
