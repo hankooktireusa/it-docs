@@ -18,3 +18,11 @@ Welcome to the central documentation hub for the IT department.
   - [Proposals](./web/proposals/)
     - [ePortal Roles](./web/proposals/ePortal-roles/)
     - [Failover Deployments](./web/proposals/failover-deployments/)
+
+<details>
+<summary>Click to expand</summary>
+<ul>
+  <li>One</li>
+  <li>Two</li>
+</ul>
+</details>

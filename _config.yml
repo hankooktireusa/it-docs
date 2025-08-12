@@ -2,11 +2,14 @@
 plugins:
   - jekyll-redirect-from
 
-# Use Kramdown (with GitHub Flavored Markdown parser)
+# Theme (restores dark styling)
+theme: jekyll-theme-midnight
+
+# Markdown engine settings
 markdown: kramdown
 kramdown:
   input: GFM
-  parse_block_html: true    # <-- allows Markdown inside <details>…</details>
+  parse_block_html: true
   hard_wrap: false
   syntax_highlighter: rouge
 
