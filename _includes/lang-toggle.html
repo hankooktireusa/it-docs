@@ -34,3 +34,37 @@ Uses page.url + relative_url to respect baseurl on GitHub Pages.
   .lang-toggle a { text-decoration: none; }
   .lang-toggle a.active { font-weight: 700; text-decoration: underline; }
 </style>
+
+<script>
+  (function(){
+    // Current language from front matter (set via _config.yml defaults)
+    var LANG = '{{ page.lang | default: "en" }}';
+    var BASE = '{{ site.baseurl | default: "" }}';
+
+    function normalize(href){
+      var p;
+      try { p = new URL(href, location.origin).pathname; }
+      catch(e){ p = href || ""; }
+      if (BASE && p.indexOf(BASE) === 0) p = p.slice(BASE.length);
+      if (p.charAt(0) !== '/') p = '/' + p; // ensure leading slash
+      return p;
+    }
+
+    var links = document.querySelectorAll('header .page-link');
+    links.forEach(function(a){
+      var href = normalize(a.getAttribute('href') || '');
+      var text = (a.textContent || '');
+
+      var isRooty = href === '/' || href === '/index.html' || /root-redirect/i.test(text);
+      var isEnLink = href === '/en/' || href.indexOf('/en/') === 0;
+      var isKoLink = href === '/ko/' || href.indexOf('/ko/') === 0;
+
+      // Always hide root redirect; then hide opposite-language links
+      if (isRooty) { a.style.display = 'none'; return; }
+      if (LANG === 'en' && isKoLink) a.style.display = 'none';
+      if (LANG === 'ko' && isEnLink) a.style.display = 'none';
+    });
+  })();
+</script>
+
+

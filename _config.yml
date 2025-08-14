@@ -1,34 +1,28 @@
-# Plugins (GitHub Pages supports these)
-plugins:
-  - jekyll-redirect-from
+title: it-docs
+description: ""   # remove footer text
+theme: minima
+minima:
+  skin: dark      # force dark skin
 
-# Theme (restores dark styling)
-theme: jekyll-theme-midnight
+header_pages:
+  - en/index.md
+  - en/web/index.md
+  - en/web/proposals/index.md
+  - ko/index.md
+  - ko/web/index.md
+  - ko/web/proposals/index.md
 
-url: "https://hankooktireusa.github.io"
-baseurl: "/it-docs"
-permalink: pretty
-
-# Markdown engine settings
-markdown: kramdown
-kramdown:
-  input: GFM
-  parse_block_html: true
-  hard_wrap: false
-  syntax_highlighter: rouge
-
-# Defaults
+# Auto-apply front matter to everything under /en and /ko
 defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
-      stylesheet: /assets/css/custom.css
   - scope:
       path: "en"
     values:
-      lang: en
+      lang: "en"
   - scope:
       path: "ko"
     values:
-      lang: ko
+      lang: "ko"
+
+include:
+  - assets/css/custom.css
+  - _includes/lang-toggle.html

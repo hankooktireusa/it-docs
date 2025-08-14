@@ -1,17 +1,278 @@
-/* Style for <summary> in collapsible details */
-summary {
-  cursor: pointer;
-  position: relative;
-  padding-left: 1.2em;
+/* ===========================
+   Hankook palette + helpers
+   =========================== */
+:root {
+  --hk-orange: #ec6608;
+  --hk-black:  #000000;
+  --hk-gray1:  #9a9b9c;
+
+  /* tweakables */
+  --radius: 8px;
+  --space:  0.75rem;
 }
 
-summary::before {
-  content: "▶";
-  position: absolute;
-  left: 0;
-  transition: transform 0.2s ease;
+body { line-height: 1.6; }
+
+/* Make the header container full-width & flush-left (override Minima) */
+.site-header { padding-block: 8px; }
+.site-header .wrapper {
+  max-width: none !important;
+  width: 100%;
+  margin: 0 !important;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.site-logo { margin-left: 0; }
+.site-logo img { display: block; height: 42px; }
+
+/* ===========================
+   Header layout
+   =========================== */
+.header-bar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 0 16px;
+  min-height: 64px;
 }
 
-details[open] summary::before {
-  transform: rotate(90deg);
+.site-logo { justify-self: start; }
+
+.header-center {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
 }
+
+.site-title-text { font-size: 1.8rem; font-weight: 500; }
+
+/* Keep nav links evenly spaced and vertically centered */
+.site-nav .trigger {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.site-nav .page-link { margin: 0; }
+
+/* Small screens: stack nicely */
+@media (max-width: 768px) {
+  .header-bar { grid-template-columns: 1fr; }
+  .header-center {
+    justify-self: start;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  .site-title-text { font-size: 1.5rem; }
+}
+
+/* ---------------------------
+   Link styling (light mode)
+   --------------------------- */
+a {
+  color: var(--hk-orange);
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:visited { color: #b44a06; }
+a:active  { color: #ff7d2a; }
+
+h1:hover, h2:hover, h3:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--hk-orange);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* ---------------------------
+   Dark mode
+   --------------------------- */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #2a2a2a !important;
+    color: #e6e6e6 !important;
+  }
+
+  /* Header / footer blend with page */
+  .site-header, .site-footer {
+    background: #2a2a2a;
+    border-color: #444;
+  }
+
+  /* Title text color + hover */
+  .site-title-text { color: #e6e6e6; }
+  .site-title-text:hover { color: var(--hk-orange); }
+
+  /* Header navigation links */
+  .site-nav .page-link { color: #ffffff !important; }
+  .site-nav .page-link:hover { color: var(--hk-orange) !important; }
+
+  /* Links pop on dark within content */
+  a { color: var(--hk-orange) !important; }
+  a:visited { color: #ff9f5e; }
+  a:hover, a:focus { color: #cf5306; }
+
+  /* Code blocks & inline code */
+  /* Style BOTH the wrapper and the elements to kill borders/shadows/corners */
+  .highlight,
+  .codehilite,
+  pre, code, pre code {
+    background: var(--hk-black) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: var(--radius) !important;
+    color: #e6e6e6 !important;
+  }
+  .highlight,
+  .codehilite { overflow: hidden; }          /* prevents white “corner” bleed */
+  pre { padding: calc(var(--space) + 0.25rem); }
+  pre code { background-color: transparent !important; }
+
+  /* Brighter syntax highlighting (keep; no special fix for -la) */
+  /* Keywords */
+  .highlight .k, .highlight .kd, .highlight .kn,
+  .highlight .kp, .highlight .kr, .highlight .kt {
+    color: #ff7f50 !important; /* Coral orange */
+    font-weight: 600;
+  }
+  /* Strings */
+  .highlight .s, .highlight .s1, .highlight .s2 {
+    color: #90ee90 !important; /* Light green */
+  }
+  /* Numbers */
+  .highlight .m, .highlight .mi, .highlight .mf {
+    color: #ffa500 !important; /* Bright orange */
+  }
+  /* Comments */
+  .highlight .c, .highlight .cm, .highlight .c1 {
+    color: #9acd32 !important; /* Yellow-green */
+    font-style: italic;
+  }
+  /* Functions */
+  .highlight .nf { color: #1e90ff !important; } /* Dodger blue */
+
+  /* Tables */
+  table { border-collapse: collapse; }
+  th, td { border: 1px solid #444; padding: 0.5rem 0.6rem; }
+  th { background: #363636; color: #f0f0f0; }
+  thead th { border-bottom: 2px solid var(--hk-orange); }
+
+  /* Blockquotes with HK accent */
+  blockquote {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid var(--hk-orange);
+    background: #343434;
+    color: #eaeaea;
+  }
+
+  /* Collapsibles */
+  details {
+    margin: 1rem 0;
+    border: 1px solid #444;
+    border-radius: var(--radius);
+    background: #343434;
+  }
+  details[open] {
+    border-color: var(--hk-orange);
+    box-shadow: 0 0 0 1px rgba(236,102,8,0.15);
+  }
+  details > summary {
+    cursor: pointer;
+    list-style: revert;
+    display: list-item;
+    padding: var(--space) calc(var(--space) + 0.25rem);
+    color: #fff;
+    font-weight: 600;
+    background: linear-gradient(180deg, #383838, #323232);
+    border-bottom: 1px solid #3f3f3f;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+  }
+  details > summary:hover { color: var(--hk-orange); }
+  details > *:not(summary) { padding: var(--space) calc(var(--space) + 0.25rem); }
+  details > summary::-webkit-details-marker { display: inline-block; }
+
+  /* Horizontal rule */
+  hr { border: 0; height: 1px; background: #444; }
+}
+
+/* Ensure summary marker spacing is nice across browsers */
+summary { display: list-item; }
+
+/* ===== Dark-theme table fixes (readability) ===== */
+.page-content table,
+.post-content table,
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem;
+  font-size: 0.95rem;
+  border: 1px solid #2a2a2a;             /* subtle frame */
+}
+
+.page-content table th,
+.post-content table th,
+.markdown-body table th {
+  background: #0f0f10;                    /* darker header for contrast */
+  color: #f2f2f3;                          /* high-contrast text */
+  font-weight: 600;
+  text-align: left;
+  padding: .65rem .8rem;
+  border-bottom: 1px solid #2a2a2a;
+  border-top: 3px solid var(--hk-orange);  /* keep your orange accent */
+}
+
+.page-content table td,
+.post-content table td,
+.markdown-body table td {
+  background: #171819;                    /* body rows */
+  color: #e0e0e0;                          /* brighter text */
+  padding: .65rem .8rem;
+  border-top: 1px solid #2a2a2a;
+  vertical-align: top;
+}
+
+/* Zebra striping for long tables */
+.page-content table tr:nth-child(even) td,
+.post-content table tr:nth-child(even) td,
+.markdown-body table tr:nth-child(even) td {
+  background: #131415;
+}
+
+/* Make inline code readable inside tables */
+.page-content table code,
+.post-content table code,
+.markdown-body table code {
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: .1rem .4rem;
+  border-radius: .35rem;
+  border: 1px solid #353535;
+  font-weight: 500;
+}
+
+/* Keep header code (e.g., `users`) crisp too */
+.page-content table th code,
+.post-content table th code,
+.markdown-body table th code {
+  background: rgba(255,255,255,.08);
+  border-color: #3a3a3a;
+}
+
+/* Allow wide tables to scroll on small screens */
+.page-content table,
+.post-content table,
+.markdown-body table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
