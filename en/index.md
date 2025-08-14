@@ -19,14 +19,3 @@ Welcome to the central documentation hub for the IT department.
     - [Failover Deployments](./web/proposals/failover-deployments/)
 
 ---
-
-<details markdown="1">
-  <summary>Expand: Debug / Render checks</summary>
-
-This collapsible is kept temporarily to monitor styling and markdown processing.
-
-```bash
-echo "Hello from /en/index.md within collapsible"
-ls -la
-```
-</details>

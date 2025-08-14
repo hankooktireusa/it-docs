@@ -89,20 +89,3 @@ Weighted ALB target-group routing to enable zero-downtime **prod1 ↔ prod2** cu
 </details>
 
 ---
-
-<details markdown="1">
-  <summary>Expand: Debug / Render checks</summary>
-
-Temporary collapsible to monitor styling and markdown processing.
-
-```bash
-echo "Hello from /en/web/proposals/failover-deployments/index.md within collapsible"
-ls -la
-```
-</details>
-
-### Render Sanity Check (outside collapsible)
-
-```bash
-echo "Hello from /en/web/proposals/failover-deployments/index.md outside collapsible"
-```

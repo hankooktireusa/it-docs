@@ -132,20 +132,3 @@ deployment-automation/
 This tool walks you through the full deployment flow for CP and WO with prompts, verifications, and safe rollback. Ask a teammate to shadow your first run.
 
 ---
-
-<details markdown="1">
-  <summary>Expand: Debug / Render checks</summary>
-
-Temporary collapsible to monitor styling and markdown processing.
-
-```bash
-echo "Hello from /en/web/deployment-automation/index.md within collapsible"
-ls -la
-```
-</details>
-
-### Render Sanity Check (outside collapsible)
-
-```bash
-echo "Hello from /en/web/deployment-automation/index.md outside collapsible"
-```

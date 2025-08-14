@@ -239,20 +239,3 @@ A user is assigned the role **“Order – WH Order Submission”**, scoped to t
 | 1       | 101           | U              |
 
 ---
-
-<details markdown="1">
-  <summary>Expand: Debug / Render checks</summary>
-
-Temporary collapsible to monitor styling and markdown processing.
-
-```bash
-echo "Hello from /en/web/proposals/ePortal-roles/data-model.md within collapsible"
-ls -la
-```
-</details>
-
-### Render Sanity Check (outside collapsible)
-
-```bash
-echo "Hello from /en/web/proposals/ePortal-roles/data-model.md outside collapsible"
-```

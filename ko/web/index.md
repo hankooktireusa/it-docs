@@ -20,14 +20,3 @@ nav: true
 - [장애 조치 배포](./proposals/failover-deployments/)
 
 ---
-
-<details markdown="1">
-  <summary>확장: 디버그 / 렌더링 확인</summary>
-
-스타일과 마크다운 처리를 모니터링하기 위해 임시로 유지되는 접기 기능입니다.
-
-```bash
-echo "Hello from /ko/web/index.md within collapsible"
-ls -la
-```
-</details>

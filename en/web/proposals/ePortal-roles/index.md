@@ -36,20 +36,3 @@ This project defines a scalable **Role-Based Access Control (RBAC)** structure t
   *Guidance on user-specific overrides outside of role inheritance.*
 
 ---
-
-<details markdown="1">
-  <summary>Expand: Debug / Render checks</summary>
-
-Temporary collapsible to monitor styling and markdown processing.
-
-```bash
-echo "Hello from /en/web/proposals/ePortal-roles/index.md within collapsible"
-ls -la
-```
-</details>
-
-### Render Sanity Check (outside collapsible)
-
-```bash
-echo "Hello from /en/web/proposals/ePortal-roles/index.md outside collapsible"
-```

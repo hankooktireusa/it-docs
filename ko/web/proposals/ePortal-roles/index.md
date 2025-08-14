@@ -36,20 +36,3 @@ nav: false
   *역할 상속과 별도로 사용자 단위 오버라이드를 부여하는 가이던스입니다.*
 
 ---
-
-<details markdown="1">
-  <summary>확장: 디버그 / 렌더링 확인</summary>
-
-스타일과 마크다운 처리를 모니터링하기 위한 임시 접기 영역입니다.
-
-```bash
-echo "Hello from /ko/web/proposals/ePortal-roles/index.md within collapsible"
-ls -la
-```
-</details>
-
-### 렌더링 확인 (접기 기능 외부)
-
-```bash
-echo "Hello from /ko/web/proposals/ePortal-roles/index.md outside collapsible"
-```

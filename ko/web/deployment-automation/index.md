@@ -132,20 +132,3 @@ deployment-automation/
 이 도구는 CP/WO 전체 배포 흐름을 프롬프트, 검증, 안전한 롤백과 함께 단계별로 안내합니다. 첫 실행 시에는 동료와 함께 진행해 보세요.
 
 ---
-
-<details markdown="1">
-  <summary>확장: 디버그 / 렌더링 확인</summary>
-
-스타일과 마크다운 처리를 모니터링하기 위한 임시 접기 영역입니다.
-
-```bash
-echo "Hello from /ko/web/deployment-automation/index.md within collapsible"
-ls -la
-```
-</details>
-
-### 렌더링 확인 (접기 기능 외부)
-
-```bash
-echo "Hello from /ko/web/deployment-automation/index.md outside collapsible"
-```
