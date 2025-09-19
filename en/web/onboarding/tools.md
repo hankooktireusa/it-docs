@@ -10,7 +10,6 @@ permalink: /en/web/onboarding/tools/
 # 🛠 Tools & Accounts
 
 Overview of tools and accounts required for onboarding.  
-(Currently a placeholder — content to be added.)
 
 <details markdown="1">
   <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
@@ -25,16 +24,43 @@ Overview of tools and accounts required for onboarding.
 
 ## Development Tools
 
-_TODO: add details._
+### Tools and Services
+- [Eclipse](https://www.eclipse.org/downloads/packages/)  
+- [PuTTY](https://www.putty.org/)  
+- [WinSCP](https://winscp.net/eng/downloads.php)  
+- [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/)  
+
+### Installs
+- [Git](https://git-scm.com/downloads)  
+- [OpenJDK 8 (Temurin)](https://adoptium.net/temurin/releases/?version=8)  
 
 ---
 
 ## Communication Tools
 
-_TODO: add details._
+### Installing PWA (Progressive Web App) Versions via Copilot
+
+For best performance, install the PWA (Progressive Web App) versions of Outlook and Teams through Microsoft Copilot:
+
+- **Outlook PWA**  
+  1. Open [Copilot](https://copilot.microsoft.com/) in your web browser.  
+  2. Sign in with your work account.  
+  3. In the browser menu, select **Apps → Install this site as an app**.  
+  4. Name it "Outlook" and complete the installation.  
+
+- **Teams PWA**  
+  1. Open [Copilot](https://copilot.microsoft.com/) in your web browser.  
+  2. Sign in with your work account.  
+  3. In the browser menu, select **Apps → Install this site as an app**.  
+  4. Name it "Teams" and complete the installation.
 
 ---
 
 ## Other Resources
 
-_TODO: add details._
+### Files
+- [sapjco3-NTAMD64-3.0.16.zip]({{ '/assets/downloads/sapjco3-NTAMD64-3.0.16.zip' | relative_url }})
+- [sapjco3.zip]({{ '/assets/downloads/sapjco3.zip' | relative_url }})
+- [lombok.zip]({{ '/assets/downloads/lombok.zip' | relative_url }})
+
+---
