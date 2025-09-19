@@ -15,6 +15,7 @@ Welcome to the central documentation hub for the IT department.
 - [Web Team](./web/)
   - [Deployment Automation](./web/deployment-automation/)
   - [Onboarding](./web/onboarding/)
+    - [Standards & Procedures](./web/onboarding/standards-and-procedures)
   - [Proposals](./web/proposals/)
     - [ePortal Roles](./web/proposals/ePortal-roles/)
     - [Failover Deployments](./web/proposals/failover-deployments/)
