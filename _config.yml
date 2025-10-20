@@ -26,5 +26,6 @@ defaults:
       lang: "ko"
 
 include:
+  - favicon.ico
   - assets/css/custom.css
   - _includes/lang-toggle.html
