@@ -15,6 +15,7 @@ permalink: /ko/web/onboarding/standards-and-procedures/
   <summary><strong>📑 목차 (클릭하여 펼치기)</strong></summary>
 
 - [WSDL 파일 업데이트](updating-wsdl-file.md)
+- [수동 배포 절차](manual-deployment-process.md)
 
 </details>
 
