@@ -15,6 +15,7 @@ This section contains documented standards, policies, and procedures to help ens
   <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
 
 - [Updating WSDL File](updating-wsdl-file.md)
+- [Manual Deployment Process](manual-deployment-process.md)
 
 </details>
 
