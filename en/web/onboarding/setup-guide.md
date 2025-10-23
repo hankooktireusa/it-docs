@@ -32,7 +32,7 @@ Follow the steps below to configure your local development environment for worki
 ### 1. Install Required Tools
 
 Ensure all necessary software and services are installed.  
-See the [Tools & Accounts](../tools.md) page for download links and setup instructions.
+See the [Tools & Services](tools.md) page for download links and setup instructions.
 
 You’ll need:
 - Eclipse IDE for Enterprise Java and Web Developers  
@@ -270,29 +270,191 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
+## 🖥️ PuTTY Connections (EC2 Bastion & Tunnels)
+
+You’ll use **PuTTY** to connect to our EC2 servers through a **Bastion host**.  
+This allows secure SSH tunneling so you can open another PuTTY, WinSCP, or DB session through `localhost`.
+
+---
+
+### 🔧 1. Install PuTTY
+
+1. Download and install PuTTY from the official site:  
+   👉 [https://www.putty.org](https://www.putty.org)
+2. Once installed, verify the following tools are available:  
+   - `putty.exe`  
+   - `pageant.exe`  
+   - `pscp.exe`
+
+---
+
+### 🗂️ 2. Create the Bastion Server Session
+
+You’ll first create a session to connect through the **Bastion**.
+
+1. Open **PuTTY**.
+2. Under **Session**, enter:
+   - **Host Name (or IP address):** `<bastion-hostname>`  
+   - **Port:** `22`
+   - **Connection Type:** `SSH`
+3. Save the session name as:  
+   **`Amazon Server - local`**
+4. In the left panel, go to **Connection → Data**, and set:
+   - *Auto-login username:* `ec2-user`
+5. In **Connection → SSH → Auth**, under *Private key file for authentication*, select your `.ppk` key file.  
+   Example: `C:\Keys\hankook-key.ppk`
+6. Go to **Connection → SSH → Tunnels**, and set up your forwarding rule:
+   - **Source port:** `22`
+   - **Destination:** `127.0.0.1:22`
+   - Click **Add**
+7. Go back to **Session**, then click **Save** to store your configuration.
+
+---
+
+### 🌐 3. Connect Through the Bastion Tunnel
+
+1. Launch the saved session `Amazon Server - local`.
+2. Accept the host key on first connection.
+3. Keep this window open — it maintains the tunnel.
+
+You can now open another **PuTTY**, **WinSCP**, or **DB tool** using the following connection parameters:
+
+**Host:** `localhost`  
+**Port:** `22`  
+**Username:** `ec2-user`
+
+This routes traffic through your Bastion tunnel to the target EC2 instance.
+
+---
+
+### 🗝️ 4. Create Additional Saved Sessions
+
+Create additional sessions for each target environment using **localhost** as the hostname:
+
+| Session Name | Hostname | Port | Notes |
+|---------------|-----------|------|-------|
+| **Customer Portal - DEV** | `localhost` | `22` | For DEV EC2 via tunnel |
+| **Customer Portal - PRD1** | `localhost` | `22` | For Production Slot 1 |
+| **Customer Portal - PRD2** | `localhost` | `22` | For Production Slot 2 |
+| **Web Order - DEV** | `localhost` | `22` | For DEV EC2 via tunnel |
+| **Web Order - PRD1** | `localhost` | `22` | For Production Slot 1 |
+| **Web Order - PRD2** | `localhost` | `22` | For Production Slot 2 |
+
+Use the same key file, username, and other settings as the Bastion session, except the hostname will always be `localhost`.
+
+---
+
+### ✅ 5. Set PuTTY Session Window Titles = Session Names
+
+For the automation scripts to correctly focus and send commands to PuTTY sessions, the PuTTY **window titles must exactly match** the session names listed in your `config.ps1` file (e.g., `"Customer Portal - DEV"`, `"Amazon Server - local"`).
+
+**Steps to Configure PuTTY Window Titles**  
+<details>
+<summary>Expand for full step-by-step instructions</summary>
+
+<br>
+
+1. **Open PuTTY Configuration**  
+   - Launch PuTTY.  
+   - Select a saved session (e.g., `Customer Portal - DEV`) from the session list.  
+   - Click **Load**.
+
+2. **Set a Fixed Window Title**  
+   - In the left panel, navigate to:  
+     `Window → Behaviour`  
+   - Under *Window title*, check:  
+     ✅ **Window title string**  
+   - In the **Window title string** box, enter the exact session name as defined in your config, for example:  
+     `Customer Portal - DEV`  
+   ⚠️ *This is case-sensitive and must match EXACTLY.* (You can copy/paste from the **Saved Sessions** textbox.)
+
+3. **Prevent Title Changes by the Remote Host**  
+   - In the left panel, navigate to:  
+     `Terminal → Features`  
+   - Check the option:  
+     ✅ **Disable remote-controlled window title changing**  
+   - This ensures the window title stays fixed even if the server tries to change it.
+
+4. **Save the Updated Session**  
+   - Go back to the **Session** category.  
+   - Click **Save** to update the session with these settings.
+
+5. **Repeat for All Sessions**  
+   Update all PuTTY saved sessions used in the automation:  
+   - `Customer Portal - DEV`  
+   - `Customer Portal - PRD1`  
+   - `Customer Portal - PRD2`  
+   - `Web Order - DEV`  
+   - `Web Order - PRD1`  
+   - `Web Order - PRD2`  
+   - `Amazon Server - local`
+
+6. **Test the Titles**  
+   - Open each PuTTY session and verify:  
+     - The window title in the header and taskbar exactly matches the session name in `config.ps1`.  
+     - The title does **not change** after connecting.
+</details>
+
+---
+
+### 📸 Reference: Bastion Tunnel Setup Screenshots
+
+*(Corresponds to “3.2 EC2 Server (PuTTY / WinSCP)” in the onboarding slides)*
+
+Below are example configurations shown in the internal onboarding deck:
+
+1. **Session Settings** – Hostname, Port, Session Name  
+2. **SSH → Auth** – Private key selection  
+3. **SSH → Tunnels** – Add forwarding rule (`Source port 22 → 127.0.0.1:22`)  
+4. **Data Tab** – Auto-login username  
+5. **Saved Session Confirmation** – Final save and test  
+
+---
+
+Once configured, you can:
+- Connect to the **Bastion** with PuTTY  
+- Keep it open to maintain the tunnel  
+- Use **WinSCP** or a second PuTTY session to connect to target servers via `localhost`
+
+---
+
 ### 📑 WinSCP
 
 **Purpose:** Transfer WAR files and configuration updates between your local machine and remote Tomcat servers.
 
 **Setup:**
-- Use **SFTP** protocol
-- Login type: **Key file authentication**
-- Username: `ec2-user`
-- Private key: `<provided by IT>` (example: `hankooktire-us-key.ppk`)
+- **Protocol:** SFTP  
+- **Login type:** Key file authentication  
+- **Username:** `ec2-user`  
+- **Private key:** `<provided by IT>` (example: `hankooktire-us-key.ppk`)
 
-**Common Server Addresses (for reference):**
+> ⚠️ Before connecting, ensure your **PuTTY Bastion session (`Amazon Server - local`)** is open — this maintains the SSH tunnel required for WinSCP to reach internal EC2 hosts through `localhost`.
 
-| Application | Environment | Host / Port | Description |
-|--------------|-------------|--------------|--------------|
-| Customer Portal | PRD1 | 10.0.10.44:22 | Production Server 1 |
-| Customer Portal | PRD2 | 10.0.10.67:22 | Production Server 2 |
-| Customer Portal | DEV  | 10.0.10.79:22 | Development Server |
-| Web Order | PRD1 | 10.0.10.113:22 | Production Server 1 |
-| Web Order | PRD2 | 10.0.11.76:22 | Production Server 2 |
-| Web Order | DEV  | 10.0.10.84:22 | Development Server |
-| Bastion Host | - | 3.131.154.187:22 | Jump host for external SSH access |
+---
 
-> ⚠️ *Passwords and key files are provided separately by IT. Do not store credentials inside WinSCP session files.*
+**Connection Method (through Bastion):**
+- **Host name:** `localhost`
+- **Port number:** `22`
+- **Username:** `ec2-user`
+- **Authentication:** Use the same `.ppk` key file configured in PuTTY
+
+---
+
+**Common Server References (for awareness):**
+
+| Application | Environment | Internal Host | Description |
+|--------------|-------------|----------------|--------------|
+| Customer Portal | PRD1 | 10.0.10.44 | Production Server 1 |
+| Customer Portal | PRD2 | 10.0.10.67 | Production Server 2 |
+| Customer Portal | DEV  | 10.0.10.79 | Development Server |
+| Web Order | PRD1 | 10.0.10.113 | Production Server 1 |
+| Web Order | PRD2 | 10.0.11.76 | Production Server 2 |
+| Web Order | DEV  | 10.0.10.84 | Development Server |
+| Bastion Host | - | 3.131.154.187 | Jump host for external SSH access |
+
+> 💡 *These IPs are accessed through the Bastion tunnel — you’ll connect via `localhost`, not directly by IP.*
+
+---
 
 **Recommended Paths:**
 - `/opt/tomcat/webapps`
@@ -300,7 +462,8 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
-### 📑 Oracle SQL Developer
+<details>
+<summary><strong>📑 Oracle SQL Developer</strong></summary>
 
 **Purpose:** Query and manage data in the Customer Portal and Web Order Oracle databases.
 
@@ -310,17 +473,23 @@ Follow each step below to confirm you can authenticate successfully in all liste
 - **Port:** `1521`  
 - **SID:** `ORCL`
 
-| Application | Environment | Host | Username | Password |
-|--------------|-------------|------|-----------|-----------|
+| Application | Environment | RDS Host | Username | Password |
+|--------------|-------------|-----------|-----------|-----------|
 | Customer Portal | DEV | `hankooktire-portal-dev-db.cchxlw7s8qgg.us-east-2.rds.amazonaws.com` | `HKTTPPWD` | `<provided by IT>` |
 | Customer Portal | PROD | `hankooktire-portal-prd-db.cchxlw7s8qgg.us-east-2.rds.amazonaws.com` | `HKTTPPWD` | `<provided by IT>` |
 | Web Order | DEV | `hankooktire-us-dev-db.cchxlw7s8qgg.us-east-2.rds.amazonaws.com` | `HKTPPWD` | `<provided by IT>` |
 | Web Order | PROD | `hankooktire-us-prd-db.cchxlw7s8qgg.us-east-2.rds.amazonaws.com` | `HKTPPWD` | `<provided by IT>` |
 
-**Steps:**
-1. Open **PuTTY** and connect to the matching environment (e.g., `Web Order - DEV` or `Customer Portal - PRD1`).
-2. Keep the session open — this establishes the SSH tunnel.
-3. In SQL Developer, create or select the matching connection profile:
+---
+
+**Steps to Connect:**
+
+1. **Open PuTTY Bastion Tunnel**  
+   - Launch `Amazon Server - local` and keep it open.  
+   - This enables localhost routing for database access.
+
+2. **Configure SQL Developer Connection**  
+   Example for Web Order:
    ```
    Connection Name: Web Order - DB
    Username: HKTPPWD
@@ -329,13 +498,102 @@ Follow each step below to confirm you can authenticate successfully in all liste
    Port: 1521
    SID: ORCL
    ```
-4. Click **Test** to confirm successful connection.
-5. Once verified, click **Connect**.
 
-> 💡 *Tip:* Always open the PuTTY session before connecting through SQL Developer, or the database will not be reachable.
+3. **Test and Connect**  
+   - Click **Test** to confirm connection success.  
+   - Once verified, click **Connect**.
+
+> 💡 *Tip:* Always open the PuTTY Bastion session before using WinSCP or SQL Developer — the SSH tunnel must remain active during use.
 
 ---
 
-## First Steps
+## 🧭 First Steps
 
-_TODO: add details._
+Once all setup and accounts are configured, follow these steps to verify that your environment is working correctly.  
+This section ensures that Eclipse, Tomcat, and your database connection are all functioning before you begin development.
+
+---
+
+</details>
+
+### 1. Verify Installation
+
+Before opening any project, confirm that the required tools are installed and linked correctly.
+
+1. **Check Java version**
+   - In a terminal or Command Prompt, run:
+     ```
+     java -version
+     ```
+     You should see version 11 or later displayed.
+
+2. **Check Maven installation**
+   - In the same terminal, run:
+     ```
+     mvn -version
+     ```
+     Confirm that Maven is detected and uses the same Java version as above.
+
+3. **Confirm Tomcat setup**
+   - Ensure Tomcat has been added as a server in Eclipse (via **Window → Preferences → Server → Runtime Environments**).  
+   - The path should point to your local Tomcat installation folder, for example:
+     ```
+     C:\Tomcat\apache-tomcat-9.0.x
+     ```
+
+> 💡 **Tip:** If any of these tools return an error, review the corresponding setup steps in the previous section before continuing.
+
+---
+
+### 2. Run the Project
+
+With the environment verified, you can now build and run your application from Eclipse.
+
+1. **Open the project**  
+   - In Eclipse, open the appropriate workspace and confirm the project (e.g., `WebOrder`, `CustomerPortal`) appears in the **Project Explorer**.
+
+2. **Update Maven project**
+   - Right-click the project → **Maven → Update Project…**
+   - In the dialog box, select your project(s) and click **OK** to refresh dependencies.
+
+3. **Clean the project**
+   - From the top menu, go to **Project → Clean…**
+   - Choose **Clean all projects** and click **Clean**.
+   - This rebuilds your workspace using the latest Maven configuration.
+
+4. **Start Tomcat**
+   - In the **Servers** view, right-click your configured Tomcat server and select **Start**.
+   - Wait for the console log to show that the application has deployed successfully.
+
+5. **Verify in browser**
+   - Open a browser and navigate to:
+     ```
+     http://localhost:8080/
+     ```
+   - Confirm the application homepage loads without errors.
+
+> ⚙️ **Note:** The server mode (e.g., `-Dserver.mode=DEV`) is already configured during setup and does not need to be modified here.
+
+---
+
+### 3. Database Connection Check
+
+Ensure your database connection is functioning correctly before working with any backend features.
+
+1. **Open SQL Developer**
+   - Launch Oracle SQL Developer and select your saved connection profile (e.g., `DEV`).
+
+2. **Test the connection**
+   - Click **Test** in the connection dialog.  
+   - A successful test will display a green **“Status: Success”** message.
+
+3. **View sample data**
+   - After connecting, expand the schema and open a table such as `HT_USER_DETAIL` or `HT_INTERFACE`.
+   - Confirm you can view rows without any access errors.
+
+> 💡 **Tip:** If you encounter authentication or connection errors, verify your Oracle network configuration and contact the IT team for database access verification.
+
+---
+
+✅ **At this point**, your local development environment should be fully operational.  
+You can now begin exploring the project codebase, reviewing controllers, and making your first test changes.

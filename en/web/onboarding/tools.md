@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Tools & Accounts
+title: Tools & Services
 permalink: /en/web/onboarding/tools/
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 {% include lang-toggle.html %}
 
-# 🛠 Tools & Accounts
+# 🛠 Tools & Services
 
-Overview of tools and accounts required for onboarding.  
+Overview of tools and services required for onboarding.  
 
 <details markdown="1">
   <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
@@ -28,7 +28,8 @@ Overview of tools and accounts required for onboarding.
 - [Eclipse](https://www.eclipse.org/downloads/packages/)  
 - [PuTTY](https://www.putty.org/)  
 - [WinSCP](https://winscp.net/eng/downloads.php)  
-- [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/)  
+- [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/)
+- [Apache Tomcat](https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/9.0.100/tomcat-9.0.100.zip)
 
 ### Installs
 - [Git](https://git-scm.com/downloads)  
