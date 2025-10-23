@@ -29,7 +29,9 @@ Follow the steps below to configure your local development environment for worki
 
 ---
 
-### 1. Install Required Tools
+<details markdown="1">
+  <summary><strong>1. Install Required Tools</strong></summary>
+
 
 Ensure all necessary software and services are installed.  
 See the [Tools & Services](tools.md) page for download links and setup instructions.
@@ -46,7 +48,11 @@ You’ll need:
 
 ---
 
-### 2. Clone Repositories
+</details>
+
+<details markdown="1">
+  <summary><strong>2. Clone Repositories</strong></summary>
+
 
 Clone the main application repositories from GitHub:
 
@@ -65,7 +71,11 @@ or any other preferred location.
 
 ---
 
-### 3. Configure Eclipse
+</details>
+
+<details markdown="1">
+  <summary><strong>3. Configure Eclipse</strong></summary>
+
 
 1. **Create or select a workspace**
    - Recommended path:  
@@ -100,7 +110,11 @@ or any other preferred location.
 
 ---
 
-### 4. Install and Configure Tomcat
+</details>
+
+<details markdown="1">
+  <summary><strong>4. Install and Configure Tomcat</strong></summary>
+
 
 1. **Install Apache Tomcat 9.0.100**
    - Suggested path:  
@@ -129,7 +143,11 @@ or any other preferred location.
 
 ---
 
-### 5. Install SAP Library (SAP JCo)
+</details>
+
+<details markdown="1">
+  <summary><strong>5. Install SAP Library (SAP JCo)</strong></summary>
+
 
 1. Download from the onboarding resources:
    - `sapjco3-NTAMD64-3.0.16.zip`
@@ -149,7 +167,11 @@ or any other preferred location.
 
 ---
 
-### 6. Optional: Host File Configuration
+</details>
+
+<details markdown="1">
+  <summary><strong>6. Optional: Host File Configuration</strong></summary>
+
 
 If your local environment cannot connect to EAI endpoints, you may need to add host mappings.
 
@@ -176,7 +198,11 @@ If you do not have admin privileges or your connection already works, you can sk
 
 ---
 
-### 7. Verify Server Mode
+</details>
+
+<details markdown="1">
+  <summary><strong>7. Verify Server Mode</strong></summary>
+
 
 In Eclipse, open your Tomcat **Run Configuration** and check the runtime arguments.  
 Ensure the following is set under **VM arguments**:
@@ -191,6 +217,8 @@ This ensures your local application runs in **development mode**.
 
 ---
 
+</details>
+
 ## 🧾 Accounts
 
 This section covers all required accounts and connections for development and deployment access.  
@@ -198,7 +226,9 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
-### 📑 GitHub
+<details markdown="1">
+  <summary><strong>📑 GitHub</strong></summary>
+
 
 **Purpose:** Access to source repositories for the core applications.
 
@@ -232,7 +262,11 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
-### 📑 Jira
+</details>
+
+<details markdown="1">
+  <summary><strong>📑 Jira</strong></summary>
+
 
 **Purpose:** Manage development tasks, sprint boards, and tickets.
 
@@ -246,7 +280,11 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
-### 📑 AWS Console
+</details>
+
+<details markdown="1">
+  <summary><strong>📑 AWS Console</strong></summary>
+
 
 **Purpose:** Manage EC2, RDS, and ALB configurations for all environments.
 
@@ -270,6 +308,8 @@ Follow each step below to confirm you can authenticate successfully in all liste
 
 ---
 
+</details>
+
 ## 🖥️ PuTTY Connections (EC2 Bastion & Tunnels)
 
 You’ll use **PuTTY** to connect to our EC2 servers through a **Bastion host**.  
@@ -277,7 +317,9 @@ This allows secure SSH tunneling so you can open another PuTTY, WinSCP, or DB se
 
 ---
 
-### 🔧 1. Install PuTTY
+<details markdown="1">
+  <summary><strong>🔧 1. Install PuTTY</strong></summary>
+
 
 1. Download and install PuTTY from the official site:  
    👉 [https://www.putty.org](https://www.putty.org)
@@ -288,7 +330,11 @@ This allows secure SSH tunneling so you can open another PuTTY, WinSCP, or DB se
 
 ---
 
-### 🗂️ 2. Create the Bastion Server Session
+</details>
+
+<details markdown="1">
+  <summary><strong>🗂️ 2. Create the Bastion Server Session</strong></summary>
+
 
 You’ll first create a session to connect through the **Bastion**.
 
@@ -311,7 +357,11 @@ You’ll first create a session to connect through the **Bastion**.
 
 ---
 
-### 🌐 3. Connect Through the Bastion Tunnel
+</details>
+
+<details markdown="1">
+  <summary><strong>🌐 3. Connect Through the Bastion Tunnel</strong></summary>
+
 
 1. Launch the saved session `Amazon Server - local`.
 2. Accept the host key on first connection.
@@ -327,7 +377,11 @@ This routes traffic through your Bastion tunnel to the target EC2 instance.
 
 ---
 
-### 🗝️ 4. Create Additional Saved Sessions
+</details>
+
+<details markdown="1">
+  <summary><strong>🗝️ 4. Create Additional Saved Sessions</strong></summary>
+
 
 Create additional sessions for each target environment using **localhost** as the hostname:
 
@@ -344,7 +398,11 @@ Use the same key file, username, and other settings as the Bastion session, exce
 
 ---
 
-### ✅ 5. Set PuTTY Session Window Titles = Session Names
+</details>
+
+<details markdown="1">
+  <summary><strong>✅ 5. Set PuTTY Session Window Titles = Session Names</strong></summary>
+
 
 For the automation scripts to correctly focus and send commands to PuTTY sessions, the PuTTY **window titles must exactly match** the session names listed in your `config.ps1` file (e.g., `"Customer Portal - DEV"`, `"Amazon Server - local"`).
 
@@ -397,7 +455,11 @@ For the automation scripts to correctly focus and send commands to PuTTY session
 
 ---
 
-### 📸 Reference: Bastion Tunnel Setup Screenshots
+</details>
+
+<details markdown="1">
+  <summary><strong>📸 Reference: Bastion Tunnel Setup Screenshots</strong></summary>
+
 
 *(Corresponds to “3.2 EC2 Server (PuTTY / WinSCP)” in the onboarding slides)*
 
@@ -418,7 +480,11 @@ Once configured, you can:
 
 ---
 
-### 📑 WinSCP
+</details>
+
+<details markdown="1">
+  <summary><strong>📑 WinSCP</strong></summary>
+
 
 **Purpose:** Transfer WAR files and configuration updates between your local machine and remote Tomcat servers.
 
@@ -462,8 +528,11 @@ Once configured, you can:
 
 ---
 
-<details>
-<summary><strong>📑 Oracle SQL Developer</strong></summary>
+</details>
+
+<details markdown="1">
+  <summary><strong>📑 Oracle SQL Developer</strong></summary>
+
 
 **Purpose:** Query and manage data in the Customer Portal and Web Order Oracle databases.
 
@@ -507,6 +576,8 @@ Once configured, you can:
 
 ---
 
+</details>
+
 ## 🧭 First Steps
 
 Once all setup and accounts are configured, follow these steps to verify that your environment is working correctly.  
@@ -514,9 +585,9 @@ This section ensures that Eclipse, Tomcat, and your database connection are all 
 
 ---
 
-</details>
+<details markdown="1">
+  <summary><strong>1. Verify Installation</strong></summary>
 
-### 1. Verify Installation
 
 Before opening any project, confirm that the required tools are installed and linked correctly.
 
@@ -545,7 +616,11 @@ Before opening any project, confirm that the required tools are installed and li
 
 ---
 
-### 2. Run the Project
+</details>
+
+<details markdown="1">
+  <summary><strong>2. Run the Project</strong></summary>
+
 
 With the environment verified, you can now build and run your application from Eclipse.
 
@@ -576,7 +651,11 @@ With the environment verified, you can now build and run your application from E
 
 ---
 
-### 3. Database Connection Check
+</details>
+
+<details markdown="1">
+  <summary><strong>3. Database Connection Check</strong></summary>
+
 
 Ensure your database connection is functioning correctly before working with any backend features.
 
@@ -597,3 +676,5 @@ Ensure your database connection is functioning correctly before working with any
 
 ✅ **At this point**, your local development environment should be fully operational.  
 You can now begin exploring the project codebase, reviewing controllers, and making your first test changes.
+
+</details>
