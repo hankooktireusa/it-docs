@@ -15,7 +15,7 @@ Welcome! This section contains onboarding and setup guides for new employees, as
   <summary><strong>📑 Table of Contents (click to expand)</strong></summary>
 
 - [Setup Guide](setup-guide.md)
-- [Tools & Accounts](tools.md)
+- [Tools & Services](tools.md)
 - [Standards & Procedures](standards-and-procedures/)
 
 </details>
