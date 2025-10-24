@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Manual Deployment Process
-permalink: /en/web/onboarding/standards-and-procedures/manual-deployment-process/
+permalink: /en/web/standards-and-procedures/manual-deployment-process/
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">

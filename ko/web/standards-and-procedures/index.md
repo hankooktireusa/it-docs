@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 표준 및 절차
-permalink: /ko/web/onboarding/standards-and-procedures/
+permalink: /ko/web/standards-and-procedures/
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">

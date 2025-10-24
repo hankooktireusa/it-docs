@@ -17,9 +17,7 @@ IT 부서의 중앙 문서 허브에 오신 것을 환영합니다.
   - [온보딩](./web/onboarding/)
     - [설정 가이드](./web/onboarding/setup-guide)
     - [도구 및 서비스](./web/onboarding/tools)
-    - [표준 및 절차](./web/onboarding/standards-and-procedures)
+  - [표준 및 절차](./web/standards-and-procedures)
   - [제안서](./web/proposals/)
-    - [ePortal 역할](./web/proposals/ePortal-roles/)
-    - [장애 조치 배포](./web/proposals/failover-deployments/)
 
 ---

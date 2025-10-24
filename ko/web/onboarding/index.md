@@ -16,7 +16,6 @@ permalink: /ko/web/onboarding/
 
 - [설정 가이드](setup-guide.md)
 - [도구 및 서비스](tools.md)
-- [표준 및 절차](standards-and-procedures/)
 
 </details>
 

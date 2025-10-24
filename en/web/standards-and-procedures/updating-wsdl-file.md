@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Updating WSDL File
-permalink: /en/web/onboarding/standards-and-procedures/updating-wsdl-file/
+permalink: /en/web/standards-and-procedures/updating-wsdl-file/
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">

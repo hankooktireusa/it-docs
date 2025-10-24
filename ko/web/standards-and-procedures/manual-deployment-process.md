@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 수동 배포 절차
-permalink: /ko/web/onboarding/standards-and-procedures/manual-deployment-process/
+permalink: /ko/web/standards-and-procedures/manual-deployment-process/
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">

@@ -17,9 +17,7 @@ Welcome to the central documentation hub for the IT department.
   - [Onboarding](./web/onboarding/)
     - [Setup Guide](./web/onboarding/setup-guide)
     - [Tools & Services](./web/onboarding/tools)
-    - [Standards & Procedures](./web/onboarding/standards-and-procedures)
+  - [Standards & Procedures](./web/standards-and-procedures)
   - [Proposals](./web/proposals/)
-    - [ePortal Roles](./web/proposals/ePortal-roles/)
-    - [Failover Deployments](./web/proposals/failover-deployments/)
 
 ---
