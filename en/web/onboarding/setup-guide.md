@@ -23,6 +23,11 @@ This guide explains the basic setup steps for new employees.
 
 ---
 
+> 🔗 **Quick access:** See the team’s **Useful URLs** list on the Onboarding page →  
+> [/en/web/onboarding/#useful-urls](/en/web/onboarding/#useful-urls)
+
+---
+
 ## Environment Setup
 
 Follow the steps below to configure your local development environment for working on the **Customer Portal (CP)** and **Web Order System (WOS)** projects.
