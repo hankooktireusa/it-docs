@@ -7,12 +7,12 @@ minima:
 header_pages:
   - en/index.md
   - en/web/index.md
-  - en/web/standards-and-procedures/index.md
   - en/web/onboarding/index.md
+  - en/web/standards-and-procedures/index.md
   - ko/index.md
   - ko/web/index.md
-  - ko/web/standards-and-procedures/index.md
   - ko/web/onboarding/index.md
+  - ko/web/standards-and-procedures/index.md
 
 # Auto-apply front matter to everything under /en and /ko
 defaults:
