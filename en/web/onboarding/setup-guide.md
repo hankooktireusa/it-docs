@@ -23,8 +23,7 @@ This guide explains the basic setup steps for new employees.
 
 ---
 
-> 🔗 **Quick access:** See the team’s **Useful URLs** list on the Onboarding page →  
-> [/en/web/onboarding/#useful-urls](/en/web/onboarding/#useful-urls)
+> 🔗 **Quick access:** See the team’s [Useful URLs]({{ '/en/web/onboarding/#useful-urls' | relative_url }}) list on the Onboarding page.
 
 ---
 

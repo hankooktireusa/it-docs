@@ -23,8 +23,7 @@ permalink: /ko/web/onboarding/setup-guide/
 
 ---
 
-> 🔗 **빠른 이동:** 팀의 **유용한 URL** 목록은 온보딩 페이지에서 확인하세요 →  
-> [/ko/web/onboarding/#useful-urls](/ko/web/onboarding/#useful-urls)
+> 🔗 **빠른 이동:** 온보딩 페이지의 [유용한 URL]({{ '/ko/web/onboarding/#useful-urls' | relative_url }}) 목록을 확인하세요.
 
 ---
 
