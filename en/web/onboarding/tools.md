@@ -64,4 +64,8 @@ For best performance, install the PWA (Progressive Web App) versions of Outlook 
 - [sapjco3.zip]({{ '/assets/downloads/sapjco3.zip' | relative_url }})
 - [lombok.zip]({{ '/assets/downloads/lombok.zip' | relative_url }})
 
+### Helpful Scripts
+- [PO Mask Insert Generator (PowerShell)]({{ '/assets/downloads/po-mask-generator.zip' | relative_url }})  
+  Automates creation of Oracle SQL `INSERT` statements for `HKTPWD.HT_PO_MASK`, with regex pattern templates, descriptions, and multi-ShipTo support.
+
 ---
