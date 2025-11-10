@@ -64,4 +64,8 @@ permalink: /ko/web/onboarding/tools/
 - [sapjco3.zip]({{ '/assets/downloads/sapjco3.zip' | relative_url }})
 - [lombok.zip]({{ '/assets/downloads/lombok.zip' | relative_url }}) 
 
+### 유용한 스크립트
+- [PO Mask Insert Generator (PowerShell)]({{ '/assets/downloads/po-mask-generator.zip' | relative_url }})  
+  정규식 패턴 템플릿, 설명, 다중 SHIPTO 지원을 활용하여 `HKTPWD.HT_PO_MASK` 테이블용 Oracle SQL `INSERT` 문을 자동으로 생성합니다.
+
 ---
