@@ -27,10 +27,12 @@ These links provide quick access to internal and shared team resources used thro
 
 | Category | Description | Link |
 |-----------|--------------|------|
-| **Customer Portal** | Customer Portal Page (PROD) | [https://eportal.hankooktire.com/](https://eportal.hankooktire.com/) |
-|  | Customer Portal Page (DEV) | [https://deveportal.hankooktire.com/](https://deveportal.hankooktire.com/) |
-| **Web Order System** | Web Order System Page (PROD) | [https://eorder.hankooktire.com/](https://eorder.hankooktire.com/) |
-|  | Web Order System Page (DEV) | [https://deveorder.hankooktire.com/](https://deveorder.hankooktire.com/) |
+| **ePortal Admin** | ePortal Admin Page (PROD) | [https://admportal-hta.hankookn.com/](https://admportal-hta.hankookn.com/) |
+|  | ePortal Admin Page (DEV) | [https://devadmportal-hta.hankookn.com/](https://devadmportal-hta.hankookn.com/) |
+| **ePortal Customer** | ePortal Customer Page (PROD) | [https://eportal-hta.hankookn.com/](https://eportal-hta.hankookn.com/) |
+|  | ePortal Customer Page (DEV) | [https://deveportal-hta.hankookn.com/](https://deveportal-hta.hankookn.com/) |
+| **ePortal Git Repo** | ePortal Git Repo (Admin) | [https://hq-git.hankooktech.com/digital-si-team/GSP/](https://hq-git.hankooktech.com/digital-si-team/GSP/) |
+|  | ePortal Git Repo (Customer) | [https://hq-git.hankooktech.com/digital-si-team/GCP/](https://hq-git.hankooktech.com/digital-si-team/GCP/) |
 | **Jira** | Web Team's Jira Page | [https://hankooktireusa.atlassian.net/jira/software/c/projects/NIWT/boards/11](https://hankooktireusa.atlassian.net/jira/software/c/projects/NIWT/boards/11) |
 | **GitHub** | Web Team's GitHub Page | [https://github.com/](https://github.com/) |
 | **AWS** | Web Team's AWS Account | [https://us-east-2.console.aws.amazon.com/](https://us-east-2.console.aws.amazon.com/) |
@@ -39,6 +41,11 @@ These links provide quick access to internal and shared team resources used thro
 | **ADP** | Employee Payroll Page | [https://workforcenow.adp.com/](https://workforcenow.adp.com/) |
 | **360 Learning** | Hankook Employee Training Site | [https://hankooktire.360learning.com/](https://hankooktire.360learning.com/) |
 | **e-HR** | Hankook Employee HR Page | [https://g-ehr.hankooktech.com/](https://g-ehr.hankooktech.com/) |
+| **Old Links** |  |  |
+| **Customer Portal** | Customer Portal Page (PROD) | [https://eportal.hankooktire.com/](https://eportal.hankooktire.com/) |
+|  | Customer Portal Page (DEV) | [https://deveportal.hankooktire.com/](https://deveportal.hankooktire.com/) |
+| **Web Order System** | Web Order System Page (PROD) | [https://eorder.hankooktire.com/](https://eorder.hankooktire.com/) |
+|  | Web Order System Page (DEV) | [https://deveorder.hankooktire.com/](https://deveorder.hankooktire.com/) |
 
 > 🧭 *This section is meant for quick reference — technical tool installation links remain in the [Tools & Services](tools.md) page.*
 
