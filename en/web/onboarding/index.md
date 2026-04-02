@@ -36,4 +36,27 @@ Work through the guides below in order if you are new, or jump to a specific sec
 
 ---
 
+## 🔗 Useful Links
+
+| Name | URL |
+|------|-----|
+| **ePortal Admin (PROD)** | [https://admportal-hta.hankookn.com/](https://admportal-hta.hankookn.com/) |
+| **ePortal Admin (DEV)** | [https://devadmportal-hta.hankookn.com/](https://devadmportal-hta.hankookn.com/) |
+| **ePortal Customer (PROD)** | [https://eportal-hta.hankookn.com/](https://eportal-hta.hankookn.com/) |
+| **ePortal Customer (DEV)** | [https://deveportal-hta.hankookn.com/](https://deveportal-hta.hankookn.com/) |
+| **GitLab (Admin - GSP)** | [https://hq-git.hankooktech.com/digital-si-team/GSP/](https://hq-git.hankooktech.com/digital-si-team/GSP/) |
+| **GitLab (Customer - GCP)** | [https://hq-git.hankooktech.com/digital-si-team/GCP/](https://hq-git.hankooktech.com/digital-si-team/GCP/) |
+| **Jenkins (DEV)** | [https://hqdev-jenkins.hankooktech.com](https://hqdev-jenkins.hankooktech.com) |
+| **Jenkins (PRD)** | [https://hq-jenkins.hankooktech.com](https://hq-jenkins.hankooktech.com) |
+| **Jira** | [https://hankooktireusa.atlassian.net/jira/software/c/projects/NIWT/boards/11](https://hankooktireusa.atlassian.net/jira/software/c/projects/NIWT/boards/11) |
+| **HIWARE** | [https://hiware.hankookn.com/](https://hiware.hankookn.com/) |
+| **LiveChat** | [https://www.livechat.com/app/](https://www.livechat.com/app/) |
+| **Arena** | [https://arena.hankooktech.com/](https://arena.hankooktech.com/) |
+| **ADP** | [https://workforcenow.adp.com/](https://workforcenow.adp.com/) |
+| **360 Learning** | [https://hankooktire.360learning.com/](https://hankooktire.360learning.com/) |
+| **e-HR** | [https://g-ehr.hankooktech.com/](https://g-ehr.hankooktech.com/) |
+| **Assembly** | [https://app.joinassembly.com/a](https://app.joinassembly.com/a) |
+
+---
+
 > 🗄 *Looking for legacy setup documentation? See the [Archive](./archive/).*

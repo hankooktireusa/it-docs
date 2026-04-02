@@ -16,7 +16,6 @@ This page covers all systems you will need access to as a Web Team member. Work 
 
 - [Development Systems](#development-systems)
 - [Project Management](#project-management)
-- [Infrastructure](#infrastructure)
 - [Employee Systems](#employee-systems)
 
 </details>
@@ -30,7 +29,10 @@ This page covers all systems you will need access to as a Web Team member. Work 
 
 **Purpose:** Source control for all Web Team projects.
 
-**URL:** `<GitLab instance URL>`
+| Repo | URL |
+|------|-----|
+| Admin (GSP) | [https://hq-git.hankooktech.com/digital-si-team/GSP/](https://hq-git.hankooktech.com/digital-si-team/GSP/) |
+| Customer (GCP) | [https://hq-git.hankooktech.com/digital-si-team/GCP/](https://hq-git.hankooktech.com/digital-si-team/GCP/) |
 
 **Steps:**
 1. Request an account from your project lead or IT admin.
@@ -42,10 +44,8 @@ This page covers all systems you will need access to as a Web Team member. Work 
 4. Add the public key to your GitLab profile under **Preferences → SSH Keys**.
 5. Test your connection:
    ```bash
-   ssh -T git@<gitlab-host>
+   ssh -T git@hq-git.hankooktech.com
    ```
-
-> 💡 *Ask your project lead for the correct group path and repository names.*
 
 ---
 
@@ -56,12 +56,15 @@ This page covers all systems you will need access to as a Web Team member. Work 
 
 **Purpose:** CI/CD pipeline for building and deploying applications.
 
-**URL:** `<Jenkins instance URL>`
+| Environment | URL | Job |
+|-------------|-----|-----|
+| DEV | [https://hqdev-jenkins.hankooktech.com](https://hqdev-jenkins.hankooktech.com) | `ePortal DEV` |
+| PRD | [https://hq-jenkins.hankooktech.com](https://hq-jenkins.hankooktech.com) | `ePortal PRD 1`, `ePortal PRD 2` |
 
 **Steps:**
 1. Request access from your project lead.
-2. Log in using your corporate SSO credentials (or the credentials provided by IT).
-3. Confirm you can view the relevant pipeline jobs for the Web Team projects.
+2. Log in using your corporate SSO credentials.
+3. Confirm you can view the ePortal pipeline jobs for both environments.
 
 > 💡 *See [Deployment Process](../standards-and-procedures/deployment-process/) for how Jenkins is used in the team's workflow.*
 
@@ -109,42 +112,17 @@ This page covers all systems you will need access to as a Web Team member. Work 
 
 ---
 
-## Infrastructure
-
-<details markdown="1">
-  <summary><strong>📑 AWS Console</strong></summary>
-
-**Purpose:** Cloud infrastructure management (EC2, RDS, CloudWatch, etc.).
-
-**URL:** [https://hankook-us.signin.aws.amazon.com/console](https://hankook-us.signin.aws.amazon.com/console)
-
-**Account:** `hankook-us` (Account #: 620483805473)
-
-**Login type:** IAM User
-
-**Steps:**
-1. Navigate to the console URL above.
-2. Select **IAM user** and enter the account alias `hankook-us`.
-3. Sign in with your IAM username and password (provided by IT).
-4. Verify you have read access to EC2, RDS, and CloudWatch for the relevant environments.
-
----
-
-</details>
-
----
-
 ## Employee Systems
 
 The following systems are used across the company. Request access or activate your account as directed during HR onboarding.
 
-| System | Purpose | URL |
-|--------|---------|-----|
-| **Arena** | Employee portal | [https://arena.hankooktech.com/](https://arena.hankooktech.com/) |
-| **ADP** | Payroll and time management | [https://workforcenow.adp.com/](https://workforcenow.adp.com/) |
-| **360 Learning** | Employee training platform | [https://hankooktire.360learning.com/](https://hankooktire.360learning.com/) |
-| **e-HR** | HR self-service | [https://g-ehr.hankooktech.com/](https://g-ehr.hankooktech.com/) |
-| **Assembly** | Employee recognition | [https://app.joinassembly.com/a](https://app.joinassembly.com/a) |
+| System | Purpose |
+|--------|---------|
+| **[Arena](https://arena.hankooktech.com/)** | Employee portal |
+| **[ADP](https://workforcenow.adp.com/)** | Payroll and time management |
+| **[360 Learning](https://hankooktire.360learning.com/)** | Employee training platform |
+| **[e-HR](https://g-ehr.hankooktech.com/)** | HR self-service |
+| **[Assembly](https://app.joinassembly.com/a)** | Employee recognition |
 
 ---
 
