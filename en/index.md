@@ -2,7 +2,7 @@
 layout: default
 title: Home
 permalink: /en/
-nav: true
+nav: false
 ---
 
 {% include lang-toggle.html %}
@@ -11,13 +11,10 @@ nav: true
 
 Welcome to the central documentation hub for the IT department.
 
-## Quick Access
+## Teams
+
 - [Web Team](./web/)
-  - [Deployment Automation](./web/deployment-automation/)
   - [Onboarding](./web/onboarding/)
-    - [Setup Guide](./web/onboarding/setup-guide)
-    - [Tools & Services](./web/onboarding/tools)
-  - [Standards & Procedures](./web/standards-and-procedures)
-  - [Proposals](./web/proposals/)
+  - [Standards & Procedures](./web/standards-and-procedures/)
 
 ---

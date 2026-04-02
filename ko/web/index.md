@@ -1,20 +1,19 @@
 ---
 layout: default
-title: 웹
+title: 웹 팀
 permalink: /ko/web/
 nav: true
 ---
 
 {% include lang-toggle.html %}
 
-# 웹 팀 문서
+# 💻 웹 팀
 
-웹 팀의 아키텍처, 배포, 그리고 워크플로우는 여기서 시작하세요.
+웹 팀 문서 허브입니다. 아래 섹션을 선택하여 시작하세요.
 
 ## 섹션
-- [온보딩](./onboarding/)
-- [표준 및 절차](standards-and-procedures/)
-- [배포 자동화](./deployment-automation/)
-- [제안서](./proposals/)
+
+- [온보딩](./onboarding/) — 액세스 설정, 환경 구성, 도구 및 팀 연락처
+- [표준 및 절차](./standards-and-procedures/) — 배포 프로세스, 코딩 표준 및 팀 워크플로우
 
 ---
