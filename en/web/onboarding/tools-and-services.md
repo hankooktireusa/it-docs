@@ -26,17 +26,17 @@ Downloads and installation links for all tools required by the Web Team.
 
 | Tool | Purpose | Download |
 |------|---------|----------|
-| **Eclipse IDE** (Enterprise Java and Web Developers) | Primary IDE | [eclipse.org](https://www.eclipse.org/downloads/packages/) |
+| **Eclipse IDE** | Primary IDE | [eclipse.org](https://www.eclipse.org/downloads/packages/) |
+| **VS Code** | Primary IDE | [code.visualstudio.com](https://code.visualstudio.com/download) |
 | **Git** | Version control | [git-scm.com](https://git-scm.com/downloads) |
-| **OpenJDK (Temurin)** | Java runtime — confirm required version with your project lead | [adoptium.net](https://adoptium.net/temurin/releases/) |
-| **Apache Tomcat** | Local application server — confirm required version with your project lead | [tomcat.apache.org](https://tomcat.apache.org/download-90.cgi) |
-| **PuTTY** | SSH client for server access | [putty.org](https://www.putty.org/) |
-| **WinSCP** | SFTP client for file transfers | [winscp.net](https://winscp.net/eng/downloads.php) |
+| **OpenJDK** | Java runtime — confirm required version with your project lead | [adoptium.net](https://adoptium.net/temurin/releases/) |
 | **Oracle SQL Developer** | Database client | [oracle.com](https://www.oracle.com/database/sqldeveloper/technologies/download/) |
+| **DBeaver** | Database client | [dbeaver.io](https://dbeaver.io/download/) |
+| **HIWARE** | Access Management Tool | [hiware.hankookn.com](https://hiware.hankookn.com/) |
+| **LiveChat** | Customer Service Tool | [livechat.com](https://www.livechat.com/app/) |
 
-> 💡 Install tools to easily remembered paths, e.g.:
-> - Tomcat: `C:\Tomcat\apache-tomcat-<version>`
-> - Keys: `C:\Utility\Keys\`
+
+> 💡 Store SSH keys in an easily remembered path, e.g.: `C:\Utility\Keys\`
 
 ---
 
@@ -69,9 +69,7 @@ For best performance, install Outlook and Teams as Progressive Web Apps through 
 
 | File | Notes |
 |------|-------|
-| [sapjco3-NTAMD64-3.0.16.zip]({{ '/assets/downloads/sapjco3-NTAMD64-3.0.16.zip' | relative_url }}) | SAP JCo native library (64-bit Windows) |
-| [sapjco3.zip]({{ '/assets/downloads/sapjco3.zip' | relative_url }}) | SAP JCo JAR |
-| [lombok.zip]({{ '/assets/downloads/lombok.zip' | relative_url }}) | Lombok annotation processor |
+| [sapjco3-ntamd64-3.1.12.zip]({{ '/assets/downloads/sapjco3-ntamd64-3.1.12.zip' | relative_url }}) | SAP JCo native library (64-bit Windows) |
 
 ---
 
