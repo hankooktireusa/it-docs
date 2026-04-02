@@ -17,7 +17,6 @@ This guide walks through setting up your local development environment for Web T
 - [Prerequisites](#prerequisites)
 - [Clone Repositories](#clone-repositories)
 - [IDE Configuration](#ide-configuration)
-- [Local Server Setup](#local-server-setup)
 - [Verify Your Setup](#verify-your-setup)
 
 </details>
@@ -30,44 +29,30 @@ Before starting, ensure you have installed all required tools. See [Tools & Serv
 
 Required:
 - Eclipse IDE for Enterprise Java and Web Developers
-- Git (with SSH key configured for GitLab)
-- Apache Tomcat
-- OpenJDK (see Tools & Services for the required version)
-- PuTTY and WinSCP (for server access)
+- Git (with HTTPS access to GitLab)
+- OpenJDK (confirm required version with your project lead)
+- SAP JCo library — extracted to a known path (see [Tools & Services](../tools-and-services/))
 
 ---
 
 ## Clone Repositories
 
 <details markdown="1">
-  <summary><strong>1. Configure Git SSH for GitLab</strong></summary>
+  <summary><strong>1. Clone Project Repositories</strong></summary>
 
-If you haven't already added your SSH key to GitLab, do so now. See [Access & Accounts → GitLab](../access-and-accounts/#gitlab) for steps.
-
-Verify your SSH key is working:
-```bash
-ssh -T git@<gitlab-host>
-```
-
----
-
-</details>
-
-<details markdown="1">
-  <summary><strong>2. Clone Project Repositories</strong></summary>
-
-Clone the repositories you need to the suggested local path:
+Clone the repositories you need. Suggested local path: `C:\Users\<username>\git\`
 
 ```bash
-C:\Users\<username>\git\
+git clone https://hq-git.hankooktech.com/digital-si-team/GSP.git
+git clone https://hq-git.hankooktech.com/digital-si-team/GCP.git
 ```
 
-Example:
-```bash
-git clone git@<gitlab-host>:<group>/<repository>.git
-```
+Git will prompt for your GitLab username and Personal Access Token on first use. See [Access & Accounts → GitLab](../access-and-accounts/#gitlab) if you haven't set up a token yet.
 
-> 💡 *Ask your project lead for the correct repository paths.*
+> 💡 *To avoid re-entering credentials on every operation:*
+> ```bash
+> git config --global credential.helper manager
+> ```
 
 ---
 
@@ -90,18 +75,7 @@ git clone git@<gitlab-host>:<group>/<repository>.git
 </details>
 
 <details markdown="1">
-  <summary><strong>2. Add SSH Key to Eclipse</strong></summary>
-
-1. Go to `Window > Preferences > General > Network Connections > SSH2`
-2. Click **Add Private Key** and select your `.pem` or `.ppk` file.
-   - Suggested key location: `C:\Utility\Keys\`
-
----
-
-</details>
-
-<details markdown="1">
-  <summary><strong>3. Install EGit (if not already installed)</strong></summary>
+  <summary><strong>2. Install EGit (if not already installed)</strong></summary>
 
 1. `Help > Eclipse Marketplace`
 2. Search for **EGit** and install **Git Integration for Eclipse**.
@@ -111,10 +85,10 @@ git clone git@<gitlab-host>:<group>/<repository>.git
 </details>
 
 <details markdown="1">
-  <summary><strong>4. Import Project into Eclipse</strong></summary>
+  <summary><strong>3. Import Project into Eclipse</strong></summary>
 
 1. `Window > Perspective > Open Perspective > Other... > Git`
-2. Select **Clone a Git Repository** and paste the SSH URL.
+2. Select **Clone a Git Repository** and paste the HTTPS URL.
 3. Click through **Next** → **Finish**.
 4. After cloning, right-click the repository → **Import Projects...** → **Finish**.
 5. Right-click the project → `Maven > Update Project` → **OK**.
@@ -125,55 +99,27 @@ git clone git@<gitlab-host>:<group>/<repository>.git
 </details>
 
 <details markdown="1">
-  <summary><strong>5. Assign JRE</strong></summary>
+  <summary><strong>4. Assign JRE</strong></summary>
 
 1. `Window > Preferences > Java > Installed JREs`
 2. Add or select the required JDK version (see [Tools & Services](../tools-and-services/)).
-3. Confirm it is assigned to both the project build path and the Tomcat server runtime.
+3. Confirm it is assigned to the project build path.
 
 ---
 
 </details>
 
----
-
-## Local Server Setup
 
 <details markdown="1">
-  <summary><strong>1. Add Tomcat to Eclipse</strong></summary>
+  <summary><strong>5. Set VM Arguments</strong></summary>
 
-1. `Window > Show View > Servers`
-2. Click **Create a new server**.
-3. Choose **Apache → Tomcat v9.0 Server** (or the version specified in Tools & Services).
-4. Set the installation directory to your Tomcat folder.
-5. Click **Next**, add the project(s), and click **Finish**.
-
----
-
-</details>
-
-<details markdown="1">
-  <summary><strong>2. Configure Server Settings</strong></summary>
-
-1. In the **Servers** view, double-click your Tomcat server.
-2. Change the **HTTP/1.1 port** if required (confirm with your project lead).
-3. Open `server.xml` and verify the `<Context>` element points to the correct project.
-
----
-
-</details>
-
-<details markdown="1">
-  <summary><strong>3. Set VM Arguments</strong></summary>
-
-In Eclipse, open the Tomcat **Run Configuration** and check **VM arguments**.  
-Ensure the following is set:
+In Eclipse, open your **Run Configuration** and add the following under **VM arguments**:
 
 ```
--Dserver.mode=DEV
+-Dspring.profiles.active=dev2-us -Djava.library.path="C:\ePortal\sapjco3-ntamd64-3.1.12"
 ```
 
-This ensures your local build runs in development mode and does not connect to production services.
+Replace the `java.library.path` value with wherever you extracted the SAP JCo library. The recommended path is `C:\ePortal\sapjco3-ntamd64-3.1.12` — see [Tools & Services](../tools-and-services/) for the download and suggested extraction location.
 
 ---
 
@@ -190,11 +136,9 @@ Once everything is configured, confirm your environment is working:
 
 1. Right-click the project → **Maven → Update Project…** → **OK**
 2. `Project > Clean...` → **Clean all projects**
-3. In the **Servers** view, right-click Tomcat → **Start**
-4. Wait for the console to show a successful deployment
-5. Open a browser and navigate to `http://localhost:<port>/`
+3. Run the project and confirm it starts without errors in the console
 
-If the application loads without errors, your environment is ready.
+If there are no errors on startup, your environment is ready.
 
 ---
 
@@ -203,7 +147,7 @@ If the application loads without errors, your environment is ready.
 <details markdown="1">
   <summary><strong>Confirm GitLab Access</strong></summary>
 
-Make a test branch and push it to confirm your GitLab SSH access is working end to end:
+Make a test branch and push it to confirm your GitLab access is working end to end:
 
 ```bash
 git checkout -b test/env-verify

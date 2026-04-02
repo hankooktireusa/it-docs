@@ -34,18 +34,25 @@ This page covers all systems you will need access to as a Web Team member. Work 
 | Admin (GSP) | [https://hq-git.hankooktech.com/digital-si-team/GSP/](https://hq-git.hankooktech.com/digital-si-team/GSP/) |
 | Customer (GCP) | [https://hq-git.hankooktech.com/digital-si-team/GCP/](https://hq-git.hankooktech.com/digital-si-team/GCP/) |
 
+**Authentication:** HTTPS with a Personal Access Token (PAT)
+
 **Steps:**
 1. Request an account from your project lead or IT admin.
 2. Once created, confirm you have access to the relevant project group(s).
-3. Set up SSH key authentication:
+3. Generate a Personal Access Token:
+   - In GitLab, go to **User Menu (top right) → Preferences → Access Tokens**
+   - Create a token with at least `read_repository` and `write_repository` scopes
+   - Copy and save it — you will not be able to see it again
+4. When cloning or pushing, use your GitLab username and the token as the password:
    ```bash
-   ssh-keygen -t ed25519 -C "your.email@hankooktech.com"
+   git clone https://hq-git.hankooktech.com/digital-si-team/GSP.git
    ```
-4. Add the public key to your GitLab profile under **Preferences → SSH Keys**.
-5. Test your connection:
-   ```bash
-   ssh -T git@hq-git.hankooktech.com
-   ```
+   Git will prompt for your username and password on first use. Enter your PAT as the password.
+
+> 💡 *To avoid re-entering credentials, configure Git to cache them:*
+> ```bash
+> git config --global credential.helper manager
+> ```
 
 ---
 

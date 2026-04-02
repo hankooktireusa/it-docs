@@ -36,7 +36,7 @@ Downloads and installation links for all tools required by the Web Team.
 | **[LiveChat](https://www.livechat.com/app/)** | Customer Service Tool |
 
 
-> 💡 Store SSH keys in an easily remembered path, e.g.: `C:\Utility\Keys\`
+> 💡 Extract the SAP JCo library to `C:\ePortal\sapjco3-ntamd64-3.1.12` so the path matches the VM argument in [Environment Setup](../environment-setup/).
 
 ---
 
@@ -69,7 +69,7 @@ For best performance, install Outlook and Teams as Progressive Web Apps through 
 
 | File | Notes |
 |------|-------|
-| [sapjco3-ntamd64-3.1.12.zip]({{ '/assets/downloads/sapjco3-ntamd64-3.1.12.zip' | relative_url }}) | SAP JCo native library (64-bit Windows) |
+| [sapjco3-ntamd64-3.1.12.zip]({{ '/assets/downloads/sapjco3-ntamd64-3.1.12.zip' | relative_url }}) | SAP JCo native library (64-bit Windows) — extract to `C:\ePortal\sapjco3-ntamd64-3.1.12` |
 
 ---
 
