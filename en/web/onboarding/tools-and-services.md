@@ -24,16 +24,16 @@ Downloads and installation links for all tools required by the Web Team.
 
 ## Development Tools
 
-| Tool | Purpose | Download |
-|------|---------|----------|
-| **Eclipse IDE** | Primary IDE | [eclipse.org](https://www.eclipse.org/downloads/packages/) |
-| **VS Code** | Primary IDE | [code.visualstudio.com](https://code.visualstudio.com/download) |
-| **Git** | Version control | [git-scm.com](https://git-scm.com/downloads) |
-| **OpenJDK** | Java runtime — confirm required version with your project lead | [adoptium.net](https://adoptium.net/temurin/releases/) |
-| **Oracle SQL Developer** | Database client | [oracle.com](https://www.oracle.com/database/sqldeveloper/technologies/download/) |
-| **DBeaver** | Database client | [dbeaver.io](https://dbeaver.io/download/) |
-| **HIWARE** | Access Management Tool | [hiware.hankookn.com](https://hiware.hankookn.com/) |
-| **LiveChat** | Customer Service Tool | [livechat.com](https://www.livechat.com/app/) |
+| Tool | Purpose |
+|------|---------|
+| **[Eclipse IDE](https://www.eclipse.org/downloads/packages/)** | Primary IDE |
+| **[VS Code](https://code.visualstudio.com/download)** | Primary IDE |
+| **[Git](https://git-scm.com/downloads)** | Version control |
+| **[OpenJDK](https://adoptium.net/temurin/releases/)** | Java runtime — confirm required version with your project lead |
+| **[Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/)** | Database client |
+| **[DBeaver](https://dbeaver.io/download/)** | Database client |
+| **[HIWARE](https://hiware.hankookn.com/)** | Access Management Tool |
+| **[LiveChat](https://www.livechat.com/app/)** | Customer Service Tool |
 
 
 > 💡 Store SSH keys in an easily remembered path, e.g.: `C:\Utility\Keys\`
